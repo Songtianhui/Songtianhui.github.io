@@ -72,7 +72,9 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -170,7 +172,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-01-26 14:56:21 / Modified: 15:26:20" itemprop="dateCreated datePublished" datetime="2021-01-26T14:56:21+08:00">2021-01-26</time>
+              <time title="Created: 2021-01-26 14:56:21 / Modified: 16:30:01" itemprop="dateCreated datePublished" datetime="2021-01-26T14:56:21+08:00">2021-01-26</time>
             </span>
 
           
@@ -203,7 +205,7 @@
 </blockquote>
 </blockquote>
 <hr>
-<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201709%2F13%2F20170913224334_BNTZG.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614236576&t=9c32f0f32aefbedbc919da0613d79bb4" alt="这是一张图片" title="picture"><br><a target="_blank" rel="noopener" href="https://github.com/songtianhui/songtianhui.github.io" title="githui repository">这是一个连接</a></p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201709%2F13%2F20170913224334_BNTZG.thumb.400_0.jpeg&amp;refer=http%3A%2F%2Fc-ssl.duitang.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1614236576&amp;t=9c32f0f32aefbedbc919da0613d79bb4" alt="这是一张图片" title="picture"><br><a target="_blank" rel="noopener" href="https://github.com/songtianhui/songtianhui.github.io" title="githui repository">这是一个连接</a></p>
 <hr>
 <ul>
 <li>列表内容</li>
@@ -214,27 +216,28 @@
 <li>列表内容</li>
 </ol>
 <hr>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">这是</th>
-<th align="right">一个</th>
-<th align="center">表格</th>
+<th style="text-align:left">这是</th>
+<th style="text-align:right">一个</th>
+<th style="text-align:center">表格</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">左对齐</td>
-<td align="right">右对齐</td>
-<td align="center">居中</td>
+<tbody>
+<tr>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:right">右对齐</td>
+<td style="text-align:center">居中</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <p>Here is <code>code</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	printf(&quot;Hello world!\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>$$ S_{n} = \sum\limits_{i=1}^{n} \dfrac{2}{i(i-1)} $$<br>好像没成功…Σ( ° △ °|||))︴</p>
-<hr>
-
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	printf(&quot;Hello world!\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><script type="math/tex; mode=display">S_{n} = \sum\limits_{i=1}^{n} \dfrac{i(i-1)}{2}</script><p>行内公式$\kappa_{s} = \overline{\alpha} + \beta \times \pi, x = \dfrac{-b \pm \sqrt{b^{2} - 4ac}}{2a}$<br><del>好像没成功…Σ( ° △ °|||))︴</del></p>
+<h2 id="成功了！"><a href="#成功了！" class="headerlink" title="成功了！"></a>成功了！</h2>
       
     </div>
 
@@ -385,6 +388,10 @@
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
   </nav>
 </div>
 
@@ -466,6 +473,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
