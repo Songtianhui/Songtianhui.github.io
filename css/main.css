@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c9b9ff;
+  background: #ffffe9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1241,7 +1241,7 @@ pre .javascript .function {
   margin-top: 10px;
 }
 .links-of-blogroll-title {
-  font-size: 0.875em;
+  font-size: 0.925em;
   font-weight: 600;
   margin-top: 0;
 }
