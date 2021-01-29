@@ -28,7 +28,7 @@
 <meta property="og:description" content="持续更新中参考: 廖雪峰python教程 Python 基础变量 整数(Python可以处理任意大)，浮点数，字符串(&#39;&#39;或&quot;&quot;括起来的，\转义)，布尔值(True or False)，空值(None). 在Python中，等号&#x3D;是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量(动态语言)。 Python3用Unicod">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-27T18:28:36.000Z">
-<meta property="article:modified_time" content="2021-01-29T08:46:53.072Z">
+<meta property="article:modified_time" content="2021-01-29T09:01:55.618Z">
 <meta property="article:author" content="Hui hui">
 <meta property="article:tag" content="language">
 <meta name="twitter:card" content="summary">
@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 16:46:53" itemprop="dateModified" datetime="2021-01-29T16:46:53+08:00">2021-01-29</time>
+                <time title="Modified: 2021-01-29 17:01:55" itemprop="dateModified" datetime="2021-01-29T17:01:55+08:00">2021-01-29</time>
               </span>
 
           
@@ -209,11 +209,11 @@
 <h3 id="list列表"><a href="#list列表" class="headerlink" title="list列表"></a>list列表</h3><ul>
 <li>[ ]表示list</li>
 <li>[ ]下标索引，从0开始，负数表示倒数第几个</li>
-<li><p>list中数据类型可以不同，可以嵌套</p>
+<li>list中数据类型可以不同，可以嵌套</li>
+</ul>
 <figure class="highlight python"><figcaption><span>list</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">len</span>(mylist) <span class="comment">#获得list元素的个数 </span></span><br><span class="line">mylist.append(<span class="string">&#x27;a&#x27;</span>) <span class="comment"># 往list中追加元素到末尾</span></span><br><span class="line">mylist.insert(<span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>) <span class="comment"># 把元素插入到指定位置</span></span><br><span class="line">mylist.pop() <span class="comment"># 删除list末尾的元素</span></span><br><span class="line">mylist.pop(<span class="number">1</span>) <span class="comment"># 删除指定位置的元素</span></span><br><span class="line"><span class="comment">#pop返回值为被删除的元素</span></span><br><span class="line"><span class="keyword">del</span> mylist[<span class="number">1</span>] <span class="comment">#使用del可以删除任何位置的列表元素，条件是知道索引</span></span><br><span class="line">mylist.remove() <span class="comment">#按值删除元素，只删除第一个指定的值</span></span><br><span class="line"><span class="comment"># `pop和`del`的选择：删除后是否还要使用该元素</span></span><br><span class="line">mylist.sort() <span class="comment">#永久排序</span></span><br><span class="line">mylist.sort(reverse = <span class="literal">True</span>) <span class="comment">#倒序排序</span></span><br><span class="line"><span class="built_in">sorted</span>(mylist) <span class="comment">#暂时排序，也可以加入倒序参数</span></span><br><span class="line">mylist.reverse() <span class="comment">#永久倒置</span></span><br><span class="line">mylist[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">#list切片，同MATLAB，首尾可缺省</span></span><br><span class="line">copy_list = mylist[:] <span class="comment">#通过切片赋值list</span></span><br></pre></td></tr></table></figure>
-<h3 id="tuple元组"><a href="#tuple元组" class="headerlink" title="tuple元组"></a>tuple元组</h3></li>
-<li><p><code>( )</code>表示元组</p>
-</li>
+<h3 id="tuple元组"><a href="#tuple元组" class="headerlink" title="tuple元组"></a>tuple元组</h3><ul>
+<li><code>( )</code>表示元组</li>
 <li>tuple和list非常类似，但是tuple一旦初始化就<strong>不能修改</strong>，类似enum</li>
 <li>定义一个元素就加个<code>,</code></li>
 <li><code>tuple</code>的不变是<strong>指向不变</strong>，即给元组变量赋值是合法的</li>
@@ -277,8 +277,10 @@
 <li>使用<code>next()</code>获得generator的下一个返回值。</li>
 <li>generator是可迭代对象。</li>
 <li>函数定义中包含关键字<code>yield</code>，就是一个generator。执行流程和函数不一样，遇到<code>yield</code>返回，再次执行从上次<code>yield</code>继续。</li>
-<li>遇到return或执行到函数体的最后一句，generator结束，for循环结束。<figure class="highlight python"><figcaption><span>generator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)) <span class="comment">#把list的[]变成()就可以得到生成器</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params"><span class="built_in">max</span></span>):</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(n &lt; <span class="built_in">max</span>):</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        <span class="comment">#相当于(a,b) = (b, a+b)</span></span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;done&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2></li>
+<li>遇到return或执行到函数体的最后一句，generator结束，for循环结束。</li>
+</ul>
+<figure class="highlight python"><figcaption><span>generator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)) <span class="comment">#把list的[]变成()就可以得到生成器</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span>(<span class="params"><span class="built_in">max</span></span>):</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(n &lt; <span class="built_in">max</span>):</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        <span class="comment">#相当于(a,b) = (b, a+b)</span></span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;done&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
 <li>可以直接作用于<code>for</code>循环的对象统称为可迭代对象<code>iterable</code>, 使用<code>isinstance( , Iterable)</code>判断。(list, dict, str, generator)</li>
 <li>可以被<code>next()</code>调用并返回下个值对象称为迭代器<code>iterator</code>, 使用<code>isinstance( , Iterator)</code>判断。(generator)</li>
 <li><code>iter()</code>可以把<code>iterable</code>变成<code>iterator</code></li>
@@ -309,10 +311,8 @@
 <li>函数有一个<code>__name__</code>属性，可以获得函数的名字。</li>
 </ul>
 <figure class="highlight python"><figcaption><span>decorator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">text</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line"><span class="meta">        @functools.wraps(<span class="params">func</span>)  </span><span class="comment">#将原始函数的属性复制到wapper中</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">            print(<span class="string">&#x27;%s %s():&#x27;</span> % (text, func.__name__))   <span class="comment">#函数调用之外的作用</span></span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)    <span class="comment">#调用原函数</span></span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@log </span><span class="comment"># @语法，相当于执行now=log(now)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span>():</span></span><br><span class="line">    print(<span class="string">&quot;2021-1-29&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>now()</span><br><span class="line">call now():</span><br><span class="line"><span class="number">2021</span>-<span class="number">1</span>-<span class="number">29</span></span><br></pre></td></tr></table></figure>
-<p>在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。</p>
-<p>decorator可以增强函数的功能，定义起来虽然有点复杂，但使用起来非常灵活和方便。</p>
-<h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><p>把一个函数的某些参数固定住(设置一个参数的默认值)，返回一个新的函数，可以直接调用这个新的函数。<code>functools.partial(f, args, **kw)</code></p>
-<p><code>int2 = functools.partial(int, base=2)</code></p>
+<p>在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。<br>decorator可以增强函数的功能，定义起来虽然有点复杂，但使用起来非常灵活和方便。</p>
+<h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><p>把一个函数的某些参数固定住(设置一个参数的默认值)，返回一个新的函数，可以直接调用这个新的函数。<code>functools.partial(f, args, **kw)</code><br><code>int2 = functools.partial(int, base=2)</code></p>
 <h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><ul>
 <li>一个<code>.py</code>文件就是一个模块。</li>
 <li>提高了代码的可维护性。编写程序的时候，经常引用其他模块，包括Python内置的模块和来自第三方的模块。</li>
