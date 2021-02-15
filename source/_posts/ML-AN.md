@@ -36,7 +36,7 @@ mathjax: true
 
 ## 代价函数(Cost Function)
 我们现在要做的便是为我们的模型选择合适的**参数**(**parameters**) $\theta_{0}$和$\theta_{1}$, 我们选择的参数决定了我们得到的直线相对于我们的训练集的准确程度，模型所预测的值与训练集中实际值之间的差距就是**建模误差**(**modeling error**)
-我们的目标便是选择出可以使得建模误差的平方和能够最小的模型参数。 即使得代价函数 $J \left( \theta_0, \theta_1 \right) = \dfrac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}$最小。
+我们的目标便是选择出可以使得建模误差的平方和能够最小的模型参数。 即使得代价函数 $J \left( \theta_0, \theta_1 \right) = \dfrac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}$ 最小。
 - **代价函数**也被称作平方误差函数，有时也被称为平方误差代价函数。对于大多数问题，特别是回归问题，都是一个合理的选择。
 
 ## 梯度下降(Gradient Descent)
@@ -51,6 +51,8 @@ $$\theta_{j}:=\theta_{j}-\alpha \dfrac{\partial}{\partial \theta_{j}} J\left(\th
 ## 梯度下降的线性回归(Gradient Descent For Linear Regression)
 
 对我们之前的线性回归问题运用梯度下降法，关键在于求出代价函数的导数，即:
+
+$$\dfrac{\partial}{\partial \theta_{j}} J(\theta_{0}, \theta_{1}) = \dfrac{\partial}{\partial \theta_{j}} \dfrac{1}{2m} \sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})^{2}$$
 
 $\dfrac{\partial}{\partial \theta_{j}} J(\theta_{0}, \theta_{1}) = \dfrac{\partial}{\partial \theta_{j}} \dfrac{1}{2m}\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})^{2}$
 
@@ -131,3 +133,5 @@ def normalEqn(X, y):
     theta = np.linalg.inv(X.T@X)@X.T@y #X.T@X等价于X.T.dot(X)
     return theta
 ```
+
+# Lecture 5
