@@ -26,7 +26,7 @@ mathjax: true
 ![这是一张图片](https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201709%2F13%2F20170913224334_BNTZG.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1615734130&t=6ff751ad338c71d43fdc49f9a178a53c "This is a picture!")
 [这是一个链接](https://github.com/songtianhui/songtianhui.github.io "github repository")
 
-![这也是一张图片](Markdown-test/avatar.gif "This is also a picture!")
+![这也是一张图片3](avatar.gif "This is also a picture!")
 
 ---
 - 列表内容

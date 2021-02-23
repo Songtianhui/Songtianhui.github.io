@@ -141,7 +141,7 @@ def normalEqn(X, y):
 我们将因变量(**dependent variable**)可能属于的两个类分别称为负向类（**negative class**）和正向类（**positive class**），则因变量$y\in \{ 0,1 \}$ ，其中 0 表示负向类，1 表示正向类。
 
 ## 假说表示 Hypothesis Representation
-我们希望我们的分类器的输出值在0和1之间，因此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在0和1之间。
+我们希望我们的分类器的输出值在**0和1之间**，因此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在0和1之间。
 我们引入一个新的模型，逻辑回归，该模型的输出变量范围始终在0和1之间。
 逻辑回归模型的假设是： $h_{\theta}(x) = g(\theta^{T}X)$
 其中：
@@ -155,5 +155,58 @@ def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 ```
 函数图像为:
-![sigmoid(z)](ML-AN/1073efb17b0d053b4f9218d4393246cc.jpg)
+![sigmoid(z)](g.jpg)
 $h_{\theta}( x )$的作用是，对于给定的输入变量，根据选择的参数计算输出变量=1的可能性（**estimated probablity**）即$h_{\theta} ( x )=P( y=1|x;\theta)$
+
+## 判定边界 Decision Boundary
+线性规划？反正就是约束条件所导致的曲线分界线。
+我们可以用非常复杂的模型来适应非常复杂形状的判定边界。
+
+## 代价函数
+对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将$h_{\theta}(x) = \dfrac{1}{1 + e^{-\theta^{T}X}}$带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（**non-convexfunction**）。
+这意味着我们的代价函数有许多**局部最小值**，这将影响梯度下降算法寻找全局最小值。
+我们重新定义逻辑回归的代价函数为: $J(\theta) = \dfrac{1}{m}\sum\limits_{i=1}^{n} Cost(h_{\theta}(x^{(i)}), y^{(i)})$, 其中
+$$ Cost(h_{\theta}(x^{(i)}), y^{(i)})=\left\{
+\begin{aligned}
+- \log{(h_{\theta}(x))}, &y = 1\\
+- \log{(1- h_{\theta}(x))}, &y = 0
+\end{aligned}
+\right.
+$$
+再简化得:
+$$Cost(h_{\theta}(x^{(i)}), y^{(i)}) = -y \times \log{(h_{\theta}(x))} - (1 - y) \times \log{(1- h_{\theta}(x))}$$
+带入代价函数得:
+$$J(\theta) = -\dfrac{1}{m}\sum\limits_{i=1}^{n} [y \times \log{(h_{\theta}(x))} + (1 - y) \times \log{(1- h_{\theta}(x))}] $$
+
+``` python cost
+import numpy as np
+
+def cost(theta, X, y):
+    theta = np.matrix(theta)
+    X = np.matrix(X)
+    y = np.matrix(y)
+    first = np.multiply(-y, np.log(sigmoid(X* theta.T)))
+    second = np.multiply((1 - y), np.log(1 - sigmoid(X* theta.T)))
+    return np.sum(first - second) / (len(X))
+
+# python实现的tips: 一般都是将输入用np.matrix向量化，再通过np的一些方法(np.sum, np.multiply)来运算，减少循环
+```
+
+凸性分析的内容是超出这门课的范围的，但是可以证明我们所选的代价值函数会给我们一个凸优化问题。代价函数$J(\theta)$会是一个凸函数，并且没有局部最优值。
+
+在得到这样一个代价函数以后，我们便可以用梯度下降算法来求得能使代价函数最小的参数了。
+**repeat until convergence{**
+$$\theta_{j}:=\theta_{j}-\alpha \dfrac{\partial}{\partial \theta_{j}} J\left(\theta \right)$$
+**}**
+
+考虑$h_{\theta}(x) = \dfrac{1}{1 + e^{-\theta^{T}X}}$, 有：
+$$\dfrac{\partial}{\partial \theta_{j}} J(\theta) = \dfrac{1}{m} \sum\limits_{i=1}^{n} [h_{\theta(x^{(i)})} -y^{(i)}] x_{j}^{(i)}$$
+~~推导略，不信的话自己去算算~~
+- 虽然得到的梯度下降算法表面上看上去与线性回归的梯度下降算法一样，但是这里的$h_{\theta}(x)$与线性回归中不同，所以实际上是不一样的。另外，在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。
+
+除了梯度下降算法以外，还有一些常被用来令代价函数最小的算法，这些算法更加复杂和优越，而且通常不需要人工选择学习率，通常比梯度下降算法要更加快速。这些算法有：**共轭梯度**（**Conjugate Gradient**），**局部优化法**(**Broyden fletcher goldfarb shann,BFGS**)和**有限内存局部优化法**(**LBFGS**) 
+
+## 多类别分类 Multiclass Classification
+对每一个类别，创建一个新“伪”的训练集，拟合一个合适的分类器。
+就是将一个类标为正类，其他都为负类，得到一系列模型记为$h_{\theta}^{(i)}(x) = p(y = i | x;\theta), i = 1,2,...,k$
+最后，在我们需要做预测时，我们将所有的分类机都运行一遍，然后对每一个输入变量，都选择最高可能性的输出变量。
