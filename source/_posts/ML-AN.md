@@ -132,3 +132,28 @@ def normalEqn(X, y):
 ```
 
 # Lecture 5
+本章主要是**Ovtave**的语法学习，现在基本使用**Python**，跳过本章。
+
+# Lecture 6
+本章主要是对于解决分类问题的逻辑回归算法的讲解。
+
+## 分类问题 Classification
+我们将因变量(**dependent variable**)可能属于的两个类分别称为负向类（**negative class**）和正向类（**positive class**），则因变量$y\in \{ 0,1 \}$ ，其中 0 表示负向类，1 表示正向类。
+
+## 假说表示 Hypothesis Representation
+我们希望我们的分类器的输出值在0和1之间，因此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在0和1之间。
+我们引入一个新的模型，逻辑回归，该模型的输出变量范围始终在0和1之间。
+逻辑回归模型的假设是： $h_{\theta}(x) = g(\theta^{T}X)$
+其中：
+$X$ 代表特征向量
+$g$ 代表逻辑函数（**logistic function**)是一个常用的逻辑函数为**S**形函数（**Sigmoid function**），公式为： $g(z) = \dfrac{1}{1 + e^{-z}}$.
+
+``` python sigmoid
+import numpy
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+```
+函数图像为:
+![sigmoid(z)](ML-AN/1073efb17b0d053b4f9218d4393246cc.jpg)
+$h_{\theta}( x )$的作用是，对于给定的输入变量，根据选择的参数计算输出变量=1的可能性（**estimated probablity**）即$h_{\theta} ( x )=P( y=1|x;\theta)$
