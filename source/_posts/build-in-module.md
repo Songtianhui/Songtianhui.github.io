@@ -50,7 +50,7 @@ dt.timestamp()
 >>> print(cday)
 2015-06-01 18:19:59
 ```
-- 字符串'%Y-%m-%d %H:%M:%S'规定了日期和时间部分的格式。详细的说明请参考[Python文档](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior)。
+- 字符串`%Y-%m-%d %H:%M:%S`规定了日期和时间部分的格式。详细的说明请参考[Python文档](https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior)。
 - 转换后的datetime是没有时区信息的。
 
 ##  datetime转str
@@ -87,4 +87,65 @@ datetime.datetime(2021, 2, 28, 2, 18, 54, 205754)
 >>> tokyo_dt2 = bj_dt.astimezone(timezone(timedelta(hours=9)))
 >>> print(tokyo_dt2)
 2015-05-18 18:05:12.377316+09:00
+```
+
+# collections
+collections是Python内建的一个集合模块，提供了许多有用的集合类。
+
+## namedtuple
+`namedtuple`是一个函数，它用来创建一个自定义的tuple对象，并且规定了tuple元素的个数，并可以用属性而不是索引来引用tuple的某个元素。
+``` python
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y'])
+>>> p = Point(1, 2)
+>>> p.x
+1
+```
+
+## deque
+deque是为了高效实现插入和删除操作的双向列表，适合用于队列和栈。
+- 支持`appendleft()`, `popleft()`
+
+``` python
+>>> from collections import deque
+>>> q = deque(['a', 'b', 'c'])
+>>> q.append('x')
+>>> q.appendleft('y')
+>>> q
+deque(['y', 'a', 'b', 'c', 'x'])
+```
+
+## defaultdict
+使用dict时，如果引用的Key不存在，就会抛出KeyError。如果希望key不存在时，返回一个默认值，就可以用defaultdict.
+- 默认值是调用函数返回的，而函数在创建defaultdict对象时传入。
+
+``` python
+>>> from collections import defaultdict
+>>> dd = defaultdict(lambda: 'N/A')
+>>> dd['key1'] = 'abc'
+>>> dd['key1'] # key1存在
+'abc'
+>>> dd['key2'] # key2不存在，返回默认值
+'N/A'
+```
+
+## OrderedDict
+使用dict时，Key是无序的。如果要保持Key的顺序，可以用`OrderedDict`.
+- 按照插入的顺序排列，不是Key本身排序。
+
+## ChainMap
+`ChainMap`可以把一组dict串起来并组成一个逻辑上的dict.
+
+## Counter
+``` python
+>>> from collections import Counter
+>>> c = Counter()
+>>> for ch in 'programming':
+...     c[ch] = c[ch] + 1
+...
+>>> c
+Counter({'g': 2, 'm': 2, 'r': 2, 'a': 1, 'i': 1, 'o': 1, 'n': 1, 'p': 1})
+>>> c.update('hello') # 也可以一次性update
+>>> c
+Counter({'r': 2, 'o': 2, 'g': 2, 'm': 2, 'l': 2, 'p': 1, 'a': 1, 'i': 1, 'n': 1, 'h': 1, 'e': 1})
 ```
