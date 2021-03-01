@@ -57,3 +57,36 @@ mathjax: true
 3. $\forall h \in H,  h^{-1} \in H$
 
 **定理3.31.** $H \subset G$是$G$的子群$\Leftrightarrow H \neq \emptyset \wedge \forall g,h\in H, gh^{-1} \in H$
+
+---
+# 循环群 Cyclic Groups
+
+**定理4.3.**  Let $G$ be a group and $a$ be any element in $G$. Then the set $\langle a\rangle =\{a^{k}:k\in\mathbb{Z}\}$ is a subgroup of $G$. Furthermore, $⟨a⟩$ is the smallest subgroup of $G$ that contains $a$.
+
+- **循环子群(Cyclic Subgroups)**: $\langle a \rangle$
+- **循环群**: 包含了某个元素$a$，使得$G=⟨a⟩$.此时$⟨a⟩$是$G$的**生成元(generator)**.
+- $a$的**序数(order)**: 最小的正整数$n$, s.t. $a^{n} = e$, 记作$|a| = n$. 如果不存在，则为正无穷。
+
+**定理4.9.** 所有循环群都是阿贝尔群。
+
+## 循环群的子群
+**定理4.10.** 循环群的子群也都是循环群。
+**推论4.11.** $\mathbb{Z}$的所有子群就是$n\mathbb{Z}, n = 0,1,2,...$
+**命题4.12.** $G$为一个$n$阶循环群，$a$是$G$的一个生成元。则$a^{k} = e \Leftrightarrow n | k$（$k$是$n$的倍数）。
+**定理4.13.** $G$为一个$n$阶循环群，$a$是$G$的一个生成元。$b = a^{k} \Rightarrow b$的序数为$n / d, d = gcd(k,n)$。
+**推论4.14.** $\mathbb{Z}_{n}$的所有生成元$r$满足$1 \leq r < n \wedge gcd(n,r) = 1$。
+
+## 复数乘法群  Multiplicative Group of Complex Numbers
+复数知识
+- $\cos \theta + i \sin \theta$ 记作 $cis\theta$
+**定理2.22. DeMoivre** $(r~cis\theta)^{n} = r^{n}~cis(n\theta)$
+
+## 圆群 Circle Group
+$\mathbb{T}: \{ z \in \mathbb{C}: |z| = 1 \}$
+**命题4.24.** 圆群是$\mathbb{C}^{*}$的一个子群。
+
+满足$z^{n} = 1$的复数$z$称为$n$次**单位根($n$-th roots of unity)**。
+**定理4.25.** $z^{n} = 1 \Rightarrow z = cis(\dfrac{2k\pi}{n}), k = 0, 1, ... , n-1$. $n$次单位根构成$\mathbb{T}$的一个圆子群。
+
+## 重复平方法 The Method of Repeated Squares
+快速幂。
