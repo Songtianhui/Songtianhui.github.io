@@ -210,3 +210,59 @@ $$\dfrac{\partial}{\partial \theta_{j}} J(\theta) = \dfrac{1}{m} \sum\limits_{i=
 对每一个类别，创建一个新“伪”的训练集，拟合一个合适的分类器。
 就是将一个类标为正类，其他都为负类，得到一系列模型记为$h_{\theta}^{(i)}(x) = p(y = i | x;\theta), i = 1,2,...,k$
 最后，在我们需要做预测时，我们将所有的分类机都运行一遍，然后对每一个输入变量，都选择最高可能性的输出变量。
+
+# Lecture 7
+本章主要介绍**正则化方法(Regularization)**，它可以改善或者减少过度拟合问题。
+
+## 过拟合问题 Overfitting
+- 丢弃一些不能帮助我们正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来帮忙（例如**PCA**）
+- 正则化。 保留所有的特征，但是减少参数的大小（**magnitude**）。
+
+## 代价函数
+某些项导致了过拟合的产生，所以如果我们能让这些项系数接近于0的话，我们就能很好的拟合了。
+所以我们要做的就是在一定程度上减小这些参数$\theta$ 的值，这就是正则化的基本方法。我们要做的便是修改代价函数，为$\theta$设置一点惩罚。
+假如我们有非常多的特征，我们并不知道其中哪些特征我们要惩罚，我们将对所有的特征进行惩罚，并且让代价函数最优化的软件来选择这些惩罚的程度。这样的结果是得到了一个较为简单的能防止过拟合问题的假设：
+$$J(\theta) = \dfrac{1}{2m}[\sum\limits_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^{2} + \lambda \sum\limits_{j=1}^{n} \theta_{j}^{2}]$$
+其中$\lambda$又称为正则化参数（**Regularization Parameter**）。 注：根据惯例，我们不对$\theta_{0}$ 进行惩罚。
+
+## 正则化线性回归 Regularized Linear Regression
+**repeat until convergence{**
+$$\theta_{0}:=\theta_{0}-\alpha \dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)}) - y^{(i)})$$
+$$\theta_{j}:=\theta_{j}-\alpha [\dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)}) - y^{(i)}) * x_{j}^{(i)}) + \dfrac{\lambda}{m}\theta_{j}] \quad (for~j=1,2,...,n)$$
+**}**
+对$j=1,2,...,n$时的更新式子整理得：
+$$\theta_{j}:=\theta_{j}(1 - \alpha \dfrac{\lambda}{m})-\alpha \dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)}) - y^{(i)}) * x_{j}^{(i)})$$
+可以看出，正则化线性回归的梯度下降算法的变化在于，每次都在原有算法更新规则的基础上令$\theta$值减少了一个额外的值。
+
+我们同样也可以利用正规方程来求解正则化线性回归模型：
+$$\theta=\left(X^{T} X+\lambda\left[\begin{array}{cccc}
+0 & & & \\
+& 1 & & \\
+& & 1 & & \\
+& & & \ddots & \\
+& & & & 1
+\end{array}\right]\right)^{-1} X^{T} y$$
+矩阵尺寸为 $(n+1)*(n+1)$。
+
+## 正则化的逻辑回归模型 Regularized Logistic Regression
+
+$$J(\theta) = -\dfrac{1}{m}\sum\limits_{i=1}^{n} [y \times \log{(h_{\theta}(x))} + (1 - y) \times \log{(1- h_{\theta}(x))}] + \dfrac{\lambda}{2m} \sum\limits_{j=1}^{n}\theta_{j}^{2}$$
+
+``` python python代码
+import numpy as np
+
+def costReg(theta, X, y, learningRate):
+    theta = np.matrix(theta)
+    X = np.matrix(X)
+    y = np.matrix(y)
+    first = np.multiply(-y, np.log(sigmoid(X*theta.T)))
+    second = np.multiply((1 - y), np.log(1 - sigmoid(X*theta.T)))
+    reg = (learningRate / (2 * len(X))* np.sum(np.power(theta[:,1:theta.shape[1]],2))
+    return np.sum(first - second) / (len(X)) + reg
+```
+梯度下降：
+**repeat until convergence{**
+$$\theta_{0}:=\theta_{0}-\alpha \dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)}) - y^{(i)})$$
+$$\theta_{j}:=\theta_{j}-\alpha [\dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)}) - y^{(i)}) * x_{j}^{(i)}) + \dfrac{\lambda}{m}\theta_{j}] \quad (for~j=1,2,...,n)$$
+**}**
+注：看上去同线性回归一样，但是知道 $h_\theta ( x )=g( \theta^{T} X )$，所以与线性回归不同。
