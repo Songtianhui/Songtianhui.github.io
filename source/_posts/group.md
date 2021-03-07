@@ -2,7 +2,7 @@
 title: 问题求解笔记-群论初步
 date: 2021-02-26 15:53:33
 tags:
-catagories: problem-solving
+categories: problem-solving
 mathjax: true
 ---
 
