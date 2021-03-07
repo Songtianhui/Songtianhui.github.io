@@ -90,10 +90,11 @@ $H$ 的**index**：$G$ 中 $H$ 的左陪集的个数，记为$[G:H]$。
 
 - 拉格朗日定理的逆命题不一定成立。
 
-**定理6.16.** $S_{n}$ 中的两个轮换 $\tau$ 和 $\mu$ 有相同的长度 $\Leftrightarrow \exists \sigma \in S_{n}, \mu = =\sigma \tau \sigma^{-1}$. （相似？）
+**定理6.16.** $S_{n}$ 中的两个轮换 $\tau$ 和 $\mu$ 有相同的长度 $\Leftrightarrow \exists \sigma \in S_{n}, \mu =\sigma \tau \sigma^{-1}$. （相似？）
 
 ## 费马与欧拉定理 Fermat's and Euler's Theorem
 **欧拉函数**$\phi$-*function*: map $\phi: \mathbb{N} \rightarrow \mathbb{N}$, 与$n$互质的整数$m(1\leq m <n)$的个数，$\phi(1) = 1$。
+
 **定理6.17.** $U(n)$ 为 $\mathbb{Z}_{n}$ 的units的群，则 $|U(n)| = \phi(n)$。
 
 **定理6.18. Euler's Theorem** 正整数$a, n$，$n > 0 \wedge gcd(a,n) = 1 \Rightarrow a^{\phi(n)} \equiv 1$ (mod $n$)。
