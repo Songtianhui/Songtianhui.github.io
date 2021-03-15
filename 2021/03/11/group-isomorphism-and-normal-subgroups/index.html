@@ -29,7 +29,7 @@
 <meta property="og:description" content="同构 Isomorphisms定义群$(G, \cdot )$ 和 $(H, \circ)$ 同构（isomorphic），如果存在一个双射 $\phi: G \rightarrow H$ 且满足 \forall a, b \in G, \phi(a \cdot b) &#x3D; \phi(a) \circ \phi(b)记作 $G \cong H$。映射 $\phi$ 称为同构（isomorphism">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-11T06:50:32.000Z">
-<meta property="article:modified_time" content="2021-03-14T13:02:54.360Z">
+<meta property="article:modified_time" content="2021-03-15T03:49:42.772Z">
 <meta property="article:author" content="Hui hui">
 <meta name="twitter:card" content="summary">
 
@@ -188,7 +188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-14 09:02:54" itemprop="dateModified" datetime="2021-03-14T09:02:54-04:00">2021-03-14</time>
+                <time title="Modified: 2021-03-14 23:49:42" itemprop="dateModified" datetime="2021-03-14T23:49:42-04:00">2021-03-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,11 +228,11 @@
 <p><strong>推论 9.9.</strong> $G$ 是一个 $p$ 阶群，$p$ 是一个质数，则 $G$ 同构于 $\mathbb{Z}_{p}$。</p>
 <p><strong>定理 9.10.</strong> 群上的同构形成了所有群的类型的等价关系。</p>
 <h3 id="凯利定理-Cayley’s-Theorem"><a href="#凯利定理-Cayley’s-Theorem" class="headerlink" title="凯利定理 Cayley’s Theorem"></a>凯利定理 Cayley’s Theorem</h3><p><strong>定理 9.12. Cayley</strong> 每个群都同构于一个置换群。</p>
-<h2 id="直积-Direct-Product"><a href="#直积-Direct-Product" class="headerlink" title="直积 Direct Product"></a>直积 Direct Product</h2><h3 id="外直积-External-Direct-Products"><a href="#外直积-External-Direct-Products" class="headerlink" title="外直积 External Direct Products"></a>外直积 External Direct Products</h3><p><strong>命题 9.13.</strong> $(G, \cdot), (H, \circ)$ 是两个群，$(g, h) \in G \times H, g \in G, h \in H$, 定义 $G \times H$ 上的二元运算：$(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2)$，是一个群。</p>
+<h2 id="外直积-External-Direct-Products"><a href="#外直积-External-Direct-Products" class="headerlink" title="外直积 External Direct Products"></a>外直积 External Direct Products</h2><p><strong>命题 9.13.</strong> $(G, \cdot), (H, \circ)$ 是两个群，$(g, h) \in G \times H, g \in G, h \in H$, 定义 $G \times H$ 上的二元运算：$(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2)$，是一个群。</p>
 <p>群 $G \times H$ 叫做 $G$ 和 $H$ 的<strong>外直积（external direct product）</strong>。</p>
 <p><strong>定理 9.17.</strong> $(g, h) \in G \times H$，$g, h$ 都有有限的序数 $r, s$，则 $(g,h)$ 的序数是 $r$ 和 $s$ 的最小公倍数。</p>
 <p><strong>定理 9.21.</strong> $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_mn \Leftrightarrow gcd(m,n) = 1$</p>
-<h3 id="内直积-Internal-Direct-Products"><a href="#内直积-Internal-Direct-Products" class="headerlink" title="内直积 Internal Direct Products"></a>内直积 Internal Direct Products</h3><p>如果群 $G$ 的两个子群 $H$ 和 $K$ 满足以下条件：</p>
+<h2 id="内直积-Internal-Direct-Products"><a href="#内直积-Internal-Direct-Products" class="headerlink" title="内直积 Internal Direct Products"></a>内直积 Internal Direct Products</h2><p>如果群 $G$ 的两个子群 $H$ 和 $K$ 满足以下条件：</p>
 <ul>
 <li>$ G= HK = \{ hk: h \in H, k \in K \}$</li>
 <li>$H \cap K = \{ e \}$</li>
@@ -240,6 +240,35 @@
 </ul>
 <p>则 $G$ 叫做 $H$ 和 $K$ 的<strong>直积（internal direct product）</strong>。</p>
 <p><strong>定理 9.27.</strong> $G$ 是 $H$ 和 $K$ 的内直积 $\Rightarrow G \cong H \times K$。</p>
+<hr>
+<h1 id="正规子群和商群"><a href="#正规子群和商群" class="headerlink" title="正规子群和商群"></a>正规子群和商群</h1><h2 id="正规子群-Normal-Subgroups"><a href="#正规子群-Normal-Subgroups" class="headerlink" title="正规子群 Normal Subgroups"></a>正规子群 Normal Subgroups</h2><p>群 $G$ 的一个子群 $H$ 是<strong>正规的（normal）</strong>，如果 $\forall g \in G, gH = Hg$</p>
+<p><strong>定理 10.3.</strong> $N$ 为群 $G$ 的一个子群，则以下命题等价：</p>
+<ol>
+<li>$N$ 是正规的。</li>
+<li>$\forall g \in G, g N g^{-1} \subset N$</li>
+<li>$\forall g \in G, g N g^{-1} = N$</li>
+</ol>
+<h2 id="商群-Factor-Groups"><a href="#商群-Factor-Groups" class="headerlink" title="商群 Factor Groups"></a>商群 Factor Groups</h2><p>$N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个群 $G/N$，二元运算为 $(aN)(bN) = abN$。这个群叫做 $G$ 和 $N$ 的<strong>因子（factor）</strong>或<strong>商群（quotient group）</strong>。</p>
+<p><strong>定理 10.4.</strong> $N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个 $[G:N]$ 阶群 $G/N$。</p>
+<h2 id="对换群的simplicity"><a href="#对换群的simplicity" class="headerlink" title="对换群的simplicity"></a>对换群的simplicity</h2><p>没有非平凡正规子群的群叫做<strong>（simple group）</strong>。</p>
+<p><strong>引理 10.8.</strong> 对换群 $A_n$ 由三元环（3-cycles）生成。</p>
+<p><strong>引理 10.9.</strong> $N$ 为群 $A_n$ 的一个子群。如果 $N$ 包含一个三元环，则 $N = A_n$。</p>
+<p><strong>引理 10.10.</strong> 对于 $n \geq 5$，$A_n$ 的每个非平凡正规子群 $N$ 包含一个三元环。</p>
+<p><strong>定理 10.11.</strong> 置换群 $A_n(n \geq 5)$ 是simple的。</p>
+<hr>
+<h1 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h1><h2 id="群同态-Group-Homomorphisms"><a href="#群同态-Group-Homomorphisms" class="headerlink" title="群同态 Group Homomorphisms"></a>群同态 Group Homomorphisms</h2><p>群 $(G, \cdot )$ 和 $(H, \circ)$ 间的<strong>同态（homomorphisms）</strong>是一个映射 $\phi: G \rightarrow H$ 且满足</p>
+<script type="math/tex; mode=display">\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)</script><p>$\phi$ 在 $H$ 中的值域叫做<strong>同态像（homomorphic image）</strong>。</p>
+<p><strong>命题 11.4.</strong> $\phi: G_1 \rightarrow G_2$ 是一个同态，则：</p>
+<ol>
+<li>$e$ 是 $G_1$ 的单位元 $\Rightarrow \phi(e) $ 是 $G_2$ 的单位元。</li>
+<li>$\forall g \in G_1, \phi(g^{-1}) = [\phi(g)]^{-1}$</li>
+<li>$H_1$ 是 $G_1$ 的子群 $\Rightarrow \phi(H_1)$ 是 $G_2$ 的子群。</li>
+<li>$H_2$ 是 $G_2$ 的子群 $\Rightarrow \phi^{-1}(H_2) = \{ g \in G: \phi(g) \in H_2 \}$ 是 $G_1$ 的子群。进一步，$H_2$ 是 $G_2$ 的正规子群 $\Rightarrow \phi^{-1}(H_2)$ 是 $G_1$ 的正规子群。</li>
+</ol>
+<p>$\phi : G \Rightarrow H$ 是一个同态，$\phi^{-1}(\{ e \})$ 是 $G$ 的一个子集，叫做 $\phi$ 的<strong>核（kernel）</strong>，记作 $ker~\phi$。</p>
+<p><strong>定理 11.5.</strong> $G \Rightarrow H$ 是一个同态，则 $\phi$ 的核是 $G$ 的一个正规子群。</p>
+<h2 id="同构定理-Isomorphism-Theorems"><a href="#同构定理-Isomorphism-Theorems" class="headerlink" title="同构定理 Isomorphism Theorems"></a>同构定理 Isomorphism Theorems</h2><p>$H$ 为群 $G$ 的一个正规子群，定义<strong>自然同态（natural homomorphism）</strong> $\phi: G \rightarrow G / H, \phi(g) = gH$。</p>
+<p><strong>定理 11.10. 同构第一定理</strong> $\psi: G \rightarrow H$ 是一个群同态，核为 $K = ker~\psi$ 是一个正规子群。$\phi:G \rightarrow G /K$ 为自然同态，则存在一个唯一同构 $\eta: G / K \rightarrow \psi(G)$，使得 $\psi = \eta \phi$。</p>
 
     </div>
 
@@ -317,7 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%9E%84-Isomorphisms"><span class="nav-number">1.</span> <span class="nav-text">同构 Isomorphisms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%AF%E5%88%A9%E5%AE%9A%E7%90%86-Cayley%E2%80%99s-Theorem"><span class="nav-number">1.1.1.</span> <span class="nav-text">凯利定理 Cayley’s Theorem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E7%A7%AF-Direct-Product"><span class="nav-number">1.2.</span> <span class="nav-text">直积 Direct Product</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E7%9B%B4%E7%A7%AF-External-Direct-Products"><span class="nav-number">1.2.1.</span> <span class="nav-text">外直积 External Direct Products</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%9B%B4%E7%A7%AF-Internal-Direct-Products"><span class="nav-number">1.2.2.</span> <span class="nav-text">内直积 Internal Direct Products</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%9E%84-Isomorphisms"><span class="nav-number">1.</span> <span class="nav-text">同构 Isomorphisms</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%AF%E5%88%A9%E5%AE%9A%E7%90%86-Cayley%E2%80%99s-Theorem"><span class="nav-number">1.1.1.</span> <span class="nav-text">凯利定理 Cayley’s Theorem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E7%9B%B4%E7%A7%AF-External-Direct-Products"><span class="nav-number">1.2.</span> <span class="nav-text">外直积 External Direct Products</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%9B%B4%E7%A7%AF-Internal-Direct-Products"><span class="nav-number">1.3.</span> <span class="nav-text">内直积 Internal Direct Products</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%AD%90%E7%BE%A4%E5%92%8C%E5%95%86%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">正规子群和商群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E8%A7%84%E5%AD%90%E7%BE%A4-Normal-Subgroups"><span class="nav-number">2.1.</span> <span class="nav-text">正规子群 Normal Subgroups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E7%BE%A4-Factor-Groups"><span class="nav-number">2.2.</span> <span class="nav-text">商群 Factor Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8D%A2%E7%BE%A4%E7%9A%84simplicity"><span class="nav-number">2.3.</span> <span class="nav-text">对换群的simplicity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">同态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E5%90%8C%E6%80%81-Group-Homomorphisms"><span class="nav-number">3.1.</span> <span class="nav-text">群同态 Group Homomorphisms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%9E%84%E5%AE%9A%E7%90%86-Isomorphism-Theorems"><span class="nav-number">3.2.</span> <span class="nav-text">同构定理 Isomorphism Theorems</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
