@@ -41,9 +41,8 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 
 **定理 9.12. Cayley** 每个群都同构于一个置换群。
 
-## 直积 Direct Product
 
-### 外直积 External Direct Products
+## 外直积 External Direct Products
 
 **命题 9.13.** $(G, \cdot), (H, \circ)$ 是两个群，$(g, h) \in G \times H, g \in G, h \in H$, 定义 $G \times H$ 上的二元运算：$(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2)$，是一个群。
 
@@ -53,7 +52,7 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 
 **定理 9.21.** $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_mn \Leftrightarrow gcd(m,n) = 1$
 
-### 内直积 Internal Direct Products
+## 内直积 Internal Direct Products
 
 如果群 $G$ 的两个子群 $H$ 和 $K$ 满足以下条件：
 
@@ -64,3 +63,31 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 则 $G$ 叫做 $H$ 和 $K$ 的**直积（internal direct product）**。
 
 **定理 9.27.** $G$ 是 $H$ 和 $K$ 的内直积 $\Rightarrow G \cong H \times K$。
+
+---
+# 正规子群和商群
+## 正规子群 Normal Subgroups
+
+群 $G$ 的一个子群 $H$ 是**正规的（normal）**，如果 $\forall g \in G, gH = Hg$
+
+**定理 10.3.** $N$ 为群 $G$ 的一个子群，则以下命题等价：
+1. $N$ 是正规的。
+2. $\forall g \in G, g N g^{-1} \subset N$
+3. $\forall g \in G, g N g^{-1} = N$
+
+## 商群 Factor Groups
+$N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个群 $G/N$，二元运算为 $(aN)(bN) = abN$。这个群叫做 $G$ 和 $N$ 的**因子（factor）**或**商群（quotient group）**。
+
+**定理 10.4.** $N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个 $[G:N]$ 阶群 $G/N$。
+
+## 对换群的simplicity
+
+没有非平凡正规子群的群叫做**（simple group）**。
+
+**引理 10.8.** 对换群 $A_n$ 由三元环（3-cycles）生成。
+
+**引理 10.9.** $N$ 为群 $A_n$ 的一个子群。如果 $N$ 包含一个三元环，则 $N = A_n$。
+
+**引理 10.10.** 对于 $n \geq 5$，$A_n$ 的每个非平凡正规子群 $N$ 包含一个三元环。
+
+**定理 10.11.** 置换群 $A_n(n \geq 5)$ 是simple的。
