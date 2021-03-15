@@ -115,3 +115,10 @@ $\phi : G \Rightarrow H$ 是一个同态，$\phi^{-1}(\{ e \})$ 是 $G$ 的一�
 $H$ 为群 $G$ 的一个正规子群，定义**自然同态（natural homomorphism）** $\phi: G \rightarrow G / H, \phi(g) = gH$。
 
 **定理 11.10. 同构第一定理** $\psi: G \rightarrow H$ 是一个群同态，核为 $K = ker~\psi$ 是一个正规子群。$\phi:G \rightarrow G /K$ 为自然同态，则存在一个唯一同构 $\eta: G / K \rightarrow \psi(G)$，使得 $\psi = \eta \phi$。
+
+**定理 11.12. 同构第二定理** $H$ 是群 $G$ 的子群（不一定是正规的），$N$ 是 $G$ 的正规子群，则 $HN$ 是 $G$ 的子群，$H \cap N$ 是 $H$ 的正规子群，且
+$$H / (H \cap N) \cong (HN) / N$$
+
+**定理 11.13 一致定理** $N$ 是群 $G$ 的正规子群，则 $H \rightarrow H /N$ 是一个从 $G$ 的包含 $N$ 的子群的集合到 $G /N$ 的子群的集合的满射。进一步，从 $G$ 的包含 $N$ 的**正规**子群的集合到 $G /N$ 的子群的集合是双射。
+
+**定理 11.14. 同构第三定理** $G$ 是一个群，$N$ 和 $H$ 是正规子群且有 $N \subset H$，则 $G / H \cong \dfrac{GN}{HN}$.
