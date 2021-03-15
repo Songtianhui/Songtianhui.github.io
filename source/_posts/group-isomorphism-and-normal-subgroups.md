@@ -91,3 +91,27 @@ $N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个群 $G/N$
 **引理 10.10.** 对于 $n \geq 5$，$A_n$ 的每个非平凡正规子群 $N$ 包含一个三元环。
 
 **定理 10.11.** 置换群 $A_n(n \geq 5)$ 是simple的。
+
+---
+# 同态
+## 群同态 Group Homomorphisms
+
+群 $(G, \cdot )$ 和 $(H, \circ)$ 间的**同态（homomorphisms）**是一个映射 $\phi: G \rightarrow H$ 且满足
+$$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
+$\phi$ 在 $H$ 中的值域叫做**同态像（homomorphic image）**。
+
+**命题 11.4.** $\phi: G_1 \rightarrow G_2$ 是一个同态，则：
+1. $e$ 是 $G_1$ 的单位元 $\Rightarrow \phi(e) $ 是 $G_2$ 的单位元。
+2. $\forall g \in G_1, \phi(g^{-1}) = [\phi(g)]^{-1}$
+3. $H_1$ 是 $G_1$ 的子群 $\Rightarrow \phi(H_1)$ 是 $G_2$ 的子群。
+4. $H_2$ 是 $G_2$ 的子群 $\Rightarrow \phi^{-1}(H_2) = \{ g \in G: \phi(g) \in H_2 \}$ 是 $G_1$ 的子群。进一步，$H_2$ 是 $G_2$ 的正规子群 $\Rightarrow \phi^{-1}(H_2)$ 是 $G_1$ 的正规子群。
+
+$\phi : G \Rightarrow H$ 是一个同态，$\phi^{-1}(\{ e \})$ 是 $G$ 的一个子集，叫做 $\phi$ 的**核（kernel）**，记作 $ker~\phi$。
+
+**定理 11.5.** $G \Rightarrow H$ 是一个同态，则 $\phi$ 的核是 $G$ 的一个正规子群。
+
+## 同构定理 Isomorphism Theorems
+
+$H$ 为群 $G$ 的一个正规子群，定义**自然同态（natural homomorphism）** $\phi: G \rightarrow G / H, \phi(g) = gH$。
+
+**定理 11.10. 同构第一定理** $\psi: G \rightarrow H$ 是一个群同态，核为 $K = ker~\psi$ 是一个正规子群。$\phi:G \rightarrow G /K$ 为自然同态，则存在一个唯一同构 $\eta: G / K \rightarrow \psi(G)$，使得 $\psi = \eta \phi$。
