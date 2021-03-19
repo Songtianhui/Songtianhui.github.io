@@ -1,5 +1,5 @@
 ---
-title: 群同态基本定理与正规子群
+title: 问题求解笔记-群同态基本定理与正规子群
 date: 2021-03-11 01:50:32
 categories: problem-solving
 mathjax: true
@@ -50,7 +50,7 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 
 **定理 9.17.** $(g, h) \in G \times H$，$g, h$ 都有有限的序数 $r, s$，则 $(g,h)$ 的序数是 $r$ 和 $s$ 的最小公倍数。
 
-**定理 9.21.** $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_mn \Leftrightarrow gcd(m,n) = 1$
+**定理 9.21.** $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn} \Leftrightarrow gcd(m,n) = 1$
 
 ## 内直积 Internal Direct Products
 

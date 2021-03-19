@@ -37,8 +37,11 @@ mathjax: true
 **命题3.17.** 单位元唯一
 **命题3.18.** 逆元唯一
 **命题3.19.** $\forall a, b \in G, (ab)^{-1} = b^{-1}a^{-1}$
+
 **命题3.20.** $\forall a \in G, (a^{-1})^{-1} = a$
+
 **命题3.21.** $\forall a, b \in G,$ 方程$ax=b$和$xa=b$有唯一解
+
 **命题3.22.** $\forall a, b,bc \in G, ab=ac \Rightarrow b=c$, $ba=ca  \Rightarrow b= c$（左右约分）
 
 **定理3.23.** 基本指数运算都成立，$\forall g, h \in G$,
@@ -72,8 +75,11 @@ mathjax: true
 ## 循环群的子群
 **定理4.10.** 循环群的子群也都是循环群。
 **推论4.11.** $\mathbb{Z}$的所有子群就是$n\mathbb{Z}, n = 0,1,2,...$
+
 **命题4.12.** $G$为一个$n$阶循环群，$a$是$G$的一个生成元。则$a^{k} = e \Leftrightarrow n | k$（$k$是$n$的倍数）。
+
 **定理4.13.** $G$为一个$n$阶循环群，$a$是$G$的一个生成元。$b = a^{k} \Rightarrow b$的序数为$n / d, d = gcd(k,n)$。
+
 **推论4.14.** $\mathbb{Z}_{n}$的所有生成元$r$满足$1 \leq r < n \wedge gcd(n,r) = 1$。
 
 ## 复数乘法群  Multiplicative Group of Complex Numbers
