@@ -32,4 +32,4 @@ tags: mathmatical-modeling
 # 总之
 差得很远继续努力，技能树需要点亮很多很多，python和机器学习必须赶紧熟练掌握
 然后在国赛的时候多学一些建模的知识，争取在下次比赛能够形成较为系统的意识
-![conclusion](2021-mathmatical-modeling/mm.JPG "conclusion")
+![conclusion](mm.JPG "conclusion")
