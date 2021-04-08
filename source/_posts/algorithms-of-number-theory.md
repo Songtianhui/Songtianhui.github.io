@@ -17,3 +17,22 @@ tags:
 **推论 31.4** 对所有整数 $a,b$ 及任意非负整数 $n$，有 $$gcd(an,bn) = n~gcd(a,b)$$。
 
 **推论 31.5.** 对所有正整数 $a,b,n$，$n | ab \wedge gcd(a, n) = 1 \Rightarrow n | b$。
+
+**定理 31.6.** 对所有正整数 $a,b,p$，$gcd(a, p ) = 1 \wedge gcd(b, p) = 1 \Rightarrow gcd(ab, p) = 1$。
+
+**定理 31.7.** 对所有的素数 $p$ 和所有整数 $a,b$， $p | ab \Rightarrow p |a \vee p | b$。
+
+**定理 31.8.**（唯一因子分解定理）合数 $a$ 的素因子分解是唯一的。
+
+
+
+**定理 31.9** $\forall a, b, gcd(a, b) = gcd(b, a ~mod ~b)$.
+
+欧几里得算法：
+
+![euclid](euclid.png euclid)
+
+
+
+
+
