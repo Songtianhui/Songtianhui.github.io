@@ -31,6 +31,8 @@ mathjax: true
 
 ![ECULID](euclid.png "eculid")
 
+（这个图片为什么这么大。。。就这样吧反正我也不会调）
+
 ### 欧几里得算法的运行时间
 
 **引理 31.10.** 如果 $a > b \geq 1$ 并且 ECULID$(a,b)$ 执行了 $k \geq 1$ 次递归调用，则 $a \geq F_{k+2}, b \geq F_{k+1}$。
@@ -62,3 +64,53 @@ mathjax: true
 **推论 31.18.** 序列 $a^{(1)}, a^{(2)}, ...$是周期序列，其周期为 $t = ord(a)$，即 $a^{(i)} = ^{(j)} \Leftrightarrow i \equiv j~ (\text{mod }t)$。
 
 **推论 31.19.** 如果 $(S, \oplus)$ 是具有单位元的有限群，则对所有 $a \in S$，$a^{(|S|)} = e$。
+
+
+
+## 求解模线性方程
+
+**定理 31.20.** 对任意正整数 $a$ 和 $n$，如果 $d = gcd(a,n)$，则在 $\mathbb{Z}_n$ 中，$\langle a \rangle = \langle d \rangle = \{ 0, d, 2d, \cdots , ((n/d) - 1)d \}$。因此，$|\langle a \rangle| = n /d$。
+
+**推论 31.21.** $d | b \Leftrightarrow \text{方程} ax \equiv b (\text{mod } n)$ 对 $x$ 有解，$d  =gcd(a,n)$。 
+
+**推论 31.22** 方程 $ax \equiv b (\text{mod } n)$ 要么模 $n$ 下有 $d$ 个不同的解，要么无解。
+
+**定理 31.23.** 假设对某些整数 $x', y'$ 有 $d = ax' + ny'$。如果 $d | b$，则方程 $ax \equiv b(\text{mod } n)$ 有一个解的值为 $x_0$，$$x_0 = x'(b / d) \mod n$$
+
+**定理 31.24.** 假设方程 $ax \equiv b(\text{mod } n)$ 有解，且 $x_0$ 是该方程的任意一个解。则该方程对模 $n$ 恰有 $d = gcd(a,n)$ 个解为 $x_i = x_0 + i(n /d), i =0, 1, \cdots, d- 1$。
+
+
+
+## 中国剩余定理
+
+**定理 31.27.**（中国剩余定理） 令 $n = n_1 n_2\cdots n_k$，其中因子 $n_i$ 两两互质。考虑以下对应关系：
+
+$$a \leftrightarrow (a_1, a_2, \cdots, a_k)$$
+
+这里 $a \in \mathbb{Z}_n, a_i \in \mathbb{Z}_{n_i}$，且对 $i = 1, 2, \cdots, k$，
+
+$$a_i =  a \mod n_i$$。
+
+则通过在合适的系统中对每个坐标位置独立地执行操作，对 $\mathbb{Z}_n$ 中元素所执行地运算可以等价地作用于对应的 $k$ 元组。
+
+**推论 31.28.** 如果 $n_1, n_2, \cdots, n_k$ 两两互质，则关于未知量 $x$ 地联立方程组 $$x \equiv a_i (\text{mod } n_i), i = 1, 2, \cdots,k$$ 对模 $n$ 有唯一解。
+
+**推论 31.29.** 如果 $n_1, n_2, \cdots, n_k$ 两两互质，则对所有整数 $x$ 和 $a$，$x \equiv a(\text{mod } n_i), i = 1, 2, \cdots, k \Leftrightarrow x \equiv a (\text{mod } n)$。
+
+
+
+## 元素的幂
+
+**定理 31.32.** 对所有地素数 $p > 2$ 和所有的正整数 $e$，使得 $\mathbb{Z}_n^*$ 是循环群的 $n > 1$ 的值为 $2, 4, p^e, p^{2e}$。
+
+如果 $g$ 是 $\mathbb{Z}_b^*$ 的一个原根且 $a$ 是 $\mathbb{Z}_b^*$ 中的任意元素，则存在一个 $z$，使得 $g^z \equiv a(\text{mod } n)$。这个 $z$ 称为对模 $n$ 到基 $g$ 上的一个**离散对数**。
+
+**定理 31.33.**（离散对数定理）如果 $g$ 是 $\mathbb{Z}_b^*$ 的一个原根，$x \equiv y(\text{mod } \phi(n)) \Leftrightarrow g^x \equiv g^y (\text{mod } \phi(n))$。
+
+
+
+**定理 31.34.** $p$ 是一个奇素数且 $e > 1 \Rightarrow x^2 \equiv 1(\text{mod } p^e)$ 仅有两个解 $x =1, x= -1$。
+
+## 反复平方法
+
+快速幂
