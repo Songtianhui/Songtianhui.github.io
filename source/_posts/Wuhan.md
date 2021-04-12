@@ -2,6 +2,7 @@
 title: 和芝麻的旅行日记——武汉篇
 date: 2021-04-11 11:08:32
 categories: travelling
+layout: false
 tags:
 ---
 
