@@ -1,6 +1,6 @@
 ---
 title: 问题求解笔记-代数编码
-tags:problem-solving
+categories: problem-solving
 ---
 
 # 检错和纠错码
@@ -36,6 +36,10 @@ tags:problem-solving
 
 
 
+---
+
+
+
 # 线性码（Linear Codes）
 
 **群码**（group code）：$\mathbb{Z}_2^n$ 的子群的编码。
@@ -60,6 +64,12 @@ $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的**空域**（null space我自�
 
 **线性码**：通过某个 $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 生成的编码。
 
+
+
+---
+
+
+
 # 奇偶校验和生成矩阵（Parity-Check and Generator Matrices）
 
 **规范奇偶校验矩阵**（canonical parity-check matrix）：$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 且 $n > m$，且最后 $m$ 列形成的 $m \times m$ 子矩阵是单位阵 $I_m$，即 $H = \left( A | I_m \right)$。
@@ -82,7 +92,11 @@ $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的**空域**（null space我自�
 
 **定理 8.31.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。
 
-**定理 8.34.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。
+**定理 8.34.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。
+
+
+
+---
 
 
 
