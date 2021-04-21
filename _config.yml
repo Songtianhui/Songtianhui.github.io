@@ -119,3 +119,12 @@ math:
         js: custom_js_source # not used
         config: 
             #KateX config
+
+# Emoji support
+emoji:
+  enable: true
+  className: github-emoji
+  styles:
+  customEmojis:
+
+
