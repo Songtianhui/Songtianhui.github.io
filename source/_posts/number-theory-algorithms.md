@@ -89,7 +89,7 @@ $$a \leftrightarrow (a_1, a_2, \cdots, a_k)$$
 
 这里 $a \in \mathbb{Z}_n, a_i \in \mathbb{Z}_{n_i}$，且对 $i = 1, 2, \cdots, k$，
 
-$$a_i =  a \mod n_i$$。
+$$a_i =  a \mod n_i$$
 
 则通过在合适的系统中对每个坐标位置独立地执行操作，对 $\mathbb{Z}_n$ 中元素所执行地运算可以等价地作用于对应的 $k$ 元组。
 
@@ -103,7 +103,7 @@ $$a_i =  a \mod n_i$$。
 
 **定理 31.32.** 对所有地素数 $p > 2$ 和所有的正整数 $e$，使得 $\mathbb{Z}_n^*$ 是循环群的 $n > 1$ 的值为 $2, 4, p^e, p^{2e}$。
 
-如果 $g$ 是 $\mathbb{Z}_b^*$ 的一个原根且 $a$ 是 $\mathbb{Z}_b^*$ 中的任意元素，则存在一个 $z$，使得 $g^z \equiv a(\text{mod } n)$。这个 $z$ 称为对模 $n$ 到基 $g$ 上的一个**离散对数**。
+如果 $g$ 是 $\mathbb{Z}_{b}^{\star}$ 的一个原根且 $a$ 是 $\mathbb{Z}_{b}^{\star}$ 中的任意元素，则存在一个 $z$，使得 $g^{z} \equiv a(\text{mod } n)$ 。这个 $z$ 称为对模 $n$ 到基 $g$ 上的一个**离散对数**。
 
 **定理 31.33.**（离散对数定理）如果 $g$ 是 $\mathbb{Z}_b^*$ 的一个原根，$x \equiv y(\text{mod } \phi(n)) \Leftrightarrow g^x \equiv g^y (\text{mod } \phi(n))$。
 
