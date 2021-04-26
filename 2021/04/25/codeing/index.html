@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"songtianhui.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="数学归纳法 Mathematical Induction没啥好讲的。第一第二数学归纳法良序公理">
+  <meta name="description" content="检错和纠错码最大似然编码（maximum-likelihood decoding​）所有的纠错建立在这个基础上，按最大概率出错位纠错。 二进制对称信道（binary symmetric channel）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="问题求解笔记-数论基础">
-<meta property="og:url" content="https://songtianhui.github.io/2021/03/20/number-theory/index.html">
+<meta property="og:title" content="问题求解笔记-代数编码">
+<meta property="og:url" content="https://songtianhui.github.io/2021/04/25/codeing/index.html">
 <meta property="og:site_name" content="Songtianhui&#39;s Blog">
-<meta property="og:description" content="数学归纳法 Mathematical Induction没啥好讲的。第一第二数学归纳法良序公理">
+<meta property="og:description" content="检错和纠错码最大似然编码（maximum-likelihood decoding​）所有的纠错建立在这个基础上，按最大概率出错位纠错。 二进制对称信道（binary symmetric channel）">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-20T17:39:27.000Z">
-<meta property="article:modified_time" content="2021-03-20T18:22:19.779Z">
+<meta property="article:published_time" content="2021-04-26T03:10:21.000Z">
+<meta property="article:modified_time" content="2021-04-26T03:12:53.396Z">
 <meta property="article:author" content="Hui hui">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://songtianhui.github.io/2021/03/20/number-theory/">
+<link rel="canonical" href="https://songtianhui.github.io/2021/04/25/codeing/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>问题求解笔记-数论基础 | Songtianhui's Blog</title>
+  <title>问题求解笔记-代数编码 | Songtianhui's Blog</title>
   
 
 
@@ -157,7 +157,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/03/20/number-theory/">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/04/25/codeing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +170,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          问题求解笔记-数论基础
+          问题求解笔记-代数编码
         </h1>
 
         <div class="post-meta">
@@ -181,7 +181,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-20 13:39:27 / Modified: 14:22:19" itemprop="dateCreated datePublished" datetime="2021-03-20T13:39:27-04:00">2021-03-20</time>
+              <time title="Created: 2021-04-25 23:10:21 / Modified: 23:12:53" itemprop="dateCreated datePublished" datetime="2021-04-25T23:10:21-04:00">2021-04-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -204,32 +204,61 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="数学归纳法-Mathematical-Induction"><a href="#数学归纳法-Mathematical-Induction" class="headerlink" title="数学归纳法 Mathematical Induction"></a>数学归纳法 Mathematical Induction</h1><p>没啥好讲的。<br><strong>第一第二数学归纳法</strong><br><strong>良序公理</strong><br><a id="more"></a></p>
-<h1 id="辗转相除法-Division-Algorithm"><a href="#辗转相除法-Division-Algorithm" class="headerlink" title="辗转相除法 Division Algorithm"></a>辗转相除法 Division Algorithm</h1><p><strong>定理 2.9.</strong> $a$ 和 $b$ 为整数，$b &gt; 0$，则存在<strong>唯一整数</strong> $q$ 和 $r$，使得</p>
-<script type="math/tex; mode=display">a = bq + r</script><p>其中 $0 \leq r &lt; b$。</p>
-<p>$a$ 整除 $b$ 记作 $a | b$。<br>最大公约数、互质等概念略。</p>
-<p><strong>定理 2.10.</strong> $a$ 和 $b$ 为非零整数，则存在整数 $r，s$，使得</p>
-<script type="math/tex; mode=display">gcd(a,b) = ar + bs</script><p>进一步，$a,b$的最大公约数是唯一的。</p>
-<p><strong>推论 2.11.</strong> $a,b$ 互质，则存在整数 $r,s$，使得 $ar + bs = 1$。（可证反之也成立）</p>
-<h2 id="欧几里得算法-Euclidean-Algorithm"><a href="#欧几里得算法-Euclidean-Algorithm" class="headerlink" title="欧几里得算法 Euclidean Algorithm"></a>欧几里得算法 Euclidean Algorithm</h2><h2 id="质数-Prime-Number"><a href="#质数-Prime-Number" class="headerlink" title="质数 Prime Number"></a>质数 Prime Number</h2><p><strong>定理 2.14.</strong> 存在无穷多质数。（证明挺重要的）</p>
-<p><strong>定理 2.15. 算数基本定理</strong> $n$ 为整数，则 $n$ 可以唯一表示为多个素数的乘积。</p>
-<script type="math/tex; mode=display">n = p_1 p_2 ... p_k</script><hr>
-<h1 id="乘法逆元和最大公约数"><a href="#乘法逆元和最大公约数" class="headerlink" title="乘法逆元和最大公约数"></a>乘法逆元和最大公约数</h1><p><strong>乘法逆元 Multipllication Inverse</strong>: $a’ \in \mathbb{Z}_n, a \in \mathbb{Z}_n, a \cdot_n a’ = a$，则称 $a’$ 是 $a$ 在 $\mathbb{Z}_n$ 中的乘法逆元。</p>
-<p><strong>引理 2.5.</strong> 解模方程： 如果 $a$ 在 $\mathbb{Z}_n$ 中有逆元 $a’$，则对任意 $b \in \mathbb{Z}_n$，方程</p>
-<script type="math/tex; mode=display">a \cdot_n x = b</script><p>有唯一解 $x = a’ \cdot_n b$。</p>
-<p><strong>推论 2.6.</strong> 如果存在 $b \in \mathbb{Z}_n$，方程</p>
-<script type="math/tex; mode=display">a \cdot_n x = b</script><p>无解，则 $a$ 没有逆元。</p>
-<p><strong>定理 2.7.</strong> 若有逆元则唯一。</p>
-<p><strong>引理 2.8.</strong> 方程</p>
-<script type="math/tex; mode=display">a \cdot_n x = 1</script><p>有解当且仅当存在整数 $x,y$，使得</p>
-<script type="math/tex; mode=display">ax + ny = 1</script><p><strong>定理 2.9.</strong> $a \in \mathbb{Z}_n$ 有逆元 $\Leftrightarrow$ 存在整数 $x，y$，使得 $ax + ny = 1$。</p>
-<p><strong>推论 2.10.</strong> $a \in \mathbb{Z}_n$ 且存在整数 $x，y$，使得 $ax + ny = 1$，则 $a$ 的逆元为 $x$ (mod $n$)。</p>
-<p><strong>引理 2.11.</strong> 给定 $a,n$，如果存在整数 $x，y$，使得 $ax + ny = 1$，则 $a,n$ 互质，即 $gcd(a,n) = 1$。</p>
-<p><strong>定理 2.12.</strong> 同最上面一条。</p>
-<p><strong>引理 2.13.</strong> $j,k,q,r$ 是正整数，满足 $k = j q + r$，则</p>
-<script type="math/tex; mode=display">gcd(j,k) = gcd(r, j)</script><p><strong>定理 2.15.</strong> $gcd(j,k)  = 1 \Leftrightarrow \exists x,y, jx + ky = 1$.</p>
-<p><strong>推论 2.16.</strong> $a\in \mathbb{Z}_n$ 在 $\mathbb{Z}_n$ 中有逆元 $\Leftarrow gcd(a,n) = 1$。</p>
-<p><strong>推论 2.17.</strong> 对任意质数 $p$，每个非零整数 $a \in \mathbb{Z}_p$ 都有逆元。</p>
+        <h1 id="检错和纠错码"><a href="#检错和纠错码" class="headerlink" title="检错和纠错码"></a>检错和纠错码</h1><h2 id="最大似然编码（maximum-likelihood-decoding​）"><a href="#最大似然编码（maximum-likelihood-decoding​）" class="headerlink" title="最大似然编码（maximum-likelihood decoding​）"></a>最大似然编码（maximum-likelihood decoding​）</h2><p>所有的纠错建立在这个基础上，按最大概率出错位纠错。</p>
+<p><strong>二进制对称信道</strong>（binary symmetric channel）</p>
+<a id="more"></a>
+<h2 id="分块码-（Block-Codes​）"><a href="#分块码-（Block-Codes​）" class="headerlink" title="分块码 （Block Codes​）"></a>分块码 （Block Codes​）</h2><p>($n,m$)-<strong>分块码</strong>：被编码的信息可以被分成多块 $m$ 位二进制数，每块会被编码成 $n$ 位二进制数。</p>
+<ul>
+<li>编码函数$E:\mathbb{Z}_2^m \rightarrow \mathbb{Z}_2^n$</li>
+<li><p>解码函数 $D: \mathbb{Z}_2^n \rightarrow \mathbb{Z}_2^m$</p>
+</li>
+<li><p>编码字(codeword)：$E$ 的像中的一个元素</p>
+</li>
+</ul>
+<p><strong>汉明距离</strong>（Hamming distance）：$d(x,y)$，$x$ 和 $y$ 不相同的位数。</p>
+<p><strong>最小距离</strong>：$d_{min}$，所有不同有效编码字 $x,y$ 的距离最小的。</p>
+<p><strong>权重</strong>：$w(x)$，$x$ 中 $1$ 的位数。</p>
+<p>一些性质：</p>
+<ul>
+<li>$w(x) = d(x, 0)$</li>
+<li>$d(x,y) \geq 0$</li>
+<li>$d(x, y ) = 0 \Leftrightarrow x = y$</li>
+<li>$d(x, y) = d(y,x)$</li>
+<li>$d(x,y) \leq d(x,z) + d(z,y)$</li>
+</ul>
+<p><strong>定理 8.13.</strong> $C$ 是 $d_{min} = 2n+1$ 的编码，则 $C$ 可以纠 $n$ 位错，可以检测 $2n$ 位错。</p>
+<hr>
+<h1 id="线性码（Linear-Codes）"><a href="#线性码（Linear-Codes）" class="headerlink" title="线性码（Linear Codes）"></a>线性码（Linear Codes）</h1><p><strong>群码</strong>（group code）：$\mathbb{Z}_2^n$ 的子群的编码。</p>
+<p><strong>引理 8.17.</strong> $x,y$ 为 $n$ 位码字，则 $w(x  +y) = d(x,y)$。</p>
+<p><strong>定理 8.18.</strong> 群码 $C$ 的 $d_{min}$ 是所有非零码字的最小的权重。</p>
+<h2 id="线性码"><a href="#线性码" class="headerlink" title="线性码"></a>线性码</h2><p><strong>内积</strong>：</p>
+<p> $\begin{aligned} \textbf{x}\cdot \textbf{y}  &amp;= \textbf{x}^t \textbf{y} \\ &amp;= \begin{pmatrix} x_1 &amp; x_2 &amp;\cdots &amp;x_n \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n  \end{pmatrix} \\ &amp;= x_1y_1 + x_2y_2 + \cdots + x_ny_n \end{aligned}$</p>
+<p>记 $\mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 为所有 $m$ 行 $n$ 列且元素属于 $\mathbb{Z}_2$ 的矩阵的集合。</p>
+<p>$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的<strong>空域</strong>（null space我自己瞎起的名字）：$\{\textbf{x} \in \mathbb{Z}_2^n : H \textbf{x} = 0 \}$；记为 Null$(H)$。</p>
+<p><strong>定理 8.21.</strong> $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 一定是群码。</p>
+<p><strong>线性码</strong>：通过某个 $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 生成的编码。</p>
+<hr>
+<h1 id="奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）"><a href="#奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）" class="headerlink" title="奇偶校验和生成矩阵（Parity-Check and Generator Matrices）"></a>奇偶校验和生成矩阵（Parity-Check and Generator Matrices）</h1><p><strong>规范奇偶校验矩阵</strong>（canonical parity-check matrix）：$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 且 $n &gt; m$，且最后 $m$ 列形成的 $m \times m$ 子矩阵是单位阵 $I_m$，即 $H = \left( A | I_m \right)$。</p>
+<p>每个规范奇偶校验阵 $H$ 都有一个 $n \times (n - m)$ 阶标准<strong>生成阵</strong>（standard generator matrix）: $G = \left( \dfrac{I_{n-m}}{A} \right)$。</p>
+<p><strong>定理 8.25.</strong> $H$ 是一个规范奇偶校验阵，则 Null$(H)$ 包含了满足 前 $n-m$ 位随便取，但后 $m$ 位由 $H\textbf{x} = \textbf{0}$ 决定的 所有向量 $\textbf{x} \in \mathbb{Z}_2^n$。后 $m$ 位每个作为某个前 $n-m$ 位的偶校验位。所以，$H$ 可以给出一个 $(n, n-m)$ -分块码。</p>
+<ul>
+<li>前 $n-m$ 位叫<strong>信息位</strong>（information bit），后 $m$ 位叫校验位</li>
+</ul>
+<p><strong>定理 8.26.</strong>  $G$ 是一个 $n \times k$ 阶标准生成阵，则 $C = \{ \textbf{y} : G\textbf{x} = \textbf{y}, x \in \mathbb{Z}_2^n \}$ 是一个 $(n,k)$-分块码。</p>
+<p><strong>引理 8.27.</strong> $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，则 $HG = 0$。</p>
+<p><strong>定理8.28.</strong>  $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，$C$ 是由 $G$ 生成的编码。则 $\textbf{y} \in C \Leftrightarrow H\textbf{y} = 0$，也就是说，$C$ 是有规范奇偶校验矩阵的线性码。</p>
+<p><strong>定理 8.31.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。（$e_i$ 不在空域中，$d_{min} &gt; 1$）</p>
+<p><strong>定理 8.34.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。（$e_i + e_j$ 不在空域中，$d_{min} \geq 3$）</p>
+<p>所以一个 $m \times n$ 的规范奇偶校验阵，要检一位错、纠一位错，除了 $\textbf{0}, \textbf{e_i}$，剩余 $2^m - (1 + m)$ 位为信息位。</p>
+<hr>
+<h1 id="高效解码"><a href="#高效解码" class="headerlink" title="高效解码"></a>高效解码</h1><p><strong>x</strong>的<strong>像</strong>（syndrome）：$H\textbf{x}$</p>
+<p><strong>命题 8.36.</strong> 矩阵 $H$ 决定了一套线性码，$\textbf{x} = \textbf{c} + \textbf{e} $ 为接收到的$n$-位串，$\textbf{c}$ 为正确码字，$\textbf{e}$ 为错误，则 $H\textbf{x} = H\textbf{e}$。</p>
+<ul>
+<li>这个命题说明接受到的信息由错误决定而不是由正确码字决定。</li>
+</ul>
+<p><strong>定理 8.37.</strong> $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 并且假设 $H$ 的编码是一个单检错码，$\textbf{r}$ 是接收到的 $n$-位码，如果 $H\textbf{r} = \textbf{0}$，则没有错；否则，如果 $H\textbf{r} $ 等于 $H$ 的第 $i$ 列，则第 $i$ 位出错。</p>
+<h2 id="陪集解码（Coset-Decoding）"><a href="#陪集解码（Coset-Decoding）" class="headerlink" title="陪集解码（Coset Decoding）"></a>陪集解码（Coset Decoding）</h2><p>把所有陪集表示（$\textbf{e} +     C$）列表列出来，查表解码纠错。</p>
+<p>按最大似然，总是取权最小的出错 $\textbf{e}$ ，叫做 <strong>coset leader</strong>。</p>
 
     </div>
 
@@ -245,13 +274,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/11/group-isomorphism-and-normal-subgroups/" rel="prev" title="问题求解笔记-群同态基本定理与正规子群">
-      <i class="fa fa-chevron-left"></i> 问题求解笔记-群同态基本定理与正规子群
+    <a href="/2021/04/11/Wuhan/" rel="prev" title="和芝麻的旅行日记——武汉篇">
+      <i class="fa fa-chevron-left"></i> 和芝麻的旅行日记——武汉篇
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/08/number-theory-algorithms/" rel="next" title="问题求解笔记-数论算法">
-      问题求解笔记-数论算法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -310,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95-Mathematical-Induction"><span class="nav-number">1.</span> <span class="nav-text">数学归纳法 Mathematical Induction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95-Division-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">辗转相除法 Division Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95-Euclidean-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">欧几里得算法 Euclidean Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0-Prime-Number"><span class="nav-number">2.2.</span> <span class="nav-text">质数 Prime Number</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">乘法逆元和最大公约数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A3%80%E9%94%99%E5%92%8C%E7%BA%A0%E9%94%99%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">检错和纠错码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E7%BC%96%E7%A0%81%EF%BC%88maximum-likelihood-decoding%E2%80%8B%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">最大似然编码（maximum-likelihood decoding​）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%9D%97%E7%A0%81-%EF%BC%88Block-Codes%E2%80%8B%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">分块码 （Block Codes​）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A0%81%EF%BC%88Linear-Codes%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">线性码（Linear Codes）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">线性码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E5%92%8C%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5%EF%BC%88Parity-Check-and-Generator-Matrices%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">奇偶校验和生成矩阵（Parity-Check and Generator Matrices）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E8%A7%A3%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">高效解码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%AA%E9%9B%86%E8%A7%A3%E7%A0%81%EF%BC%88Coset-Decoding%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">陪集解码（Coset Decoding）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
