@@ -1,13 +1,21 @@
 ---
 title: 问题求解笔记-代数编码
 categories: problem-solving
+date: 2021-04-25 23:10:21
+mathjax: true
+tags:
 ---
+
 
 # 检错和纠错码
 
 ## 最大似然编码（maximum-likelihood decoding​）
 
+所有的纠错建立在这个基础上，按最大概率出错位纠错。
+
 **二进制对称信道**（binary symmetric channel）
+
+<!--more -->
 
 ## 分块码 （Block Codes​）
 
@@ -90,15 +98,13 @@ $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的**空域**（null space我自�
 
 
 
-**定理 8.31.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。
+**定理 8.31.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。（$e_i$ 不在空域中，$d_{min} > 1$）
 
-**定理 8.34.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。
+**定理 8.34.** $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。（$e_i + e_j$ 不在空域中，$d_{min} \geq 3$）
 
-
+所以一个 $m \times n$ 的规范奇偶校验阵，要检一位错、纠一位错，除了 $\textbf{0}, \textbf{e_i}$，剩余 $2^m - (1 + m)$ 位为信息位。
 
 ---
-
-
 
 # 高效解码
 
@@ -109,3 +115,11 @@ $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的**空域**（null space我自�
 - 这个命题说明接受到的信息由错误决定而不是由正确码字决定。
 
 **定理 8.37.** $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 并且假设 $H$ 的编码是一个单检错码，$\textbf{r}$ 是接收到的 $n$-位码，如果 $H\textbf{r} = \textbf{0}$，则没有错；否则，如果 $H\textbf{r} $ 等于 $H$ 的第 $i$ 列，则第 $i$ 位出错。
+
+
+
+## 陪集解码（Coset Decoding）
+
+把所有陪集表示（$\textbf{e} + 	C$）列表列出来，查表解码纠错。
+
+按最大似然，总是取权最小的出错 $\textbf{e}$ ，叫做 **coset leader**。
