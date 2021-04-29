@@ -98,9 +98,9 @@ creative_commons:
 
 # Schemes
 scheme: Muse
-#scheme: Mist
-#scheme: Pisces
-#scheme: Gemini
+# scheme: Mist
+# scheme: Pisces
+# scheme: Gemini
 
 # Dark Mode
 darkmode: false
@@ -529,7 +529,7 @@ lazyload: true
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
-pangu: false
+pangu: true
 
 # Quicklink Support
 # Do not enable both `pjax` and `quicklink`.
@@ -853,10 +853,10 @@ pace:
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
 three:
-  enable: false
+  enable: true
   three_waves: false
   canvas_lines: false
-  canvas_sphere: false
+  canvas_sphere: true
 
 # Canvas-ribbon
 # Dependencies: https://github.com/theme-next/theme-next-canvas-ribbon
@@ -869,6 +869,12 @@ canvas_ribbon:
 
 # mouse click effect: fireworks | explosion | love | text
 cursor_effect: fireworks
+
+# a trick on website title
+title_trick:
+  enable: true
+  leave: "(つェ⊂)我藏好了哦~"
+  enter: "(*´∇｀*) 被你发现啦~"
 
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
