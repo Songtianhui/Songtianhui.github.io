@@ -1,0 +1,46 @@
+---
+title: 问求学习笔记-近似算法
+tags: problem-solving
+---
+
+# 基本概念
+
+- $U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，$A$ 是相应的一个算法。对于任意的 $x \in L_1$，定义**$A$对$x$的相对误差$\varepsilon_{\boldsymbol{A}}(\boldsymbol{x})$** 如下：
+
+$$
+\varepsilon_{\boldsymbol{A}}(\boldsymbol{x})=\frac{\left|cost(A(x))-Opt_{U}(x)\right|}{Op t_{U}(x)}
+$$
+
+- 定义算法**$A$对相对误差（relative error）$\varepsilon_{\boldsymbol{A}}(\boldsymbol{n})$** 如下：
+  $$
+  \varepsilon_{A}(n)=\max \left\{\varepsilon_{A}(x) \mid x \in L_{I} \cap\left(\Sigma_{I}\right)^{n}\right\}
+  $$
+
+- 定义$A$对$x$的**近似比率（approximation ratio）$\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{x})$** 如下：
+  $$
+  \boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{x})=\max \left\{\frac{cost(A(x))}{Opt_{U}(x)}, \frac{Opt_{U}(x)}{cost(A(x))}\right\}
+  $$
+
+- 定义算法**$A$的近似比率$\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{n})$** 如下：
+  $$
+  \boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{n})=\max \left\{R_{A}(x) \mid x \in L_{I} \cap\left(\Sigma_{I}\right)^{n}\right\}
+  $$
+
+- 对任意的实数 $\delta > 1$，如果 $\forall x \in L_1,R_A(x) \leq \delta$，则称 $A $ 为 **$\delta$-近似算法（approximation algorithm）**。
+- 对任意的实数 $\delta > 1$，如果 $\forall n \in \mathbb{N},R_A(n) \leq f(n)$，则称 $A$ 为 **$f(n)$-近似算法**。
+
+- 一个例子——生产调度问题
+
+  - GMS
+
+- $U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，$A$ 是相应的一个算法。如果对任意的输入对 $(x, \varepsilon) \in L_1 \times \mathbb{R}^+$，$A$ 能够在至多 $\varepsilon$ 的相对误差内计算出一个可行解 $A(x)$，并且 $Time_A(x, \varepsilon^{-1})$ 可以被 $|x|$ 的多项式函数约束，则 $A$ 称为 $U$ 的**多项式时间近似近似方案（PTAS）**。
+
+  - 如果 $Time_A(x, \varepsilon^{-1})$ 可以同时被 $|x|$ 和 $\varepsilon^{-1}$ 的多项式函数约束，则称为**完全多项式时间近似方案（FPTAS）**
+  - *所以 FPTAS 应该是对 NP-hard 问题最优解了。*
+
+  
+
+---
+
+# 优化问题的分类
+
