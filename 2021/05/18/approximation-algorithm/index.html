@@ -22,19 +22,20 @@
     var CONFIG = {"hostname":"songtianhui.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="置换群 Permutation Groups定义和记号 集合$S$上的一个置换（permutation）：one-to-one and onto map: $\pi: S \rightarrow S$">
+  <meta name="description" content="基本概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="问题求解笔记-置换群和拉格朗日定理">
-<meta property="og:url" content="https://songtianhui.github.io/2021/03/07/permutation-group-and-lagrange-theorem/index.html">
+<meta property="og:title" content="问求学习笔记-近似算法">
+<meta property="og:url" content="https://songtianhui.github.io/2021/05/18/approximation-algorithm/index.html">
 <meta property="og:site_name" content="Songtianhui&#39;s Blog">
-<meta property="og:description" content="置换群 Permutation Groups定义和记号 集合$S$上的一个置换（permutation）：one-to-one and onto map: $\pi: S \rightarrow S$">
+<meta property="og:description" content="基本概念">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-07T18:05:13.000Z">
-<meta property="article:modified_time" content="2021-03-19T08:57:47.738Z">
+<meta property="article:published_time" content="2021-05-18T16:38:59.000Z">
+<meta property="article:modified_time" content="2021-05-18T16:41:54.669Z">
 <meta property="article:author" content="Hui hui">
+<meta property="article:tag" content="problem-solving">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://songtianhui.github.io/2021/03/07/permutation-group-and-lagrange-theorem/">
+<link rel="canonical" href="https://songtianhui.github.io/2021/05/18/approximation-algorithm/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>问题求解笔记-置换群和拉格朗日定理 | Songtianhui's Blog</title>
+  <title>问求学习笔记-近似算法 | Songtianhui's Blog</title>
   
 
 
@@ -159,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/03/07/permutation-group-and-lagrange-theorem/">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/05/18/approximation-algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -172,7 +173,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          问题求解笔记-置换群和拉格朗日定理
+          问求学习笔记-近似算法
         </h1>
 
         <div class="post-meta">
@@ -181,24 +182,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-07 13:05:13" itemprop="dateCreated datePublished" datetime="2021-03-07T13:05:13-05:00">2021-03-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-19 04:57:47" itemprop="dateModified" datetime="2021-03-19T04:57:47-04:00">2021-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/problem-solving/" itemprop="url" rel="index"><span itemprop="name">problem-solving</span></a>
-                </span>
+              <time title="Created: 2021-05-18 12:38:59 / Modified: 12:41:54" itemprop="dateCreated datePublished" datetime="2021-05-18T12:38:59-04:00">2021-05-18</time>
             </span>
 
           
@@ -212,59 +198,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="置换群-Permutation-Groups"><a href="#置换群-Permutation-Groups" class="headerlink" title="置换群 Permutation Groups"></a>置换群 Permutation Groups</h1><h2 id="定义和记号"><a href="#定义和记号" class="headerlink" title="定义和记号"></a>定义和记号</h2><ul>
-<li>集合$S$上的一个<strong>置换（permutation）</strong>：one-to-one and onto map: $\pi: S \rightarrow S$</li>
-</ul>
-<a id="more"></a>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><a id="more"></a>
 <ul>
-<li>集合$X$的所有置换构成一个群$S_{X}$，$X = \{ 1, 2, …, n\}$时记为$S_{n}$。该群叫<strong>对称群（Symmetric Group）</strong>。</li>
+<li>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，$A$ 是相应的一个算法。对于任意的 $x \in L_1$，定义<strong>$A$对$x$的相对误差$\varepsilon_{\boldsymbol{A}}(\boldsymbol{x})$</strong> 如下：</li>
 </ul>
-<p><strong>定理5.1.</strong> $n$个letter的对成群$S_{n}$是一个有$n!$个元素的群，其二元运算为复合（composition）。</p>
+<script type="math/tex; mode=display">
+\varepsilon_{\boldsymbol{A}}(\boldsymbol{x})=\frac{\left|cost(A(x))-Opt_{U}(x)\right|}{Op t_{U}(x)}</script><ul>
+<li><p>定义算法<strong>$A$对相对误差（relative error）$\varepsilon_{\boldsymbol{A}}(\boldsymbol{n})$</strong> 如下：</p>
+<script type="math/tex; mode=display">
+\varepsilon_{A}(n)=\max \left\{\varepsilon_{A}(x) \mid x \in L_{I} \cap\left(\Sigma_{I}\right)^{n}\right\}</script></li>
+<li><p>定义$A$对$x$的<strong>近似比率（approximation ratio）$\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{x})$</strong> 如下：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{x})=\max \left\{\frac{cost(A(x))}{Opt_{U}(x)}, \frac{Opt_{U}(x)}{cost(A(x))}\right\}</script></li>
+<li><p>定义算法<strong>$A$的近似比率$\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{n})$</strong> 如下：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}_{\boldsymbol{A}}(\boldsymbol{n})=\max \left\{R_{A}(x) \mid x \in L_{I} \cap\left(\Sigma_{I}\right)^{n}\right\}</script></li>
+<li><p>对任意的实数 $\delta &gt; 1$，如果 $\forall x \in L_1,R_A(x) \leq \delta$，则称 $A $ 为 <strong>$\delta$-近似算法（approximation algorithm）</strong>。</p>
+</li>
+<li><p>对任意的实数 $\delta &gt; 1$，如果 $\forall n \in \mathbb{N},R_A(n) \leq f(n)$，则称 $A$ 为 <strong>$f(n)$-近似算法</strong>。</p>
+</li>
+<li><p>一个例子——生产调度问题</p>
 <ul>
-<li>$S_{n}$的子群称为<strong>置换群（Permutation Group）</strong></li>
+<li>GMS</li>
 </ul>
-<h3 id="轮换（Cycle-Notation）"><a href="#轮换（Cycle-Notation）" class="headerlink" title="轮换（Cycle Notation）"></a>轮换（Cycle Notation）</h3><ul>
-<li>一个置换$\sigma \in S_{X}$是一个长度为$k$的<strong>轮换（cycle）</strong>，如果存在$a_{1}, a_{2}, …, a_{k}\in X$，使得<br>$\sigma(a_{1}) = a_{2}, \sigma(a_{2}) = a_{3}, … ,\sigma(a_{k}) = a_{1}$。</li>
+</li>
+<li><p>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，$A$ 是相应的一个算法。如果对任意的输入对 $(x, \varepsilon) \in L_1 \times \mathbb{R}^+$，$A$ 能够在至多 $\varepsilon$ 的相对误差内计算出一个可行解 $A(x)$，并且 $Time_A(x, \varepsilon^{-1})$ 可以被 $|x|$ 的多项式函数约束，则 $A$ 称为 $U$ 的<strong>多项式时间近似近似方案（PTAS）</strong>。</p>
+<ul>
+<li>如果 $Time_A(x, \varepsilon^{-1})$ 可以同时被 $|x|$ 和 $\varepsilon^{-1}$ 的多项式函数约束，则称为<strong>完全多项式时间近似方案（FPTAS）</strong></li>
+<li><em>所以 FPTAS 应该是对 NP-hard 问题最优解了。</em></li>
 </ul>
-<p><strong>命题5.8.</strong> $\sigma$ 和 $\tau$ 是$S_{X}$中两个不相交轮换 $\Rightarrow \sigma \tau = \tau \sigma$</p>
-<p><strong>定理5.9.</strong> $S_{n}$中的每个置换都可以写成不相交轮换的乘积。</p>
-<h3 id="对换（Transposition）"><a href="#对换（Transposition）" class="headerlink" title="对换（Transposition）"></a>对换（Transposition）</h3><p><strong>对换（Transposition）</strong>：长度为2的轮换。<br>$(a_{1}, a_{2}, …, a_{3}) = (a_{1}, a_{n})(a_{1}, a_{n-1})…(a_{1}a_{2})$</p>
-<p><strong>命题5.12.</strong> 每个元素个数大于2的有限集合的置换都可以写成对换的乘积。</p>
-<p><strong>引理5.14.</strong> 如果恒等变换被写成$id = \tau_{1} \tau_{2} … \tau_{r} \Rightarrow r$是偶数。</p>
-<p><strong>定理5.15.</strong>  如果一个排列能被写成偶数个置换乘积的形式，那么另一个与之等价的排列也一定拥有偶数项置换乘积。奇数同理。<br>据此定理可以将排列分为奇偶两类</p>
-<h3 id="交替群-Alternating-Groups"><a href="#交替群-Alternating-Groups" class="headerlink" title="交替群 Alternating Groups"></a>交替群 Alternating Groups</h3><p><strong>交替群</strong>：$S_{n}$的所有偶置换$A_{n}$。</p>
-<p><strong>定理5.16.</strong> $A_{n}$ 是 $S_{n}$ 的子群</p>
-<p><strong>命题5.17.</strong> 奇偶置换的个数相等，都是$n!/2$，即$A_{n}$的大小。</p>
-<h2 id="二面体群-Dihedral-Groups"><a href="#二面体群-Dihedral-Groups" class="headerlink" title="二面体群 Dihedral Groups"></a>二面体群 Dihedral Groups</h2><p><strong>n阶二面体群</strong>：正n边形的刚性运动，记为$D_{n}$</p>
-<p><strong>定理5.20.</strong> $D_{n}$ 是 $S_{n}$ 的大小为$2n$的子群。</p>
-<p><strong>定理5.23.</strong> 包含所有旋转$r$ 和对称 $s$ 的乘积的群 $D_{n}$，满足以下两个关系：</p>
-<script type="math/tex; mode=display">r^{n} = 1</script><script type="math/tex; mode=display">s^{2} = 1</script><script type="math/tex; mode=display">srs = r^{-1}</script><h2 id="立方体移动群-The-Motion-Group-of-a-Cube"><a href="#立方体移动群-The-Motion-Group-of-a-Cube" class="headerlink" title="立方体移动群 The Motion Group of a Cube"></a>立方体移动群 The Motion Group of a Cube</h2><p><strong>命题5.27.</strong> 立方体移动群有24个元素。<br><strong>定理5.28.</strong> 立方体移动群是$S_{4}$。</p>
+</li>
+</ul>
 <hr>
-<h1 id="陪集和拉格朗日定理"><a href="#陪集和拉格朗日定理" class="headerlink" title="陪集和拉格朗日定理"></a>陪集和拉格朗日定理</h1><h2 id="陪集-Cosets"><a href="#陪集-Cosets" class="headerlink" title="陪集 Cosets"></a>陪集 Cosets</h2><p>$G$ 是一个群，$H$ 是 $G$ 的子群。集合$H$的代表元为$g\in G$的<strong>左陪集（Left Coset）</strong>：$gH = \{ gh: h \in H \}$。右陪集类似。</p>
-<p><strong>引理6.3.</strong> $H$ 为群 $G$ 的子群，$g_{1}, g_{2} \in G$，则以下条件等价：</p>
-<ol>
-<li>$g_{1}H = g_{2} H$</li>
-<li>$Hg_{1}^{-1} = Hg_{2}^{-1}$</li>
-<li>$g_{1}H \subset g_{2}H$</li>
-<li>$g_{2} \in g_{1}H$</li>
-<li>$g_{1}^{-1}g_{2} \in H$</li>
-</ol>
-<p><strong>定理6.4.</strong> $H$ 为群 $G$ 的子群。$H$ 的所有左陪集分割(partition)了 $G$,即 $G$ 是 $H$ 的左陪集的disjoint union. (右陪集同理)</p>
-<p>$H$ 的<strong>index</strong>：$G$ 中 $H$ 的左陪集的个数，记为$[G:H]$。</p>
-<p><strong>定理6.8.</strong> $H$ 的左陪集和右陪集个数相等。</p>
-<h2 id="拉格朗日定理-Lagrange’s-Theorem"><a href="#拉格朗日定理-Lagrange’s-Theorem" class="headerlink" title="拉格朗日定理 Lagrange’s Theorem"></a>拉格朗日定理 Lagrange’s Theorem</h2><p><strong>命题6.9.</strong> map $\phi: H \rightarrow gH$是双射。所以 $H$ 和 $gH$ 的元素个数相同。</p>
-<p><strong>定理6.10. Lagrange</strong> $G$ 的元素个数是子群 $H$ 的元素个数的整数倍，为 $H$ 的所有左陪集的个数。即$|G| / |H| = [G:H]$。</p>
-<p><strong>推论6.11.</strong> $G$ 的所有元素$g$的order是$|G|$的约数。</p>
-<p><strong>推论6.12.</strong> $|G|= p$，$p$为质数，则 $G$ 是循环群且除了单位元$e$的元素都是生成元。</p>
-<p><strong>推论6.13.</strong> $K \subset H \subset G \Rightarrow [G:K] = [G:H][H:K]$.</p>
+<h1 id="优化问题的分类"><a href="#优化问题的分类" class="headerlink" title="优化问题的分类"></a>优化问题的分类</h1><p>（建立在 $P \neq NP$）我们将 NPO 问题分为五类：</p>
 <ul>
-<li>拉格朗日定理的逆命题不一定成立。</li>
+<li>NPO(I)：所有存在 FPTAS 的NPO优化问题。</li>
+<li><p>NPO(II)：所有存在 PTAS 的NPO优化问题。</p>
+</li>
+<li><p>NPO(III)：所有的优化问题 $U$ 满足</p>
+<ul>
+<li>存在 $\delta &gt; 1$ 的多项式时间 $\delta$-近似算法</li>
+<li>没有 $d &lt; \delta$ 的多项式时间 $d-$近似算法，即没有 PTAS</li>
 </ul>
-<p><strong>定理6.16.</strong> $S_{n}$ 中的两个轮换 $\tau$ 和 $\mu$ 有相同的长度 $\Leftrightarrow \exists \sigma \in S_{n}, \mu =\sigma \tau \sigma^{-1}$. （相似？）</p>
-<h2 id="费马与欧拉定理-Fermat’s-and-Euler’s-Theorem"><a href="#费马与欧拉定理-Fermat’s-and-Euler’s-Theorem" class="headerlink" title="费马与欧拉定理 Fermat’s and Euler’s Theorem"></a>费马与欧拉定理 Fermat’s and Euler’s Theorem</h2><p><strong>欧拉函数</strong>$\phi$-<em>function</em>: map $\phi: \mathbb{N} \rightarrow \mathbb{N}$, 与$n$互质的整数$m(1\leq m &lt;n)$的个数，$\phi(1) = 1$。</p>
-<p><strong>定理6.17.</strong> $U(n)$ 为 $\mathbb{Z}_{n}$ 的units的群，则 $|U(n)| = \phi(n)$。</p>
-<p><strong>定理6.18. Euler’s Theorem</strong> 正整数$a, n$，$n &gt; 0 \wedge gcd(a,n) = 1 \Rightarrow a^{\phi(n)} \equiv 1$ (mod $n$)。</p>
-<p><strong>定理6.19. Fermat’s Little Theorem</strong> $p$为质数，$p \nmid a \Rightarrow a^{p-1} \equiv 1$ (mod $p$)。<br>$\forall b \in \mathbb{Z}, b^{p} \equiv b$ (mod $p$).</p>
+</li>
+<li>NPO(IV)：所有的优化问题 $U$ 满足<ul>
+<li>存在多项式界的函数 $f : \mathbb{N} \to \mathbb{R}^+$，对 $U$ 有多项式时间 $f(n)$-近似算法</li>
+<li>不存在 $\delta \in \mathbb{R}^+$ 的多项式时间 $\delta$-近似算法</li>
+</ul>
+</li>
+<li>NPO(V)：所有的优化问题满足，如果存在一个多项式时间 $f(n)$-近似算法，则 $f(n)$ 没有 polylogarithmic函数界。</li>
+</ul>
+<hr>
+<h1 id="近似的稳定性"><a href="#近似的稳定性" class="headerlink" title="近似的稳定性"></a>近似的稳定性</h1><ul>
+<li>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 和 $\overline{U} = (\Sigma_I, \Sigma_O, L, L,\mathcal{M}, cost, goal)$ 是两个优化问题，$L_1 \subset L$。$\overline{U}$ 关于 $L_1$ 的<strong>距离函数（distance function）</strong> 是任意一个函数 $h_L : L \to \mathbb{R}^{\geq 0}$ 满足<ul>
+<li>$\forall x \in L_I, h_L(x) = 0$</li>
+<li>$h$ 是多项式可计算的</li>
+</ul>
+</li>
+<li>$\textbf{Ball_{r, h} (L_I)} = \{ w \in L | h(w) \leq r\}$</li>
+<li>$A$ 是 $\overline{U}$ 的一个算法，且 $A$ 是 $U$ 的一个 $\varepsilon$-近似算法，对某个 $\varepsilon \in \mathbb{R}^{&gt;1}$。$p$ 是一个正实数，若对任意实数 $0 &lt; r \leq p$，存在 $\delta_{r, \varepsilon} \in \mathbb{R}^{&gt;1}$，使得 $A$ 是 $U_r = \{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I),\mathcal{M}, cost, goal\}$ 一个 $\delta_{r, \varepsilon}$-近似算法，则 $A$ 称为对于$h$ 是 <strong>$p$-稳定（$p$-stable）</strong>。</li>
+<li>$A$ 是<strong>稳定的（stable）</strong>，如果对任意 $p \in \mathbb{R}^+$，$A$ 是 $p$-稳定的。</li>
+</ul>
+<ul>
+<li><p>$A = \{ A_\varepsilon\}_{\varepsilon &gt; 0}$ 是 $U$ 的一个 PTAS，如果对任意的 $r &gt; 0$，任意 $\varepsilon &gt; 0$，$A_\varepsilon $ 是 $U_r$ 的一个 $\delta_{r, \varepsilon}$-近似算法，则称PTAS $A$ 关于 $h$ 是<strong>稳定的</strong>。</p>
+</li>
+<li><p>PTAS $A$ 是<strong>超稳定（superstable）</strong>的，如果 $\delta_{r, \varepsilon} \leq f(\varepsilon) \cdot g(r)$，其中</p>
+<ul>
+<li>$f,g$  的定义域分别是 $\mathbb{R^{\geq 0}}$ 和 $\mathbb{R}^{+}$，</li>
+<li>$\lim\limits_{\varepsilon \to 0}f(\varepsilon) = 0$。</li>
+</ul>
+</li>
+<li><em>观察到，若 $A$ 是优化问题 $U$ 的超稳定PTSA，则它也是任意 $U_r$ 的PTSA。</em></li>
+</ul>
+<hr>
+<h1 id="对偶近似算法（Dual-Approximation-Algorithm）"><a href="#对偶近似算法（Dual-Approximation-Algorithm）" class="headerlink" title="对偶近似算法（Dual Approximation Algorithm）"></a>对偶近似算法（Dual Approximation Algorithm）</h1><ul>
+<li><p>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题。$U$ 的一个<strong>限制距离函数（constraint distance function）</strong> 是一个函数 $h : L_I \times \Sigma_O^\star \to \mathbb{R}^{\geq 0}$ 满足</p>
+<ul>
+<li>$\forall S \in \mathcal{M}(x), h(x, S) = 0$，</li>
+<li>$\forall S \in \mathcal{M}(x), h(x, S) &gt; 0$，</li>
+<li>$h$ 是多项式时间可计算的。</li>
+</ul>
+</li>
+<li><p>对任意的 $\varepsilon \in \mathbb{R}^+$，任意 $x \in L_I$，$\mathcal{M}_{\varepsilon}^h(x) = \{S \in \Sigma_O^\star\ | h(x, S) \leq \varepsilon\}$ 是 $\mathcal{M(x)}$ 对 $h$ 的 $\varepsilon\textbf{-ball}$。</p>
+</li>
+<li><p>$U$ 的一个优化算法 $A$ 称为 <strong>$h$-dual</strong> $\varepsilon$-近似算法，如果对任意的 $x \in L_I$，</p>
+<ul>
+<li>$A(x) \in \mathcal{M}_\varepsilon^{h}(x)$，</li>
+<li>$cost(A(x)) \geq Opt_U(x)$ 当 $goal = maximum$，$cost(A(x)) \leq Opt_U(x) $ 当 $goal = minimum$。</li>
+</ul>
+</li>
+<li><p>一个算法 $A$ 称为 $U$ 的 <strong>$h$-dual 多项式时间近似方案（h-dual PTAS）</strong>，如果</p>
+<ul>
+<li>$\forall (x, \varepsilon) \in L_I \times \mathbb{R}^+, A(x, \varepsilon) \in \mathcal{M}_{\varepsilon}^h(x)$，</li>
+<li>$cost(A(x)) \geq Opt_U(x)$ 当 $goal = maximum$，$cost(A(x)) \leq Opt_U(x) $ 当 $goal = minimum$，</li>
+<li>$Time_A(x, \varepsilon^{-1})$ 被一个 $|x|$ 的多项式函数界定。</li>
+</ul>
+</li>
+<li>同上，同时被 $|x|,\varepsilon^{-1}$ 的多项式函数界定，叫 $h$-dual FPTAS。 </li>
+</ul>
 
     </div>
 
@@ -273,6 +304,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/problem-solving/" rel="tag"># problem-solving</a>
+          </div>
 
         
 
@@ -280,13 +314,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/06/pandas/" rel="prev" title="pandas">
-      <i class="fa fa-chevron-left"></i> pandas
+    <a href="/2021/04/28/formalization/" rel="prev" title="问题求解笔记-问题的形式化描述">
+      <i class="fa fa-chevron-left"></i> 问题求解笔记-问题的形式化描述
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/11/group-isomorphism-and-normal-subgroups/" rel="next" title="问题求解笔记-群同态基本定理与正规子群">
-      问题求解笔记-群同态基本定理与正规子群 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -345,7 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E7%BE%A4-Permutation-Groups"><span class="nav-number">1.</span> <span class="nav-text">置换群 Permutation Groups</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E8%AE%B0%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">定义和记号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E6%8D%A2%EF%BC%88Cycle-Notation%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">轮换（Cycle Notation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%8D%A2%EF%BC%88Transposition%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">对换（Transposition）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%9B%BF%E7%BE%A4-Alternating-Groups"><span class="nav-number">1.1.3.</span> <span class="nav-text">交替群 Alternating Groups</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%9D%A2%E4%BD%93%E7%BE%A4-Dihedral-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">二面体群 Dihedral Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%8B%E6%96%B9%E4%BD%93%E7%A7%BB%E5%8A%A8%E7%BE%A4-The-Motion-Group-of-a-Cube"><span class="nav-number">1.3.</span> <span class="nav-text">立方体移动群 The Motion Group of a Cube</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">陪集和拉格朗日定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%AA%E9%9B%86-Cosets"><span class="nav-number">2.1.</span> <span class="nav-text">陪集 Cosets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86-Lagrange%E2%80%99s-Theorem"><span class="nav-number">2.2.</span> <span class="nav-text">拉格朗日定理 Lagrange’s Theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%B9%E9%A9%AC%E4%B8%8E%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86-Fermat%E2%80%99s-and-Euler%E2%80%99s-Theorem"><span class="nav-number">2.3.</span> <span class="nav-text">费马与欧拉定理 Fermat’s and Euler’s Theorem</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">优化问题的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E4%BC%BC%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">近似的稳定性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E5%81%B6%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95%EF%BC%88Dual-Approximation-Algorithm%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">对偶近似算法（Dual Approximation Algorithm）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
