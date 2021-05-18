@@ -30,7 +30,7 @@
 <meta property="og:description" content="基本概念">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-18T16:38:59.000Z">
-<meta property="article:modified_time" content="2021-05-18T16:41:54.669Z">
+<meta property="article:modified_time" content="2021-05-18T16:45:28.824Z">
 <meta property="article:author" content="Hui hui">
 <meta property="article:tag" content="problem-solving">
 <meta name="twitter:card" content="summary">
@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-18 12:38:59 / Modified: 12:41:54" itemprop="dateCreated datePublished" datetime="2021-05-18T12:38:59-04:00">2021-05-18</time>
+              <time title="Created: 2021-05-18 12:38:59 / Modified: 12:45:28" itemprop="dateCreated datePublished" datetime="2021-05-18T12:38:59-04:00">2021-05-18</time>
             </span>
 
           
@@ -222,6 +222,8 @@
 <li>GMS</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，$A$ 是相应的一个算法。如果对任意的输入对 $(x, \varepsilon) \in L_1 \times \mathbb{R}^+$，$A$ 能够在至多 $\varepsilon$ 的相对误差内计算出一个可行解 $A(x)$，并且 $Time_A(x, \varepsilon^{-1})$ 可以被 $|x|$ 的多项式函数约束，则 $A$ 称为 $U$ 的<strong>多项式时间近似近似方案（PTAS）</strong>。</p>
 <ul>
 <li>如果 $Time_A(x, \varepsilon^{-1})$ 可以同时被 $|x|$ 和 $\varepsilon^{-1}$ 的多项式函数约束，则称为<strong>完全多项式时间近似方案（FPTAS）</strong></li>
@@ -233,10 +235,8 @@
 <h1 id="优化问题的分类"><a href="#优化问题的分类" class="headerlink" title="优化问题的分类"></a>优化问题的分类</h1><p>（建立在 $P \neq NP$）我们将 NPO 问题分为五类：</p>
 <ul>
 <li>NPO(I)：所有存在 FPTAS 的NPO优化问题。</li>
-<li><p>NPO(II)：所有存在 PTAS 的NPO优化问题。</p>
-</li>
-<li><p>NPO(III)：所有的优化问题 $U$ 满足</p>
-<ul>
+<li>NPO(II)：所有存在 PTAS 的NPO优化问题。</li>
+<li>NPO(III)：所有的优化问题 $U$ 满足<ul>
 <li>存在 $\delta &gt; 1$ 的多项式时间 $\delta$-近似算法</li>
 <li>没有 $d &lt; \delta$ 的多项式时间 $d-$近似算法，即没有 PTAS</li>
 </ul>
@@ -260,10 +260,8 @@
 <li>$A$ 是<strong>稳定的（stable）</strong>，如果对任意 $p \in \mathbb{R}^+$，$A$ 是 $p$-稳定的。</li>
 </ul>
 <ul>
-<li><p>$A = \{ A_\varepsilon\}_{\varepsilon &gt; 0}$ 是 $U$ 的一个 PTAS，如果对任意的 $r &gt; 0$，任意 $\varepsilon &gt; 0$，$A_\varepsilon $ 是 $U_r$ 的一个 $\delta_{r, \varepsilon}$-近似算法，则称PTAS $A$ 关于 $h$ 是<strong>稳定的</strong>。</p>
-</li>
-<li><p>PTAS $A$ 是<strong>超稳定（superstable）</strong>的，如果 $\delta_{r, \varepsilon} \leq f(\varepsilon) \cdot g(r)$，其中</p>
-<ul>
+<li>$A = \{ A_\varepsilon\}_{\varepsilon &gt; 0}$ 是 $U$ 的一个 PTAS，如果对任意的 $r &gt; 0$，任意 $\varepsilon &gt; 0$，$A_\varepsilon $ 是 $U_r$ 的一个 $\delta_{r, \varepsilon}$-近似算法，则称PTAS $A$ 关于 $h$ 是<strong>稳定的</strong>。</li>
+<li>PTAS $A$ 是<strong>超稳定（superstable）</strong>的，如果 $\delta_{r, \varepsilon} \leq f(\varepsilon) \cdot g(r)$，其中<ul>
 <li>$f,g$  的定义域分别是 $\mathbb{R^{\geq 0}}$ 和 $\mathbb{R}^{+}$，</li>
 <li>$\lim\limits_{\varepsilon \to 0}f(\varepsilon) = 0$。</li>
 </ul>
@@ -272,23 +270,19 @@
 </ul>
 <hr>
 <h1 id="对偶近似算法（Dual-Approximation-Algorithm）"><a href="#对偶近似算法（Dual-Approximation-Algorithm）" class="headerlink" title="对偶近似算法（Dual Approximation Algorithm）"></a>对偶近似算法（Dual Approximation Algorithm）</h1><ul>
-<li><p>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题。$U$ 的一个<strong>限制距离函数（constraint distance function）</strong> 是一个函数 $h : L_I \times \Sigma_O^\star \to \mathbb{R}^{\geq 0}$ 满足</p>
-<ul>
+<li>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题。$U$ 的一个<strong>限制距离函数（constraint distance function）</strong> 是一个函数 $h : L_I \times \Sigma_O^\star \to \mathbb{R}^{\geq 0}$ 满足<ul>
 <li>$\forall S \in \mathcal{M}(x), h(x, S) = 0$，</li>
 <li>$\forall S \in \mathcal{M}(x), h(x, S) &gt; 0$，</li>
 <li>$h$ 是多项式时间可计算的。</li>
 </ul>
 </li>
-<li><p>对任意的 $\varepsilon \in \mathbb{R}^+$，任意 $x \in L_I$，$\mathcal{M}_{\varepsilon}^h(x) = \{S \in \Sigma_O^\star\ | h(x, S) \leq \varepsilon\}$ 是 $\mathcal{M(x)}$ 对 $h$ 的 $\varepsilon\textbf{-ball}$。</p>
-</li>
-<li><p>$U$ 的一个优化算法 $A$ 称为 <strong>$h$-dual</strong> $\varepsilon$-近似算法，如果对任意的 $x \in L_I$，</p>
-<ul>
+<li>对任意的 $\varepsilon \in \mathbb{R}^+$，任意 $x \in L_I$，$\mathcal{M}_{\varepsilon}^h(x) = \{S \in \Sigma_O^\star\ | h(x, S) \leq \varepsilon\}$ 是 $\mathcal{M(x)}$ 对 $h$ 的 $\varepsilon\textbf{-ball}$。</li>
+<li>$U$ 的一个优化算法 $A$ 称为 <strong>$h$-dual</strong> $\varepsilon$-近似算法，如果对任意的 $x \in L_I$，<ul>
 <li>$A(x) \in \mathcal{M}_\varepsilon^{h}(x)$，</li>
 <li>$cost(A(x)) \geq Opt_U(x)$ 当 $goal = maximum$，$cost(A(x)) \leq Opt_U(x) $ 当 $goal = minimum$。</li>
 </ul>
 </li>
-<li><p>一个算法 $A$ 称为 $U$ 的 <strong>$h$-dual 多项式时间近似方案（h-dual PTAS）</strong>，如果</p>
-<ul>
+<li>一个算法 $A$ 称为 $U$ 的 <strong>$h$-dual 多项式时间近似方案（h-dual PTAS）</strong>，如果<ul>
 <li>$\forall (x, \varepsilon) \in L_I \times \mathbb{R}^+, A(x, \varepsilon) \in \mathcal{M}_{\varepsilon}^h(x)$，</li>
 <li>$cost(A(x)) \geq Opt_U(x)$ 当 $goal = maximum$，$cost(A(x)) \leq Opt_U(x) $ 当 $goal = minimum$，</li>
 <li>$Time_A(x, \varepsilon^{-1})$ 被一个 $|x|$ 的多项式函数界定。</li>
