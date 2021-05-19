@@ -64,7 +64,7 @@ $$
 - $U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 和 $\overline{U} = (\Sigma_I, \Sigma_O, L, L,\mathcal{M}, cost, goal)$ 是两个优化问题，$L_1 \subset L$。$\overline{U}$ 关于 $L_1$ 的**距离函数（distance function）** 是任意一个函数 $h_L : L \to \mathbb{R}^{\geq 0}$ 满足
   - $\forall x \in L_I, h_L(x) = 0$
   - $h$ 是多项式可计算的
-- $\textbf{Ball_{r, h} (L_I)} = \{ w \in L | h(w) \leq r\}$
+- $\textbf{Ball}_{r,h}(L_I) = \{ w \in L | h(w) \leq r\}$
 - $A$ 是 $\overline{U}$ 的一个算法，且 $A$ 是 $U$ 的一个 $\varepsilon$-近似算法，对某个 $\varepsilon \in \mathbb{R}^{>1}$。$p$ 是一个正实数，若对任意实数 $0 < r \leq p$，存在 $\delta_{r, \varepsilon} \in \mathbb{R}^{>1}$，使得 $A$ 是 $U_r = \{\Sigma_I, \Sigma_O, L, Ball_{r,h}(L_I),\mathcal{M}, cost, goal\}$ 一个 $\delta_{r, \varepsilon}$-近似算法，则 $A$ 称为对于$h$ 是 **$p$-稳定（$p$-stable）**。
 - $A$ 是**稳定的（stable）**，如果对任意 $p \in \mathbb{R}^+$，$A$ 是 $p$-稳定的。
 
