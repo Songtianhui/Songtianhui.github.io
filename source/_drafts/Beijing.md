@@ -2,6 +2,7 @@
 title: Beijing
 tags: traveling
 date: 2021-05-17 13:30:45
+typora-root-url: Beijing
 ---
 
 
@@ -31,30 +32,66 @@ date: 2021-05-17 13:30:45
 
 # Day1
 
-本来芝麻的飞机会比我早两个小时，但是她延误了哈哈哈，本来以为我能在她之前到酒店，结果还是慢了一些。
+本来芝麻的飞机会比我早两个小时，但是她延误了哈哈哈，本来以为我能在她之前到酒店，结果还是慢了一些。​
 
-![pic](北京/美食/IMG_20210430_200546_0689.JPG "pic")
+吸取了上次在武汉的教训，决定住酒店还是要以质量环境卫生优先，这次选择的是全季酒店（第一次和芝麻旅行就是住的这个哟:flushed:）。真的非常喜欢全季的装修风格，干净卫生，精致优雅（真的没有收钱啊喂），以后应该是常客了，不过五一的酒店真的好贵:sob:，北京要靠六百一晚。木质的主题和柔和的灯光也好好看，附一张npy美照（
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/人物/芝麻/IMG_20210505_133600_0940.JPG)
+
+
+![](北京/人物/芝麻/IMG_20210505_133600_0940.JPG "灯光不错")
+
+到酒店简单整理一下就要吃晚饭了，第一顿是和芝麻很好的闺蜜wxx同学一起吃（我现在看到这个简写终于能反应过来人名了），人家马上也要出去玩了，所以居然能见一面也是非常惊喜哈哈哈。
+
+> 美女果然都喜欢和美女一起玩。
+
+吃的是npy一直心心念念的想要带我吃的烤鱼，在长沙和武汉都安利失败终于在北京成功地吃上了:joy:。不过遗憾的是发现并没有拍照，只有一张这个杯子。。。
+
+![](北京/美食/IMG_20210430_200546_0689.JPG "做人不要太有型！")
+
+吃饱饱了回去就要早早地休息了。为什么:question: 因为芝麻已经给我安排好了充实的行走计划——第二天早八的长城:dizzy_face:。我没想到五一非但没有休息还要早八。
+
+（小声）在此之前，她就已经决定了这次旅行是为了帮我戒掉睡懒觉的坏习惯而制定的，忙碌而劳累的行程，虽然后来发现其实还行:grin:，但在听她给我描述每天的行程时，真的有发自内心的感到害怕呜呜呜:sob:，人家好朋友听了都觉得这个安排太累了（。不过我知道她还是爱我的（。
+
+所以没有让人兴奋的环节，快睡吧:zzz:
 
 
 
 # Day 2
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/风景/IMG_20210501_131308_1101.JPG)
+早八起床！（我居然真的能起得来！）
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/风景/IMG_20210501_111747_1097.JPG)
+冲向长城！:fist:
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/风景/IMG_20210501_113603_0700.JPG)
+这次五一特地避开了高峰的八达岭，**聪明的npy**选择了xx长城
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/长图合集/IMG_20210505_233758_1043.JPG)
+由于上一次来长城已经是数十年前的事情了，所以再一次登上那么高的山，盘踞在山间蜿蜒的城楼，所看见的景色还是十分的动人心魄的，是超越了我所预计的宏伟与壮观。
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/风景/IMG_20210501_110739_1099.JPG)
+上图吧。
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/风景/IMG_20210501_113338_1095.JPG)
+![](北京/风景/IMG_20210501_131308_1101.JPG)
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/人物/芝麻/IMG_20210501_113251_0954.JPG)
+![](北京/风景/IMG_20210501_111747_1097.JPG)
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/人物/俺/IMG_20210501_130850_0796.JPG)
+![](北京/风景/IMG_20210501_113603_0700.JPG)
 
-![](/home/sth/workspace/blog/songtianhui.github.io/source/_drafts/Beijing/北京/人物/俺们/IMG_20210507_005509_1130.JPG)
+
+
+这只鹰应该是在登山图中一个特别的风景吧，一直久久地盘旋在山间，我们也一路从仰视它登到了俯视它。
+
+芝麻也很喜欢它，拍了好多张。
+
+![](北京/长图合集/IMG_20210505_233758_1043.JPG)
+
+*雄鹰久久在长城之上盘旋，确实有种神奇的语言难以形容的苍茫感。*
+
+
+
+![](北京/风景/IMG_20210501_110739_1099.JPG)
+
+![](北京/风景/IMG_20210501_113338_1095.JPG)
+
+![](北京/人物/芝麻/IMG_20210501_113251_0954.JPG)
+
+![](北京/人物/俺/IMG_20210501_130850_0796.JPG)
+
+![](北京/人物/俺们/IMG_20210507_005509_1130.JPG)
