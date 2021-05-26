@@ -1,7 +1,9 @@
 ---
 title: 问题求解学习笔记-随机算法
 tags: problem-solving
+date: 2021-05-26 03:55:52
 ---
+
 
 # 介绍
 
@@ -27,7 +29,7 @@ tags: problem-solving
 
 我们可以把随机算法就看成是在运行中需要随机数的算法，并且后续运行需要这些随机数。
 
-- $S_{A,x} = \{ C | C \text{ 是 }A \text{ 在 }x \text{ 上的一个随机计算}\}$。
+- $S_{A,x} = \{ C | C \text{ 是 }A \text{ 在 }x \text{ 上的一个随机计算}\}$。（样本空间）
 - $Prob $ 是 $S_{A,x} $ 的概率分布。
 
 - $Random_A(x)$ 是 $A $ 在 $x$ 上运行中的最大随机数位数。
