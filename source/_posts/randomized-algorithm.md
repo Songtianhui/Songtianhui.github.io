@@ -2,6 +2,7 @@
 title: 问题求解学习笔记-随机算法
 tags: problem-solving
 date: 2021-05-26 03:55:52
+mathjax: true
 ---
 
 
@@ -44,9 +45,14 @@ date: 2021-05-26 03:55:52
 
 算法 $A$ 对于输入 $x$ 输出 $y$ 的概率 $Prob(A(x) = y)$ 是所有 $C$ 输出 $y$ 的 $Prob_{A , x}(C) $ 的和。随机算法的目标就是让输出正确的 $y$ 的 $Prob(A(x) = y)$ 尽可能大。
 
-- $Time(C) $ 是 $C$ 的运行时间，则 $A $ 对于输入 $x$ 的期望时间复杂度是： $Exp-Time_A(x) = E[Time] = \sum\limits_{C}Prob_{A,x}(C) \cdot Time(C)$
-- $Exp-Time_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。
+- $Time(C) $ 是 $C$ 的运行时间，则 $A $ 对于输入 $x$ 的期望时间复杂度是： 
+
+  $$Exp\text{-}Time_A(x) = E[Time] = \sum\limits_{C}Prob_{A,x}(C) \cdot Time(C)$$
+
+- $Exp\text{-}Time_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。
+
 - 有时我们也考虑最坏情况复杂度： $Time_A(x) = \max\{Time(C) | C \text{ 是 }A \text{ 在 }  x \text{ 上的运行} \}$。
+
 - $Time_A(n) = \max\{Time_A(x) | x \text{ 是大小为 } n \text{ 的输入} \}$。
 
 ## 分类
@@ -56,10 +62,13 @@ date: 2021-05-26 03:55:52
 定义一个算法 $A$ 是问题 $F$ 的拉斯维加斯算法：
 
 1. 对于任意的输入 $x$，$Prob(A(x) = F(x)) = 1$，$F(x)$ 是问题 $F$ 对 $x$ 的解。
-   - 这样 $A$ 的复杂度一般被认为是 $Exp-Time_A(n)$。
+   - 这样 $A$ 的复杂度一般被认为是 $Exp\text{-}Time_A(n)$。
 
-2. 我们允许输出 "?"（不能按时解决问题）。对任意的输入 $x$，$Prob(A(x) = F(x)) \geq \dfrac{1}{2}$ 且 $Prob(A(x)= '?')=  1 - Prob(A(x) = F(x)) \leq \dfrac{1}{2}$ 。
-   - 这样 $A$ 的复杂度一般被认为是 $Time_A(n)$，因为一般需要运行到 $Time_A(x)$ 才能判断“？”。
+2. 我们允许输出 "?"（不能按时解决问题）。对任意的输入 $x$，$Prob(A(x) = F(x)) \geq \dfrac{1}{2}$ 且 
+
+   $$Prob(A(x)= ?)=  1 - Prob(A(x) = F(x)) \leq \dfrac{1}{2}$$。
+
+   - 这样 $A$ 的复杂度一般被认为是 $Time_A(n)$，因为一般需要运行到 $Time_A(x)$ 才能判断“?”。
 
 
 
@@ -153,5 +162,5 @@ $$
 
 
 
-## （Relexation and Random Rounding）
+## （Relaxation and Random Rounding）
 
