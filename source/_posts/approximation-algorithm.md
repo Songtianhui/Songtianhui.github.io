@@ -1,6 +1,6 @@
 ---
-title: 问求学习笔记-近似算法
-tags: problem-solving
+title: 问题求解笔记-近似算法
+categories: problem-solving
 mathjax: true
 date: 2021-05-18 12:38:59
 ---

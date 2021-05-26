@@ -1,6 +1,6 @@
 ---
-title: 问题求解学习笔记-随机算法
-tags: problem-solving
+title: 问题求解笔记-随机算法
+categories: problem-solving
 date: 2021-05-26 03:55:52
 mathjax: true
 ---
