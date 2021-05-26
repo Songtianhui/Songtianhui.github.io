@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"songtianhui.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="介绍我们至今仍然不知道任何NP难问题的随机多项式算法。 我们只知道一些问题，满足：  有高效的多项式随机算法 没有已知的多项式时间确定算法 不知道它是否属于 $P$  随机算法和近似算法结合的合理性在于，算法输出错误结果的概率甚至小于确定性算法长时间运行下硬件出错的概率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题求解学习笔记-随机算法">
+<meta property="og:url" content="https://songtianhui.github.io/2021/05/26/randomized-algorithm/index.html">
+<meta property="og:site_name" content="Songtianhui&#39;s Blog">
+<meta property="og:description" content="介绍我们至今仍然不知道任何NP难问题的随机多项式算法。 我们只知道一些问题，满足：  有高效的多项式随机算法 没有已知的多项式时间确定算法 不知道它是否属于 $P$  随机算法和近似算法结合的合理性在于，算法输出错误结果的概率甚至小于确定性算法长时间运行下硬件出错的概率。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-26T07:55:52.000Z">
+<meta property="article:modified_time" content="2021-05-26T07:55:52.843Z">
+<meta property="article:author" content="Hui hui">
+<meta property="article:tag" content="problem-solving">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://songtianhui.github.io/2021/05/26/randomized-algorithm/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>问题求解学习笔记-随机算法 | Songtianhui's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Songtianhui's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/05/26/randomized-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hui hui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Songtianhui's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          问题求解学习笔记-随机算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-26 03:55:52" itemprop="dateCreated datePublished" datetime="2021-05-26T03:55:52-04:00">2021-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>我们至今仍然不知道任何NP难问题的随机多项式算法。</p>
+<p>我们只知道一些问题，满足：</p>
+<ul>
+<li>有高效的多项式随机算法</li>
+<li>没有已知的多项式时间确定算法</li>
+<li>不知道它是否属于 $P$</li>
+</ul>
+<p>随机算法和近似算法结合的合理性在于，算法输出错误结果的概率甚至小于确定性算法长时间运行下硬件出错的概率。</p>
+<a id="more"></a>
+<hr>
+<h1 id="随机算法的分类"><a href="#随机算法的分类" class="headerlink" title="随机算法的分类"></a>随机算法的分类</h1><h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p>我们可以把随机算法就看成是在运行中需要随机数的算法，并且后续运行需要这些随机数。</p>
+<ul>
+<li>$S_{A,x} = \{ C | C \text{ 是 }A \text{ 在 }x \text{ 上的一个随机计算}\}$。（样本空间）</li>
+<li><p>$Prob $ 是 $S_{A,x} $ 的概率分布。</p>
+</li>
+<li><p>$Random_A(x)$ 是 $A $ 在 $x$ 上运行中的最大随机数位数。</p>
+</li>
+<li>$Random_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。</li>
+</ul>
+<p>复杂度的衡量是重要的因为：</p>
+<ul>
+<li>生成伪随机数需要开销，一般和位数成正比</li>
+<li>“去随机化”</li>
+</ul>
+<p>算法 $A$ 对于输入 $x$ 输出 $y$ 的概率 $Prob(A(x) = y)$ 是所有 $C$ 输出 $y$ 的 $Prob_{A , x}(C) $ 的和。随机算法的目标就是让输出正确的 $y$ 的 $Prob(A(x) = y)$ 尽可能大。</p>
+<ul>
+<li>$Time(C) $ 是 $C$ 的运行时间，则 $A $ 对于输入 $x$ 的期望时间复杂度是： $Exp-Time_A(x) = E[Time] = \sum\limits_{C}Prob_{A,x}(C) \cdot Time(C)$</li>
+<li>$Exp-Time_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。</li>
+<li>有时我们也考虑最坏情况复杂度： $Time_A(x) = \max\{Time(C) | C \text{ 是 }A \text{ 在 }  x \text{ 上的运行} \}$。</li>
+<li>$Time_A(n) = \max\{Time_A(x) | x \text{ 是大小为 } n \text{ 的输入} \}$。</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="拉斯维加斯算法（Las-Vegas-Algorithms）"><a href="#拉斯维加斯算法（Las-Vegas-Algorithms）" class="headerlink" title="拉斯维加斯算法（Las Vegas Algorithms）"></a>拉斯维加斯算法（Las Vegas Algorithms）</h3><p>定义一个算法 $A$ 是问题 $F$ 的拉斯维加斯算法：</p>
+<ol>
+<li><p>对于任意的输入 $x$，$Prob(A(x) = F(x)) = 1$，$F(x)$ 是问题 $F$ 对 $x$ 的解。</p>
+<ul>
+<li>这样 $A$ 的复杂度一般被认为是 $Exp-Time_A(n)$。</li>
+</ul>
+</li>
+<li><p>我们允许输出 “?”（不能按时解决问题）。对任意的输入 $x$，$Prob(A(x) = F(x)) \geq \dfrac{1}{2}$ 且 $Prob(A(x)= ‘?’)=  1 - Prob(A(x) = F(x)) \leq \dfrac{1}{2}$ 。</p>
+<ul>
+<li>这样 $A$ 的复杂度一般被认为是 $Time_A(n)$，因为一般需要运行到 $Time_A(x)$ 才能判断“？”。</li>
+</ul>
+</li>
+</ol>
+<h3 id="单错蒙特卡罗算法（One-Sided-Error-Monte-Carlo-Algorithm）"><a href="#单错蒙特卡罗算法（One-Sided-Error-Monte-Carlo-Algorithm）" class="headerlink" title="单错蒙特卡罗算法（One-Sided-Error Monte Carlo Algorithm）"></a>单错蒙特卡罗算法（One-Sided-Error Monte Carlo Algorithm）</h3><p>只对判定问题有用。</p>
+<p>算法 $A$ 是语言 $L$ 的单错蒙特卡罗算法当：</p>
+<ol>
+<li>对任意的 $x \in L$，$Prob(A(x) = 1 ) \geq 1/2$；</li>
+<li>对任意的 $x \notin L$，$Prob(A(x)  = 0) = 1$。</li>
+</ol>
+<p>所以单错蒙特卡罗算法不会误判错误的输入，但有小概率误判正确的输入，只有单方向错。</p>
+<h3 id="双错蒙特卡算法（Two-Sided-Error-Monte-Carlo-Algorithm）"><a href="#双错蒙特卡算法（Two-Sided-Error-Monte-Carlo-Algorithm）" class="headerlink" title="双错蒙特卡算法（Two-Sided-Error Monte Carlo Algorithm）"></a>双错蒙特卡算法（Two-Sided-Error Monte Carlo Algorithm）</h3><p>$F$ 是一个计算问题，一个随机算法 $A$ 是双错蒙特卡算法当：</p>
+<ul>
+<li>存在一个实数 $0 &lt; \varepsilon \leq 1/2$，使得对任意的输入 $x$ ， $Prob(A(x) = F(x)) \geq \dfrac{1}{2}  + \varepsilon$。</li>
+<li>让算法跑 $t$ 次，取出现次数至少是 $\lceil t / 2 \rceil$ 的结果，正确的概率很大。</li>
+</ul>
+<h3 id="无界错蒙特卡罗算法（Unbounded-Error-Monte-Carlo-Algorithm）"><a href="#无界错蒙特卡罗算法（Unbounded-Error-Monte-Carlo-Algorithm）" class="headerlink" title="无界错蒙特卡罗算法（Unbounded-Error Monte Carlo Algorithm）"></a>无界错蒙特卡罗算法（Unbounded-Error Monte Carlo Algorithm）</h3><p>$F$ 是一个计算问题，一个随机算法 $A$ 是无界错蒙特卡算法当：</p>
+<ul>
+<li>对任意输入 $x$，$Prob(A(x) = F(x)) &gt; \dfrac{1}{2}$。</li>
+<li>缺点在于 $Prob(A(x) = F(x))$ 和 $\dfrac{1}{2}$ 可能趋近于 $0$ 当输入很大时。</li>
+<li>为了从无界错蒙特卡罗算法获得一个随机算法满足 $Prob(A_{k(|n|)} (x) = F(x)) \geq 1 - \delta, 0 \leq \delta \leq \dfrac{1}{2}$，我们必须接受 $Time_{A_{k(n)}}(n) = O(2^{2Random_A(n)} \cdot Time_A(n))$</li>
+</ul>
+<h3 id="随机优化算法（Randomized-Optimization-Algorithm）"><a href="#随机优化算法（Randomized-Optimization-Algorithm）" class="headerlink" title="随机优化算法（Randomized Optimization Algorithm）"></a>随机优化算法（Randomized Optimization Algorithm）</h3><p>我们一般不考虑正确解出现的频率，而直接取最优解。所以一个 $k$ 轮算法中最优解的概率是</p>
+<script type="math/tex; mode=display">
+Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p>其中 $A_k$ 指运行 $k$ 次随机优化算法 $A$。</p>
+<ul>
+<li>若 $Prob(A(x) \notin Output_U(x)) \leq \varepsilon, \varepsilon &lt; 1$，则 $A$ 和单错蒙特卡罗效率差不多。</li>
+<li>若 $Prob(A(x) \in Output_U(x)) \geq 1 / p(|x|)$，$p$ 为多项式，则 $A$ 的效率也很可观。</li>
+</ul>
+<h2 id="随机近似算法"><a href="#随机近似算法" class="headerlink" title="随机近似算法"></a>随机近似算法</h2><ul>
+<li>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，对任意的实数 $\delta &gt; 1$，一个随机算法 $A$ 叫做 $U$ 的<strong>随机$\delta$-近似算法</strong>，当满足对任意的 $x\in L_I$：<ul>
+<li>$Prob(A(x) \in \mathcal{M}(x)) = 1$，</li>
+<li>$Prob(R_A(x) \leq \delta)\geq 1/ 2$。</li>
+</ul>
+</li>
+<li>对任意的函数 $f :\mathbb{N} \to \mathbb{R}^+$，$A$ 叫做 $U$ 的<strong>随机$f(n)$-近似算法</strong>，当满足对任意的 $x \in L_I$：<ul>
+<li>$Prob(A(x) \in \mathcal{M}(x)) = 1$，</li>
+<li>$Prob(R_A(x) \leq f(|x|)) \geq 1/2$。</li>
+</ul>
+</li>
+<li>一个随机算法 $A$ 叫做 $U$ 的<strong>随机多项式时间近似方案（RPTAS）</strong>，如果存在一个函数 $p: L_I \times \mathbb{R}^+ \to \mathbb{N}$，使得对于任何输入 $(x, \delta) \in L_I \times \mathbb{R}^+$，满足：<ul>
+<li>$Prob(A(x, \delta) \in  \mathcal{M}(x)) = 1$，对所有的选择 $A$ 都可以计算出一个可行解。</li>
+<li>$Prob(\varepsilon_A(x, \delta) \leq \delta) \geq \dfrac{1}{2}$，一个可行解的相对误差不超过 $\delta$ 的概率大于 $1/2$。</li>
+<li>$Time_A(x, \delta^{-1}) \leq p(|x| , \delta^{-1})$ 且 $p$ 是关于 $|x| $ 的多项式。</li>
+</ul>
+</li>
+<li>类似的，如果 $p$ 是同时关于 $|x| $ 和 $\delta^{-1}$ 的多项式，$A$ 叫做 $U$ 的<strong>随机完全多项式时间近似方案（RFPTAS）</strong>。</li>
+</ul>
+<ul>
+<li>$U = (\Sigma_I, \Sigma_O, L, L_I,\mathcal{M}, cost, goal)$ 是一个优化问题，对任意的实数 $\delta &gt; 1$，一个随机算法 $A$ 叫做 $U$ 的<strong>随机$\delta$-期望算法</strong>，当满足对任意的 $x\in L_I$：<ul>
+<li>$Prob(A(x) \in \mathcal{M}(x)) = 1$，</li>
+<li>$E[R_A(x)] \leq \delta$。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="随机算法的设计范式"><a href="#随机算法的设计范式" class="headerlink" title="随机算法的设计范式"></a>随机算法的设计范式</h1><h2 id="挫败敌人（Foiling-an-Adversary）"><a href="#挫败敌人（Foiling-an-Adversary）" class="headerlink" title="挫败敌人（Foiling an Adversary）"></a>挫败敌人（Foiling an Adversary）</h2><ul>
+<li>对手论证</li>
+<li>随机算法可以看作是确定性算法上的概率分布，对手可以构造一小部分很强（大开销）的确定性算法的输入，但很难设计击败随机算法的输入。</li>
+</ul>
+<h2 id="丰富的证人？（Abundance-of-Witnesses）"><a href="#丰富的证人？（Abundance-of-Witnesses）" class="headerlink" title="丰富的证人？（Abundance of Witnesses）"></a>丰富的证人？（Abundance of Witnesses）</h2><h2 id="指纹？（Fingerprinting）"><a href="#指纹？（Fingerprinting）" class="headerlink" title="指纹？（Fingerprinting）"></a>指纹？（Fingerprinting）</h2><h2 id="随机样本（Random-Sampling）"><a href="#随机样本（Random-Sampling）" class="headerlink" title="随机样本（Random Sampling）"></a>随机样本（Random Sampling）</h2><h2 id="（Relexation-and-Random-Rounding）"><a href="#（Relexation-and-Random-Rounding）" class="headerlink" title="（Relexation and Random Rounding）"></a>（Relexation and Random Rounding）</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/problem-solving/" rel="tag"># problem-solving</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/18/approximation-algorithm/" rel="prev" title="问求学习笔记-近似算法">
+      <i class="fa fa-chevron-left"></i> 问求学习笔记-近似算法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">随机算法的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E6%96%AF%E7%BB%B4%E5%8A%A0%E6%96%AF%E7%AE%97%E6%B3%95%EF%BC%88Las-Vegas-Algorithms%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">拉斯维加斯算法（Las Vegas Algorithms）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E9%94%99%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95%EF%BC%88One-Sided-Error-Monte-Carlo-Algorithm%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">单错蒙特卡罗算法（One-Sided-Error Monte Carlo Algorithm）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%94%99%E8%92%99%E7%89%B9%E5%8D%A1%E7%AE%97%E6%B3%95%EF%BC%88Two-Sided-Error-Monte-Carlo-Algorithm%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">双错蒙特卡算法（Two-Sided-Error Monte Carlo Algorithm）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%95%8C%E9%94%99%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95%EF%BC%88Unbounded-Error-Monte-Carlo-Algorithm%EF%BC%89"><span class="nav-number">2.2.4.</span> <span class="nav-text">无界错蒙特卡罗算法（Unbounded-Error Monte Carlo Algorithm）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%EF%BC%88Randomized-Optimization-Algorithm%EF%BC%89"><span class="nav-number">2.2.5.</span> <span class="nav-text">随机优化算法（Randomized Optimization Algorithm）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%BF%91%E4%BC%BC%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">随机近似算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">随机算法的设计范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%AB%E8%B4%A5%E6%95%8C%E4%BA%BA%EF%BC%88Foiling-an-Adversary%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">挫败敌人（Foiling an Adversary）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E7%9A%84%E8%AF%81%E4%BA%BA%EF%BC%9F%EF%BC%88Abundance-of-Witnesses%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">丰富的证人？（Abundance of Witnesses）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E7%BA%B9%EF%BC%9F%EF%BC%88Fingerprinting%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">指纹？（Fingerprinting）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%A0%B7%E6%9C%AC%EF%BC%88Random-Sampling%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">随机样本（Random Sampling）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88Relexation-and-Random-Rounding%EF%BC%89"><span class="nav-number">3.5.</span> <span class="nav-text">（Relexation and Random Rounding）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hui hui"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Hui hui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songtianhui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songtianhui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hui hui</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginrootpath":"live2dw/","pluginjspath":"lib/","pluginmodelpath":"assets/ relative)","scriptfrom":"local","tagmode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":120,"height":200},"mobile":{"show":true},"react":{"opacitydefault":0.7},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
