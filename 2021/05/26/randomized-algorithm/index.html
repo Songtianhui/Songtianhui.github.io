@@ -30,7 +30,7 @@
 <meta property="og:description" content="介绍我们至今仍然不知道任何NP难问题的随机多项式算法。 我们只知道一些问题，满足：  有高效的多项式随机算法 没有已知的多项式时间确定算法 不知道它是否属于 $P$  随机算法和近似算法结合的合理性在于，算法输出错误结果的概率甚至小于确定性算法长时间运行下硬件出错的概率。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-26T07:55:52.000Z">
-<meta property="article:modified_time" content="2021-05-26T09:06:51.052Z">
+<meta property="article:modified_time" content="2021-05-26T09:11:45.821Z">
 <meta property="article:author" content="Hui hui">
 <meta property="article:tag" content="problem-solving">
 <meta name="twitter:card" content="summary">
@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-26 03:55:52 / Modified: 05:06:51" itemprop="dateCreated datePublished" datetime="2021-05-26T03:55:52-04:00">2021-05-26</time>
+              <time title="Created: 2021-05-26 03:55:52 / Modified: 05:11:45" itemprop="dateCreated datePublished" datetime="2021-05-26T03:55:52-04:00">2021-05-26</time>
             </span>
 
           
@@ -224,8 +224,8 @@
 </ul>
 <p>算法 $A$ 对于输入 $x$ 输出 $y$ 的概率 $Prob(A(x) = y)$ 是所有 $C$ 输出 $y$ 的 $Prob_{A , x}(C) $ 的和。随机算法的目标就是让输出正确的 $y$ 的 $Prob(A(x) = y)$ 尽可能大。</p>
 <ul>
-<li>$Time(C) $ 是 $C$ 的运行时间，则 $A $ 对于输入 $x$ 的期望时间复杂度是： $Exp-Time_A(x) = E[Time] = \sum\limits_{C}Prob_{A,x}(C) \cdot Time(C)$</li>
-<li>$Exp-Time_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。</li>
+<li>$Time(C) $ 是 $C$ 的运行时间，则 $A $ 对于输入 $x$ 的期望时间复杂度是： <script type="math/tex">Exp\text{-}Time_A(x) = E[Time] = \sum\limits_{C}Prob_{A,x}(C) \cdot Time(C)</script></li>
+<li>$Exp\text{-}Time_A(n) = \max\{Random_A(x) | x \text{ 是大小为 } n \text{ 的输入}\}$。</li>
 <li>有时我们也考虑最坏情况复杂度： $Time_A(x) = \max\{Time(C) | C \text{ 是 }A \text{ 在 }  x \text{ 上的运行} \}$。</li>
 <li>$Time_A(n) = \max\{Time_A(x) | x \text{ 是大小为 } n \text{ 的输入} \}$。</li>
 </ul>
@@ -233,12 +233,12 @@
 <ol>
 <li><p>对于任意的输入 $x$，$Prob(A(x) = F(x)) = 1$，$F(x)$ 是问题 $F$ 对 $x$ 的解。</p>
 <ul>
-<li>这样 $A$ 的复杂度一般被认为是 $Exp-Time_A(n)$。</li>
+<li>这样 $A$ 的复杂度一般被认为是 $Exp\text{-}Time_A(n)$。</li>
 </ul>
 </li>
-<li><p>我们允许输出 “?”（不能按时解决问题）。对任意的输入 $x$，$Prob(A(x) = F(x)) \geq \dfrac{1}{2}$ 且 $Prob(A(x)= ‘?’)=  1 - Prob(A(x) = F(x)) \leq \dfrac{1}{2}$ 。</p>
+<li><p>我们允许输出 “?”（不能按时解决问题）。对任意的输入 $x$，$Prob(A(x) = F(x)) \geq \dfrac{1}{2}$ 且 <script type="math/tex">Prob(A(x)= ?)=  1 - Prob(A(x) = F(x)) \leq \dfrac{1}{2}</script>。</p>
 <ul>
-<li>这样 $A$ 的复杂度一般被认为是 $Time_A(n)$，因为一般需要运行到 $Time_A(x)$ 才能判断“？”。</li>
+<li>这样 $A$ 的复杂度一般被认为是 $Time_A(n)$，因为一般需要运行到 $Time_A(x)$ 才能判断“?”。</li>
 </ul>
 </li>
 </ol>
