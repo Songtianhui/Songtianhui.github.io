@@ -28,3 +28,27 @@
   });
 </script>
 {% endif %}
+
+{# 页脚站点运行时间统计 #} {% if theme.footer.ages.enable %}
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+<script>
+  function timer() {
+    var ages = moment.preciseDiff(moment(),moment({{ theme.footer.ages.birthday }},"YYYYMMDD"));
+    ages = ages.replace(/years?/, "years");
+    ages = ages.replace(/months?/, "moths");
+    ages = ages.replace(/days?/, "days");
+    ages = ages.replace(/hours?/, "hours");
+    ages = ages.replace(/minutes?/, "minutes");
+    ages = ages.replace(/seconds?/, "seconds");
+    ages = ages.replace(/\d+/g, '<span style="color:{{ theme.footer.ages.color }}">$&</span>');
+    div.innerHTML = `{{ __('footer.age')}} ${ages}`;
+  }
+  var div = document.createElement("div");
+  //插入到copyright之后
+  var copyright = document.querySelector(".copyright");
+  document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+  timer();
+  setInterval("timer()",1000)
+</script>
+{% endif %}

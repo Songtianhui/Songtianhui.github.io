@@ -157,3 +157,9 @@ live2d:
     show: true
   react:
     opacitydefault: 0.7 # 默认透明度
+
+search:
+  path: search.xml
+  field: post # 指定搜索范围，可选 post | page | all
+  format: html # 指定页面内容形式，可选 html | raw (Markdown) | excerpt | more
+  limit: 10000

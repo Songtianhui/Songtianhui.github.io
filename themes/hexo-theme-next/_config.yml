@@ -80,6 +80,14 @@ footer:
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
     gongan_icon_url:
 
+  ages:
+    # site running time
+    enable: true
+    # birthday of your site
+    birthday: 20210126
+    # color of number
+    color: "#1890ff"
+
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
 # Available values of license: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
@@ -739,12 +747,12 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
   # Show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
+  top_n_per_article: 3
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.
