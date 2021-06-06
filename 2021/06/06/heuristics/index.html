@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"songtianhui.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模拟退火算法（Simulated Annealing）基本概念 $U &#x3D; (\Sigma_I, \Sigma_O, L, L_I, \mathcal{M}, cost, goal)$ 是一个优化问题，对任意的 $x \in L_I$，$\mathcal{M}(x)$ 的一个邻域（Neighborhood）是一个映射 $f_x: \mathcal{M}(x) \to Pot(\mathcal{M(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题求解笔记-启发式算法">
+<meta property="og:url" content="https://songtianhui.github.io/2021/06/06/heuristics/index.html">
+<meta property="og:site_name" content="Songtianhui&#39;s Blog">
+<meta property="og:description" content="模拟退火算法（Simulated Annealing）基本概念 $U &#x3D; (\Sigma_I, \Sigma_O, L, L_I, \mathcal{M}, cost, goal)$ 是一个优化问题，对任意的 $x \in L_I$，$\mathcal{M}(x)$ 的一个邻域（Neighborhood）是一个映射 $f_x: \mathcal{M}(x) \to Pot(\mathcal{M(">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://songtianhui.github.io/2021/06/06/heuristics/SA.png">
+<meta property="og:image" content="https://songtianhui.github.io/2021/06/06/heuristics/RTS.png">
+<meta property="og:image" content="https://songtianhui.github.io/2021/06/06/heuristics/GAS.png">
+<meta property="article:published_time" content="2021-06-06T12:27:48.000Z">
+<meta property="article:modified_time" content="2021-06-06T13:05:08.810Z">
+<meta property="article:author" content="Hui hui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://songtianhui.github.io/2021/06/06/heuristics/SA.png">
+
+<link rel="canonical" href="https://songtianhui.github.io/2021/06/06/heuristics/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>问题求解笔记-启发式算法 | Songtianhui's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Songtianhui's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/06/06/heuristics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hui hui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Songtianhui's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          问题求解笔记-启发式算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-06 08:27:48 / Modified: 09:05:08" itemprop="dateCreated datePublished" datetime="2021-06-06T08:27:48-04:00">2021-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/problem-solving/" itemprop="url" rel="index"><span itemprop="name">problem-solving</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<h1 id="模拟退火算法（Simulated-Annealing）"><a href="#模拟退火算法（Simulated-Annealing）" class="headerlink" title="模拟退火算法（Simulated Annealing）"></a>模拟退火算法（Simulated Annealing）</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li><p>$U = (\Sigma_I, \Sigma_O, L, L_I, \mathcal{M}, cost, goal)$ 是一个优化问题，对任意的 $x \in L_I$，$\mathcal{M}(x)$ 的一个<strong>邻域（Neighborhood）</strong>是一个映射 $f_x: \mathcal{M}(x) \to Pot(\mathcal{M(x)})$ 满足：</p>
+<ul>
+<li><p>$\forall \alpha \in \mathcal{M}(x), \alpha \in f_x(\alpha)$</p>
+</li>
+<li><p>如果 $\exists \alpha \in \mathcal{M}(x), \beta\in f_x(\alpha)$，则 $\alpha \in f_x(\beta)$</p>
+</li>
+<li><p>对任意的 $\alpha, \beta \in \mathcal{M}(x)$，所在一个正整数 $k$ 和 $\gamma_1, …, \gamma_k \in \mathcal{M}(x)$，使得 </p>
+<p>$\gamma_1 \in f_x(\alpha), \gamma_{i  +1 } \in f_x(\gamma_i), i = 1, … k-1$ 且 $\beta \in f_x(\gamma_k)$​</p>
+</li>
+</ul>
+</li>
+<li>$LSS(Neigh)$</li>
+</ul>
+<a id="more"></a>
+<p>模拟退火算法是从一个物理退火模型（Metropolos Algorithm）类比启发启发得到的，和 $LSS$ 的区别是有概率允许状态向恶化的方向转化，来防止局部最优解。</p>
+<p>一些概念的类比：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">物理退火</th>
+<th style="text-align:center">模拟退火</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">系统状态</td>
+<td style="text-align:center">可行解集合</td>
+</tr>
+<tr>
+<td style="text-align:center">状态能量</td>
+<td style="text-align:center">可行解的代价</td>
+</tr>
+<tr>
+<td style="text-align:center">扰动机制</td>
+<td style="text-align:center">从邻居的随机选择</td>
+</tr>
+<tr>
+<td style="text-align:center">一个最优状态</td>
+<td style="text-align:center">一个最优可行解</td>
+</tr>
+<tr>
+<td style="text-align:center">温度</td>
+<td style="text-align:center">控制参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>所以模拟退火其实就是建立在类比 Metropolos Algorithm上，得到的一个局部搜索算法。</p>
+<p>对于一个优化问题的固定的邻域，模拟退火可以被描述为：</p>
+<p><img data-src="SA.png" alt title="模拟退火算法"></p>
+<h2 id="理论和经验"><a href="#理论和经验" class="headerlink" title="理论和经验"></a>理论和经验</h2><p><strong>定理 6.2.2.1.</strong>  $U$ 是一个最小化问题且让 $Neigh$ 是 $U$ 的邻域，对于输入 $x$ 模拟退火算法的渐进收敛（asymptotic convergence）被保证如果以下两个条件被满足：</p>
+<ul>
+<li>每个 $\mathcal{M}(x)$ 的可行解是可到达的，从每个其他的 $\mathcal{M}(x)$ 的可行解。（邻域的定义条件III）</li>
+<li>初始条件 $T$ 至少是最深的局部最小值。</li>
+</ul>
+<p><em>渐进收敛意味着随着迭代次数的增长，到达全局最优的概率趋向于1</em>。</p>
+<p><em>就是说模拟退火算法会 find itself at a  global optimum an increasing percentage of the time as time grows.</em>（我也没读懂）</p>
+<p>一般还有要求：</p>
+<ul>
+<li>邻域的对称性（邻域定义的条件II）</li>
+<li><p>邻域的均匀性，$\forall \alpha, \beta \in \mathcal{M}(x),|Neigh_x (\alpha)| = |Neigh_x(\beta)|$</p>
+</li>
+<li><p>通过特定的 <em>cool schedules</em>，$T$ 增长缓慢</p>
+</li>
+</ul>
+<p>很遗憾在限定的迭代次数内，模拟退火并不能确保可行解的高质量，一般需要解空间的平方大小的次数的迭代。所以相比运行模拟退火到确保一个正确的近似解，还不如直接搜索全空间。。。</p>
+<p>模拟退火的收敛率是和迭代次数成对数关系。</p>
+<p>应该尽可能地避免以下结构的邻域：</p>
+<ul>
+<li>毛刺结构</li>
+<li>深沟</li>
+<li>大高原</li>
+</ul>
+<p><em>因为模拟退火第一部分是在高温下完成的，使得所有恶化方向都有可能，所以可以视为对初始解的随机搜索。然后当 $T$ 很小，大的恶化基本上是不可能的。</em></p>
+<p>如果谈到 cool schedules，以下的参数一定要确定：</p>
+<ul>
+<li>初始温度 $T$</li>
+<li>温度缩减函数 $f(T, t)$</li>
+<li>终止条件</li>
+</ul>
+<h3 id="初始温度的选择"><a href="#初始温度的选择" class="headerlink" title="初始温度的选择"></a>初始温度的选择</h3><p>需要很大。</p>
+<p>一种方法是取任意两个相邻解的最大差值，比较难算，所以只要高效地找到一个估计值（上界）就足够了。</p>
+<p>另一种实用的方法是，从任意 $T$ 值开始，在选择了初始情况 $\alpha$ 的邻居 $\beta$ 后，以一种使 $\beta$ 以靠近1的概率被接受的方式增加 $T$。进行若干次迭代，可以得到一个合理的初值 $T$。<em>可以看作物理类比的加热过程</em></p>
+<h3 id="选择温度缩减函数（Temperature-Reduction-Function）"><a href="#选择温度缩减函数（Temperature-Reduction-Function）" class="headerlink" title="选择温度缩减函数（Temperature Reduction Function）"></a>选择温度缩减函数（Temperature Reduction Function）</h3><p>一个一般的方式是 $T$ 乘以一个系数 $0.8\leq r \leq 0.99$，工作常数 $d$ 步得到 $T := r \cdot T$。</p>
+<p>也就是缩减 $k$ 次得到的温度 $T_k$ 为 $r_k\cdot T$。</p>
+<p>另一个选择是 $T_k := \dfrac{T}{\log_2{(k  +2)}}$，常数 $k$ 一般为邻域的大小。</p>
+<h3 id="终止条件"><a href="#终止条件" class="headerlink" title="终止条件"></a>终止条件</h3><p>一个方法是终止条件独立于 $T$，当解的代价（cost）不变时终止。</p>
+<p>另一种是设一个常数 $term$，当 $T \leq term$ 时终止。</p>
+<h3 id="一般性质"><a href="#一般性质" class="headerlink" title="一般性质"></a>一般性质</h3><ul>
+<li>模拟退火算法能够得到一个高质量解，但需要大开销的运算。</li>
+<li>最终解的质量和初始解的选择关系不大。</li>
+<li>重要的两个参数是缩减率和邻域，有必要做一定的工作来调参。</li>
+<li>平均复杂度和最差复杂度很接近。</li>
+<li>在相同的邻域下，模拟退火一般比局部搜索或多源局部搜索表现得更好。</li>
+</ul>
+<h3 id="一些问题的应用"><a href="#一些问题的应用" class="headerlink" title="一些问题的应用"></a>一些问题的应用</h3><ul>
+<li>图位置算法（最大最小割）一般表现较好。</li>
+<li>工程问题（VLSI）是最好的算法。</li>
+<li>TSP等表现不太好。</li>
+</ul>
+<h2 id="随机禁忌？搜索（Randomized-Tabu-Search）"><a href="#随机禁忌？搜索（Randomized-Tabu-Search）" class="headerlink" title="随机禁忌？搜索（Randomized Tabu Search）"></a>随机禁忌？搜索（Randomized Tabu Search）</h2><p>思想就是：保存一些之前的可行解的信息，并在决定下一个可行解时用上。</p>
+<p><img data-src="RTS.png" alt></p>
+<hr>
+<h1 id="遗传算法"><a href="#遗传算法" class="headerlink" title="遗传算法"></a>遗传算法</h1><h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><p>遗传算法是从个体种群的进化优化启发而来，进化可以被概括为以下过程：</p>
+<ol>
+<li>一个个体可以用一个字符串来表示（DNA序列）。</li>
+<li><strong>交配（crossover）</strong>，也就是交换两个父母字符串的一部分，获得子串。</li>
+<li>存在一个<strong>适应值（fitness value）</strong>，适应值高的串以更高的概率被选择。</li>
+<li><strong>变异（mutation）</strong>，随机变一位。</li>
+<li>去世。</li>
+</ol>
+<p>一些概念的类比：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">种群遗传进化</th>
+<th style="text-align:center">遗传算法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一个个体</td>
+<td style="text-align:center">一个可行解</td>
+</tr>
+<tr>
+<td style="text-align:center">一个基因</td>
+<td style="text-align:center">解中的一位</td>
+</tr>
+<tr>
+<td style="text-align:center">适应值</td>
+<td style="text-align:center">代价函数</td>
+</tr>
+<tr>
+<td style="text-align:center">种群</td>
+<td style="text-align:center">可行解的一个子集</td>
+</tr>
+<tr>
+<td style="text-align:center">变异</td>
+<td style="text-align:center">随机局部转化</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>遗传算法和模拟退火有两个区别，一是用一组可行解而不是一个可行解，二是不能被视为纯粹的局部搜索。</p>
+<p>在一个合适的可行解表示下，遗传算法可以被描述为：</p>
+<p><img data-src="GAS.png" alt title="GAS"></p>
+<p>如果不考虑交配，只考虑变异，那么遗传算法和模拟退火很类似。</p>
+<ul>
+<li><p>$U = (\Sigma_I, \Sigma_O, L, L_I, \mathcal{M}, cost, goal)$ 是一个优化问题，对一个给定大小为 $n$ 的输入 $x \in L_I$，每个 $\alpha \in \{0, 1\}^n$ 代表 $x$ 的一个可行解，即 $\mathcal{M}(x) = \{0, 1\}^n$。$\mathcal{M}(x)$ 的一个 <strong>模式（schema）</strong> 是一个向量 $s = (s_1, s_2, …, s_n) \in \{0, 1, \star\}^n$。$s$ 的一组可行解是</p>
+<script type="math/tex; mode=display">
+Schema(s_1, s_2, ..., s_n) = \{\gamma_1, \gamma_2, ..., \gamma_n \in \mathcal{x} | \gamma_i = s_i , s_i \in \{0,1\} ~or~ \gamma_i \in \{0,1\}, s_i = \star \}</script></li>
+<li><p>模式 $s$ 的长度 $length(s)$ 是第一位到最后一个非 $\star$ 位的距离。阶 $order(s)$ 是非 $\star$ 的位数。</p>
+</li>
+<li><p>在一个种群 $P$ 中的<strong>适应度（Fitness）</strong> 是 $Schema(s)$ 的可行解的平均适应度：</p>
+<script type="math/tex; mode=display">
+Fitness(s, P) = \dfrac{1}{|Schema(s) \cap P|} \cdot \sum\limits_{\gamma \in Schema(s) \cap P} cost(\gamma).</script></li>
+<li><p>在一个种群 $P$ 中的<strong>适应率（Fitness ratio）</strong>是：</p>
+<script type="math/tex; mode=display">
+Fit\text{-}ratio = \dfrac{Fitness(s, P)}{\frac{1}{|P|} \sum_{\beta \in P}cost(\beta)}</script></li>
+<li><p>$Aver\text{-}Fit(P) = \frac{1}{|P|}\sum_{\beta\in P} cost(\beta)$ 叫做种群 $P$ 的平均适应度。</p>
+</li>
+</ul>
+<p><em>其实模式（schema）就是在可行解的表达中固定一些基因的值，其中 $\star$ 位就是自由变量，所以 $|Schema(s)|$ 就是$\star$的数量的2次幂。一个有比种群平均适应度高很多的适应度的模式就是一个很好的基因，应该被在进化中被遗传。</em></p>
+<ul>
+<li>$P_0$ 为初始种群，$P_t$ 为第 $t$ 次迭代基因算法后的种群，$X_{t + 1}(s)$ 是一个随机变量，是从 $P_t$ 中随机选择的父母且在 $Schema(s)$ 的数量。选择 $\alpha \in P_t$ 的概率是：$Pr_{par}(\alpha) = \dfrac{cost(\alpha)}{\sum_{\beta\in P_t} cost(\beta)} = \dfrac{cost(\alpha)}{|P_t| \cdot Aver\text{-}Fit(P_t)}$</li>
+</ul>
+<p><strong>引理 6.3.1.2.</strong> 对任意的 $t \in \mathbb{N}$ 和任意模式 $s$，$E[X_{t + 1}(s)] = Fit\text{-}ratio(s, P_t) \cdot |P_t \cap Schema(s)|$。</p>
+<p><strong>引理 6.3.1.3.</strong> 对任意的模式 $s$ 和任意 $t = 1, 2,…$，</p>
+<script type="math/tex; mode=display">
+E[Y_{t+1}(s)] \geq \dfrac{|P_t|}{2} \cdot \left[2 \cdot \left( \dfrac{E[X_{t+1}(s)]}{|P_t|}\right)^2 + 2 \cdot \dfrac{n - length(s)}{n} \cdot\dfrac{E[X_{t+1}(s)]}{|P_t|} \cdot \left( 1 - \dfrac{E[X_{t+1}(s)]}{|P_t|} \right) \right].</script><p><strong>引理 6.3.1.4.</strong> 对任意的模式 $s$ 和任意 $t = 1, 2,…$，</p>
+<script type="math/tex; mode=display">
+E[Y_{t + 1}(s)] \geq \dfrac{n - length(s)}{n} \cdot E[X_{t+1}(s)].</script><p><strong>引理 6.3.1.5.</strong> 对任意的模式 $s$ 和任意 $t = 1, 2,…$，</p>
+<script type="math/tex; mode=display">
+E[Z_{t + 1}(s)] \geq (1 - pr_{m})^{order(s)} \cdot E[Y_{t+1}(s)] \geq (1 - order(s) \cdot pr_m) \cdot E[Y_{t+1}(s)].</script><p><strong>定理 6.3.1.6.（GAS的模式定理）</strong></p>
+<p>对任意的模式 $s$ 和任意 $t = 1, 2,…$，在第 $(t+1)-st$ 的种群 $P_{t+1}$ 中的为模式 $Schema(s)$ 的个体的数量的期望为</p>
+<script type="math/tex; mode=display">
+E[Z_{t+1}] \geq Fit\text{-}ratio(s, P_t) \cdot \dfrac{n-  length(s)}{n} \cdot (1 - order(s)\cdot pr_m) \cdot |P_t \cdot Schema(s)|.</script><h2 id="参数调整"><a href="#参数调整" class="headerlink" title="参数调整"></a>参数调整</h2><h3 id="种群大小"><a href="#种群大小" class="headerlink" title="种群大小"></a>种群大小</h3><ul>
+<li>小种群容易导致局部最优解。</li>
+<li>反之大种群更容易到达全局最优解。</li>
+</ul>
+<h3 id="初始种群的选择"><a href="#初始种群的选择" class="headerlink" title="初始种群的选择"></a>初始种群的选择</h3><ul>
+<li>常用的是随机选择。</li>
+<li>将一些预处理的高质量可行解引入初始种群可以加快收敛速度。</li>
+<li>最好是结合起来，部分随机部分高适应度。</li>
+</ul>
+<h3 id="适应度评估和父母选择机制"><a href="#适应度评估和父母选择机制" class="headerlink" title="适应度评估和父母选择机制"></a>适应度评估和父母选择机制</h3><ul>
+<li>适应度 $\alpha$ 直接用 $cost(\alpha)$，然后按概率分布 $p(\alpha) = \dfrac{cost(\alpha)}{\sum_{\beta \in P} cost(\beta)}$ 选择父母。</li>
+<li>当 $max(P)$ 和 $min(P)$ 很接近时，$P$ 几乎均匀分布，一般选择 $fitness(\alpha) = cost(\alpha) - C, C &lt; min(P)$</li>
+<li>选择 $k / 2$ 个最好的个体，再随机选择 $k/2$ 个个体进行配偶。</li>
+<li>通过<strong>秩（ranking）</strong>来随机选择，按代价排序后 $cost(\alpha_1) \leq cost(\alpha_2) \leq …\leq cost(\alpha_n)$，然后分配概率 $prob(\alpha_i) = \dfrac{2i}{n(n+1)}$ 选择父母。</li>
+</ul>
+<h3 id="个体和交配的形式表示"><a href="#个体和交配的形式表示" class="headerlink" title="个体和交配的形式表示"></a>个体和交配的形式表示</h3><ul>
+<li>允许不代表任何可行解的表示存在，但可能降低复杂度。</li>
+<li>不直接在父母的表示上进行交配，而是通过一些特点参数，寻找子代的交叉混合属性。</li>
+<li>在上面所有的情况，交配都是只考虑一个交配位置的简单交配，可以与更复杂的交配的概念结合起来。</li>
+</ul>
+<h3 id="变异的可能性"><a href="#变异的可能性" class="headerlink" title="变异的可能性"></a>变异的可能性</h3><ul>
+<li>通常改变一位基因的概率调整为小于 $\frac{1}{100}$。</li>
+<li>有时候取 $\frac{1}{n}$ 或 $\frac{1}{k^{0.93}\sqrt{n}}$，$n$ 是基因数量，$k$ 是种群规模。</li>
+<li>有时候在计算过程中动态改变概率，如果种群中个体过于相似，增加突变概率，防止局部最优。</li>
+</ul>
+<h3 id="新种群的选择机制"><a href="#新种群的选择机制" class="headerlink" title="新种群的选择机制"></a>新种群的选择机制</h3><ul>
+<li>子代完全取代父代，<strong>en block</strong> 策略。</li>
+<li>从子代和父代中同时选择，需要调整子代对父代的偏爱程度。一种常见的是从父代中挑选一些适应度最高的，种群中绝大多数是子代。</li>
+<li>在选择了新的种群后，可以立即开始交配生产新种群，也可以提高种群平均适应度，可以选择小邻域进行局部搜索或模拟退火，得到一个局部最优的个体。</li>
+</ul>
+<h3 id="终止标准"><a href="#终止标准" class="headerlink" title="终止标准"></a>终止标准</h3><ul>
+<li>在一开始确定时间限制。</li>
+<li>测量种群的平均适应度和个体之间的差异，如果平均适应度没有本质改变，或个体非常相似，遗传可以停止。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/26/randomized-algorithm/" rel="prev" title="问题求解笔记-随机算法">
+      <i class="fa fa-chevron-left"></i> 问题求解笔记-随机算法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95%EF%BC%88Simulated-Annealing%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">模拟退火算法（Simulated Annealing）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E5%92%8C%E7%BB%8F%E9%AA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">理论和经验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E6%B8%A9%E5%BA%A6%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.1.</span> <span class="nav-text">初始温度的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%B8%A9%E5%BA%A6%E7%BC%A9%E5%87%8F%E5%87%BD%E6%95%B0%EF%BC%88Temperature-Reduction-Function%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">选择温度缩减函数（Temperature Reduction Function）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">一般性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text">一些问题的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%A6%81%E5%BF%8C%EF%BC%9F%E6%90%9C%E7%B4%A2%EF%BC%88Randomized-Tabu-Search%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">随机禁忌？搜索（Randomized Tabu Search）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">遗传算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%B0%83%E6%95%B4"><span class="nav-number">2.2.</span> <span class="nav-text">参数调整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%8D%E7%BE%A4%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">种群大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E7%A7%8D%E7%BE%A4%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">2.2.2.</span> <span class="nav-text">初始种群的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E5%BA%94%E5%BA%A6%E8%AF%84%E4%BC%B0%E5%92%8C%E7%88%B6%E6%AF%8D%E9%80%89%E6%8B%A9%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.3.</span> <span class="nav-text">适应度评估和父母选择机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BD%93%E5%92%8C%E4%BA%A4%E9%85%8D%E7%9A%84%E5%BD%A2%E5%BC%8F%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.2.4.</span> <span class="nav-text">个体和交配的形式表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E7%9A%84%E5%8F%AF%E8%83%BD%E6%80%A7"><span class="nav-number">2.2.5.</span> <span class="nav-text">变异的可能性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%A7%8D%E7%BE%A4%E7%9A%84%E9%80%89%E6%8B%A9%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.6.</span> <span class="nav-text">新种群的选择机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%A0%87%E5%87%86"><span class="nav-number">2.2.7.</span> <span class="nav-text">终止标准</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hui hui"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Hui hui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/songtianhui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;songtianhui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hui hui</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+ 
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+<script>
+  function timer() {
+    var ages = moment.preciseDiff(moment(),moment(20210126,"YYYYMMDD"));
+    ages = ages.replace(/years?/, "years");
+    ages = ages.replace(/months?/, "moths");
+    ages = ages.replace(/days?/, "days");
+    ages = ages.replace(/hours?/, "hours");
+    ages = ages.replace(/minutes?/, "minutes");
+    ages = ages.replace(/seconds?/, "seconds");
+    ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+    div.innerHTML = `I have been here waiting for you ${ages}`;
+  }
+  var div = document.createElement("div");
+  //插入到copyright之后
+  var copyright = document.querySelector(".copyright");
+  document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+  timer();
+  setInterval("timer()",1000)
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginrootpath":"live2dw/","pluginjspath":"lib/","pluginmodelpath":"assets/ relative)","scriptfrom":"local","tagmode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":180,"height":300},"mobile":{"show":true},"react":{"opacitydefault":0.7},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
