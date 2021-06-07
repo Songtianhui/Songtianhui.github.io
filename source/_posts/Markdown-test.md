@@ -63,7 +63,7 @@ $$ S_{n} = \sum\limits_{i=1}^{n} \dfrac{i(i-1)}{2} $$
 
 ---
 
-
+![](https://box.nju.edu.cn/seafhttp/files/48a324b9-6900-408d-9da3-778b2d7b28e8/IMG_20210402_133755_0004.JPG)
 
 # emoji
 

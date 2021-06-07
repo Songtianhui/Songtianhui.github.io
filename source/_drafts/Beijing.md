@@ -4,6 +4,7 @@ title: Beijing
 tags: traveling
 date: 2021-05-17 13:30:45
 typora-root-url: Beijing
+password: qazwsxed
 ---
 
 
@@ -39,7 +40,7 @@ typora-root-url: Beijing
 
 吸取了上次在武汉的教训，决定住酒店还是要以质量环境卫生优先，这次选择的是全季酒店（第一次和芝麻旅行就是住的这个哟:flushed:）。真的非常喜欢全季的装修风格，干净卫生，精致优雅（真的没有收钱啊喂），以后应该是常客了，不过五一的酒店真的好贵:sob:，北京要靠六百一晚。木质的主题和柔和的灯光也好好看，附一张npy美照（
 
-![](北京/人物/芝麻/IMG_20210505_133600_0940.JPG "灯光不错")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210505_133600_0940.JPG "灯光不错")
 
 
 
@@ -51,7 +52,7 @@ typora-root-url: Beijing
 
 吃的是npy一直心心念念的想要带我吃的烤鱼，在长沙和武汉都安利失败终于在北京成功地吃上了:joy:。不过遗憾的是发现并没有拍照，只有一张这个杯子。。。
 
-![](北京/美食/IMG_20210430_200546_0689.JPG "做人不要太有型！")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210430_200546_0689.JPG "做人不要太有型！")
 
 吃饱饱了回去就要早早地休息了。为什么:question: 因为芝麻已经给我安排好了充实的行走计划——第二天早八的长城:dizzy_face:。我没想到五一非但没有休息还要早八。
 
@@ -75,11 +76,11 @@ typora-root-url: Beijing
 
 上图吧。
 
-![](北京/风景/IMG_20210501_131308_1101.JPG "好壮观啊")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_131308_1101.JPG "好壮观啊")
 
-![](北京/风景/IMG_20210501_111747_1097.JPG "万里山河")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_111747_1097.JPG "万里山河")
 
-![](北京/风景/IMG_20210501_113603_0700.JPG "天也好蓝")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_113603_0700.JPG "天也好蓝")
 
 
 
@@ -87,7 +88,7 @@ typora-root-url: Beijing
 
 芝麻也很喜欢它，拍了好多张。
 
-![](北京/长图合集/IMG_20210505_233758_1043.JPG "长城上的鹰")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%95%BF%E5%9B%BE%E5%90%88%E9%9B%86/IMG_20210505_233758_1043.JPG "长城上的鹰")
 
 *雄鹰久久在长城之上盘旋，确实有种神奇的语言难以形容的苍茫感。*
 
@@ -95,23 +96,23 @@ typora-root-url: Beijing
 
 值得一提的是，慕田峪上山和下山是有缆车和滑道坐的，推荐坐一下可以省很多时间，而且风景也不错~
 
-![](北京/风景/IMG_20210501_110739_1099.JPG "缆车")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_110739_1099.JPG "缆车")
 
-![](/北京/人物/俺拍的/IMG_20210501_110618_0695.JPG "小黄毛")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E6%8B%8D%E7%9A%84/IMG_20210501_110618_0695.JPG)
 
 
 
 这墙洞每个都有人在拍照，等了好久才有一个洞洞拍照。
 
-![](北京/风景/IMG_20210501_113338_1095.JPG "有发现是对焦在后面吗")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_113338_1095.JPG "有发现是对焦在后面吗")
 
-![](北京/人物/芝麻/IMG_20210501_113251_0954.JPG "这张成为了我的新头像")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210501_113251_0954.JPG "这张成为了我的新头像")
 
 
 
 出现了一个憨憨的背影。
 
-![](北京/人物/俺/IMG_20210501_130850_0796.JPG "憨憨")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA/IMG_20210501_130850_0796.JPG "憨憨")
 
 
 
@@ -119,7 +120,7 @@ typora-root-url: Beijing
 
 所以得到经验，**找路人拍合照一定要找带着相机（说明他会用），成熟稳重的大叔**，俺们找的这个大叔看着就很专业，靠谱！:thumbsup:
 
-![](北京/人物/俺们/IMG_20210507_005509_1130.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E4%BB%AC/IMG_20210507_005509_1130.JPG)
 
 
 
@@ -127,7 +128,7 @@ typora-root-url: Beijing
 
 不过毕竟是个20岁的精神小伙，爬个长城的体力还是有的:stuck_out_tongue_closed_eyes:，虽然​大多时候在仰视npy的屁股。
 
-![](/北京/人物/俺拍的/IMG_20210501_115841_0701.JPG "我真的很想追上她但她真的好快")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E6%8B%8D%E7%9A%84/IMG_20210501_115841_0701.JPG "我真的很想追上她但她真的好快")
 
 值得一提的是长城下的小饭馆，翼松楼。
 
@@ -135,25 +136,25 @@ typora-root-url: Beijing
 
 ## 奥体中心
 
-![](/北京/风景/IMG_20210501_182341_1093.JPG "鸟巢")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210501_182341_1093.JPG "鸟巢")
 
-![](/北京/风景/IMG_20210506_235948_1118.JPG "水立方")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210506_235948_1118.JPG "水立方")
 
-![](/北京/人物/芝麻/IMG_20210501_174856_0976.JPG "小朋友")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210501_174856_0976.JPG "小朋友")
 
-![](/北京/人物/俺拍的/IMG_20210501_182847_0710.JPG "惯例套娃")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E6%8B%8D%E7%9A%84/IMG_20210501_182847_0710.JPG "惯例套娃")
 
-![](/北京/人物/俺/IMG_20210501_181623_0802.JPG "你的小可爱突然出现")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA/IMG_20210501_181623_0802.JPG "你的小可爱突然出现")
 
-![](/北京/美食/IMG_20210501_175447_0764.JPG "我们")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210501_175447_0764.JPG "我们")
 
 
 
 ## 三里屯
 
-![](/北京/美食/IMG_20210501_210337_0765.JPG "披萨！")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210501_210337_0765.JPG "披萨！")
 
-![](/北京/美食/IMG_20210501_210956_0767.JPG "草（一种蔬菜）")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210501_210956_0767.JPG "草（一种蔬菜）")
 
 
 
@@ -161,55 +162,55 @@ typora-root-url: Beijing
 
 ## 门框胡同
 
-![](/北京/美食/IMG_20210502_102211_0768.JPG "卤煮")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_102211_0768.JPG "卤煮")
 
-![](/北京/美食/IMG_20210502_103058_0769.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_103058_0769.JPG)
 
 
 
 ## 故宫
 
-![](/北京/人物/俺/IMG_20210502_124059_0804.JPG "劳动最光荣！")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA/IMG_20210502_124059_0804.JPG "劳动最光荣！")
 
-![](/北京/风景/IMG_20210502_162010_1089.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210502_162010_1089.JPG)
 
-![](/北京/风景/IMG_20210502_133826_1108.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210502_133826_1108.JPG)
 
-![](/北京/人物/芝麻/IMG_20210502_132408_0975.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210502_132408_0975.JPG)
 
-![](/北京/人物/芝麻/IMG_20210502_135929_0900.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210502_135929_0900.JPG)
 
-![](/北京/人物/俺们/IMG_20210502_153251_0726.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E4%BB%AC/IMG_20210502_153251_0726.JPG)
 
 
 
 ## 四季民福！
 
-![](/北京/美食/IMG_20210502_211344_0771.JPG "烤鸭啊啊啊啊")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_211344_0771.JPG "烤鸭啊啊啊啊")
 
-![](/北京/美食/IMG_20210502_211350_0772.JPG "烤鸭皮")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_211350_0772.JPG "烤鸭皮")
 
-![](/北京/美食/IMG_20210502_211710_0773.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_211710_0773.JPG)
 
-![](/北京/美食/IMG_20210502_211911_0775.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_211911_0775.JPG)
 
-![](/北京/美食/IMG_20210502_210323_0770.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_210323_0770.JPG)
 
-![](/北京/美食/IMG_20210502_212224_0776.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_212224_0776.JPG)
 
-![](/北京/美食/IMG_20210502_212323_0780.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_212323_0780.JPG)
 
-![](/北京/美食/IMG_20210502_212307_0779.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210502_212307_0779.JPG)
 
 
 
 ## 后海 酒吧
 
-![](/北京/风景/IMG_20210506_235948_1116.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210506_235948_1116.JPG)
 
-![](/北京/人物/俺们/IMG_20210504_161440_0839.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E4%BB%AC/IMG_20210504_161440_0839.JPG)
 
-![](/北京/人物/俺们/IMG_20210502_232816_0735.JPG "女企业家")
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E4%BB%AC/IMG_20210502_232816_0735.JPG  "女企业家")
 
 
 
@@ -217,37 +218,37 @@ typora-root-url: Beijing
 
 ## 忘了叫啥
 
-![](/北京/美食/IMG_20210503_115707_0785.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_115707_0785.JPG)
 
-![](/北京/美食/IMG_20210503_115206_0784.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_115206_0784.JPG)
 
-![](/北京/美食/IMG_20210503_114831_0749.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_114831_0749.JPG)
 
-![](/北京/美食/IMG_20210503_114515_0789.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_114515_0789.JPG)
 
 
 
 ## 国家图书馆
 
-![](/北京/风景/IMG_20210503_150741_0755.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210503_150741_0755.JPG)
 
-![](/北京/风景/IMG_20210503_142704_0753.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210503_142704_0753.JPG)
 
 
 
 ## 后海 鸦儿李记
 
-![](/北京/风景/IMG_20210506_235814_1083.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210506_235814_1083.JPG)
 
-![](/北京/人物/芝麻/IMG_20210503_190759_0893.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210503_190759_0893.JPG)
 
 
 
-![](/北京/美食/IMG_20210503_205434_0760.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_205434_0760.JPG)
 
-![](/北京/美食/IMG_20210503_204411_0812.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_204411_0812.JPG)
 
-![](/北京/美食/IMG_20210503_204727_0817.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E7%BE%8E%E9%A3%9F/IMG_20210503_204727_0817.JPG)
 
 
 
@@ -255,17 +256,17 @@ typora-root-url: Beijing
 
 ## 798艺术街区
 
-![](/北京/风景/IMG_20210504_135855_1109.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210504_135855_1109.JPG)
 
-![](/北京/风景/IMG_20210506_235813_1078.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210506_235813_1078.JPG)
 
-![](/北京/风景/IMG_20210504_131608_1112.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210504_131608_1112.JPG)
 
-![](/北京/风景/IMG_20210504_131416_1069.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E9%A3%8E%E6%99%AF/IMG_20210504_131416_1069.JPG)
 
-![](/北京/人物/芝麻/IMG_20210505_183951_1031.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E8%8A%9D%E9%BA%BB/IMG_20210505_183951_1031.JPG)
 
-![](/北京/人物/俺拍的/IMG_20210504_130147_0830.JPG)
+![](https://blog-1306163766.cos.ap-nanjing.myqcloud.com/%E5%8C%97%E4%BA%AC/%E4%BA%BA%E7%89%A9/%E4%BF%BA%E6%8B%8D%E7%9A%84/IMG_20210504_130147_0830.JPG)
 
 
 

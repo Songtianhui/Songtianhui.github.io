@@ -52,3 +52,6 @@
   setInterval("timer()",1000)
 </script>
 {% endif %}
+
+{# sweetalert #} 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

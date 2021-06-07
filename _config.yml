@@ -163,3 +163,9 @@ search:
   field: post # 指定搜索范围，可选 post | page | all
   format: html # 指定页面内容形式，可选 html | raw (Markdown) | excerpt | more
   limit: 10000
+
+encrypt:
+  enable: true
+  default_abstract: 此文章已被加密，需要输入密码访问。  //首页文章列表中加密文章的默认描述文案
+  default_message: 请输入密码以阅读这篇私密文章。  //文章详情页的密码输入框上的默认描述文案
+
