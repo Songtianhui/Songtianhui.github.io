@@ -477,7 +477,7 @@
     ages = ages.replace(/minutes?/, "minutes");
     ages = ages.replace(/seconds?/, "seconds");
     ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
-    div.innerHTML = `I have been here waiting for you ${ages}`;
+    div.innerHTML = `I have been here waiting for you for ${ages}`;
   }
   var div = document.createElement("div");
   //插入到copyright之后
