@@ -60,7 +60,7 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 - $H \cap K = \{ e \}$
 - $\forall k \in K, \forall h \in H, hk = kh$
 
-则 $G$ 叫做 $H$ 和 $K$ 的**直积（internal direct product）**。
+则 $G$ 叫做 $H$ 和 $K$ 的**内直积（internal direct product）**。
 
 **定理 9.27.** $G$ 是 $H$ 和 $K$ 的内直积 $\Rightarrow G \cong H \times K$。
 
@@ -72,7 +72,7 @@ $$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 
 **定理 10.3.** $N$ 为群 $G$ 的一个子群，则以下命题等价：
 1. $N$ 是正规的。
-2. $\forall g \in G, g N g^{-1} \subset N$
+2. $\forall g \in G, g N g^{-1} \subseteq N$
 3. $\forall g \in G, g N g^{-1} = N$
 
 ## 商群 Factor Groups
@@ -96,8 +96,8 @@ $N$ 为群 $G$ 的一个子群，则 $N$ 的所有陪集形成了一个群 $G/N$
 # 同态
 ## 群同态 Group Homomorphisms
 
-群 $(G, \cdot )$ 和 $(H, \circ)$ 间的**同态（homomorphisms）**是一个映射 $\phi: G \rightarrow H$ 且满足
-$$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \circ \phi(b)$$
+群 $(G, \cdot )$ 和 $(H, \circ)$ 间的**同态（homomorphisms）**是一个映射（不一定双射） $\phi: G \rightarrow H$ 且满足
+$$\phi(a \cdot b) = \phi(a) \circ \phi(b)$$
 $\phi$ 在 $H$ 中的值域叫做**同态像（homomorphic image）**。
 
 **命题 11.4.** $\phi: G_1 \rightarrow G_2$ 是一个同态，则：
@@ -108,7 +108,7 @@ $\phi$ 在 $H$ 中的值域叫做**同态像（homomorphic image）**。
 
 $\phi : G \Rightarrow H$ 是一个同态，$\phi^{-1}(\{ e \})$ 是 $G$ 的一个子集，叫做 $\phi$ 的**核（kernel）**，记作 $ker~\phi$。
 
-**定理 11.5.** $G \Rightarrow H$ 是一个同态，则 $\phi$ 的核是 $G$ 的一个正规子群。
+**定理 11.5.** $\phi :G \to H$ 是一个同态，则 $\phi$ 的核是 $G$ 的一个正规子群。
 
 ## 同构定理 Isomorphism Theorems
 
