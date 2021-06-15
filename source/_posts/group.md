@@ -28,7 +28,7 @@ mathjax: true
   + **逆元(inverse element)**: $\forall a \in G, \exists a^{-1}\in G, a \circ a^{-1} = a^{-1}\circ a = e$
 - **阿贝尔群(abelian)**: 群$G$, $\forall  a, b \in G, a\circ b = b \circ a$
 - **凯利表(Cayley table)**或**交换群(commutative)**: 通过加法或乘法来描述一个群的表格。
-- **可逆元素群(group of units)**: 拥有逆元的元素组成的群
+- **可逆元素群(group of units)**: 拥有逆元的元素（即所有和 $n$ 互质的数）组成的乘法群
 - 一般线性群(general linear group)
 - 四元群(quaternion group)
 - 群是有限的(finite)，或者说有有限序数(has finite order)，当它具有有限个元素，否则是无限的(infinite)或有无限序数(infinite order)
