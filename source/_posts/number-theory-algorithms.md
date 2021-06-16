@@ -61,7 +61,7 @@ mathjax: true
 
 **定理 31.17.** 对任意有限群 $(S, \oplus)$ 和任意 $a \in S$，一个元素的阶等于它所生成的子群的规模，即 $ord(a) = |\langle a \rangle|$。
 
-**推论 31.18.** 序列 $a^{(1)}, a^{(2)}, ...$是周期序列，其周期为 $t = ord(a)$，即 $a^{(i)} = ^{(j)} \Leftrightarrow i \equiv j~ (\text{mod }t)$。
+**推论 31.18.** 序列 $a^{(1)}, a^{(2)}, ...$是周期序列，其周期为 $t = ord(a)$，即 $a^{(i)} = a^{(j)} \Leftrightarrow i \equiv j~ (\text{mod }t)$。
 
 **推论 31.19.** 如果 $(S, \oplus)$ 是具有单位元的有限群，则对所有 $a \in S$，$a^{(|S|)} = e$。
 
