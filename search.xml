@@ -312,16 +312,19 @@
 <li>$d(x,y) \leq d(x,z) + d(z,y)$</li>
 </ul>
 <p><strong>定理 8.13.</strong> $C$ 是 $d_{min} = 2n+1$ 的编码，则 $C$ 可以纠 $n$ 位错，可以检测 $2n$ 位错。</p>
+<p><em>所以码字空间分布越均匀，最小码字距离越大，查纠错能力越强。</em></p>
 <hr>
 <h1 id="线性码（Linear-Codes）"><a href="#线性码（Linear-Codes）" class="headerlink" title="线性码（Linear Codes）"></a>线性码（Linear Codes）</h1><p><strong>群码</strong>（group code）：$\mathbb{Z}_2^n$ 的子群的编码。</p>
 <p><strong>引理 8.17.</strong> $x,y$ 为 $n$ 位码字，则 $w(x  +y) = d(x,y)$。</p>
 <p><strong>定理 8.18.</strong> 群码 $C$ 的 $d_{min}$ 是所有非零码字的最小的权重。</p>
+<p><em>码字的运算，还是码字，群封闭性。</em></p>
 <h2 id="线性码"><a href="#线性码" class="headerlink" title="线性码"></a>线性码</h2><p><strong>内积</strong>：</p>
 <p> $\begin{aligned} \textbf{x}\cdot \textbf{y}  &amp;= \textbf{x}^t \textbf{y} \\ &amp;= \begin{pmatrix} x_1 &amp; x_2 &amp;\cdots &amp;x_n \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n  \end{pmatrix} \\ &amp;= x_1y_1 + x_2y_2 + \cdots + x_ny_n \end{aligned}$</p>
 <p>记 $\mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 为所有 $m$ 行 $n$ 列且元素属于 $\mathbb{Z}_2$ 的矩阵的集合。</p>
 <p>$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的<strong>空域</strong>（null space我自己瞎起的名字）：$\{\textbf{x} \in \mathbb{Z}_2^n : H \textbf{x} = 0 \}$；记为 Null$(H)$。</p>
 <p><strong>定理 8.21.</strong> $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 一定是群码。</p>
 <p><strong>线性码</strong>：通过某个 $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 生成的编码。</p>
+<p><em>对于 $n$ 为编码，我们需要找到一个好的矩阵 $H$，使得我们的编码空间（$H$ 的 null space）的 $d_{min}$ 尽可能大。</em></p>
 <hr>
 <h1 id="奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）"><a href="#奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）" class="headerlink" title="奇偶校验和生成矩阵（Parity-Check and Generator Matrices）"></a>奇偶校验和生成矩阵（Parity-Check and Generator Matrices）</h1><p><strong>规范奇偶校验矩阵</strong>（canonical parity-check matrix）：$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 且 $n &gt; m$，且最后 $m$ 列形成的 $m \times m$ 子矩阵是单位阵 $I_m$，即 $H = \left( A | I_m \right)$。</p>
 <p>每个规范奇偶校验阵 $H$ 都有一个 $n \times (n - m)$ 阶标准<strong>生成阵</strong>（standard generator matrix）: $G = \left( \dfrac{I_{n-m}}{A} \right)$。</p>
@@ -332,9 +335,13 @@
 <p><strong>定理 8.26.</strong>  $G$ 是一个 $n \times k$ 阶标准生成阵，则 $C = \{ \textbf{y} : G\textbf{x} = \textbf{y}, x \in \mathbb{Z}_2^n \}$ 是一个 $(n,k)$-分块码。</p>
 <p><strong>引理 8.27.</strong> $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，则 $HG = 0$。</p>
 <p><strong>定理8.28.</strong>  $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，$C$ 是由 $G$ 生成的编码。则 $\textbf{y} \in C \Leftrightarrow H\textbf{y} = 0$，也就是说，$C$ 是有规范奇偶校验矩阵的线性码。</p>
+<p><em>偶校验矩阵的来处：在H的右侧 $m \star m$设置单位矩阵，就是要用相应位对A中相应行上的非0位进行偶校验.。</em></p>
+<p><em>生成矩阵的来处：当给定任意的A，可以使用相应的偶校验矩阵来通过解线性方程的方式得到群码，但是不如构造G矩阵，对待传输数据直接进行计算得到相应的群码和编码对应。效率更高。</em></p>
+<p><em>可证码字能够覆盖所有待编码位串。后m位可以完成对待编码位串中非0位的偶校验！</em></p>
+<p><em>如何完成偶校验，取决于A矩阵和待编码信息。</em></p>
 <p><strong>定理 8.31.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。（$e_i$ 不在空域中，$d_{min} &gt; 1$）</p>
-<p><strong>定理 8.34.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零b并且没有两列是相同的。（$e_i + e_j$ 不在空域中，$d_{min} \geq 3$）</p>
-<p>所以一个 $m \times n$ 的规范奇偶校验阵，要检一位错、纠一位错，除了 $\textbf{0}, \textbf{e_i}$，剩余 $2^m - (1 + m)$ 位为信息位。</p>
+<p><strong>定理 8.34.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零并且没有两列是相同的。（$e_i + e_j$ 不在空域中，$d_{min} \geq 3$）</p>
+<p>所以一个 $m \times n$ 的规范奇偶校验阵，要检一位错、纠一位错，除了 $\textbf{0}, \textbf{e_i}$，剩余 $2^m - (1 + m)$ 个为信息列。</p>
 <hr>
 <h1 id="高效解码"><a href="#高效解码" class="headerlink" title="高效解码"></a>高效解码</h1><p><strong>x</strong>的<strong>像</strong>（syndrome）：$H\textbf{x}$</p>
 <p><strong>命题 8.36.</strong> 矩阵 $H$ 决定了一套线性码，$\textbf{x} = \textbf{c} + \textbf{e} $ 为接收到的$n$-位串，$\textbf{c}$ 为正确码字，$\textbf{e}$ 为错误，则 $H\textbf{x} = H\textbf{e}$。</p>
