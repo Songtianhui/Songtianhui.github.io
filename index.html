@@ -189,134 +189,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/06/17/np-completeness/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hui hui">
-      <meta itemprop="description" content="Be happy forever!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Songtianhui's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/17/np-completeness/" class="post-title-link" itemprop="url">问题求解笔记-NP完全性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-06-17 20:21:03 / Modified: 21:35:31" itemprop="dateCreated datePublished" datetime="2021-06-17T20:21:03+08:00">2021-06-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/problem-solving/" itemprop="url" rel="index"><span itemprop="name">problem-solving</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
-<li>P类问题就是在多项式时间内可以被解决的（solvable）问题。</li>
-<li>NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。<ul>
-<li>verifiable：给定问题解的<strong>证书（certificate）</strong>，然后我们可以在多项式时间验证这个 certificate 是对的。</li>
-</ul>
-</li>
-<li>如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。</li>
-</ul>
-<h2 id="规约-Reduction"><a href="#规约-Reduction" class="headerlink" title="规约 Reduction"></a>规约 Reduction</h2><p>有一个判定问题 A，一个判定问题 B，我们知道 $B$ 可以在多项式时间下解决，一个多项式时间规约算法（reduction algorithm）是将 A 的输入实例 $\alpha$ 转化成 B 的输入实例 $\beta$ 的过程，且：</p>
-<ul>
-<li>转换操作需要多项式时间。</li>
-<li>两个实例的解是相同的。</li>
-</ul>
-<p><img data-src="Screenshot from 2021-06-17 20-36-37.png" alt></p>
-<p><em>reduce方法的更深用意在于证明某个问题有多难。</em></p>
-<p>证明B有多难：假设A不是P问题，B不可能是P问题；反证法：如果B是P问题，那么A是P问题</p>
-<hr>
-<h1 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h1><p><strong>引理 34.1 </strong> 设 $Q$ 是定义在一个实例集 $I$ 上的抽象判定问题，$e_1$ 和 $e_2$ 是 $I$ 上多项式相关的编码，则 $e_1(Q) \in P \Leftrightarrow e_2(Q) \in P$。 </p>
-<p><em>今后不再讨论代价极高的编码，统一以二进制编码为基准。理论上，问题的难度是固有的。但是算法的复杂度，有时候却依赖于问题的编码。</em></p>
-<h2 id="接受-判定"><a href="#接受-判定" class="headerlink" title="接受/判定"></a>接受/判定</h2><ul>
-<li>对任意输入 $x$，算法输出 $A(x) = 1$，就叫算法 $A$ <strong>接受（accept）</strong>$x \in \{0,1\}^{\star}$。被算法 $A$ 接受的语言就是集合 $L = \{x\in \{0,1\}^{\star} : A(x) = 1\}$。</li>
-<li>对任意的输入 $x$，算法输出 $A(x) = 0$，就叫算法 $A$ <strong>拒绝（reject）</strong>$x \in \{0, 1\}^{\star}$。</li>
-<li>算法 $A$ <strong>判定（decide）</strong>一个语言 $L$ 指对任意输入 $x$，在 $L$ 中的接受，不在 $L$ 中的拒绝。</li>
-<li>区别在于 $A$ 接受 $L$ 只能确保在 $L$ 中的 $x$ 接受，不在 $L$ 中的也有可能接受，或没有结果（不终止）。</li>
-</ul>
-<p>复杂类 $P$ 的定义：</p>
-<script type="math/tex; mode=display">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间判定 }L\}</script><p><strong>定理 34.2 </strong> <script type="math/tex">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间接受 }L\}</script></p>
-<p><em>这个定理说明接受一个语言的多项式算法，一定可以被改造成判定一个语言的多项式算法。</em></p>
-<p>（A 最多 $cn^k$ 步接受输入，构造 A’ 跑 $cn^k$ 步，接受返回 1，否则返回 0，判定了 $L$。）</p>
-<h1 id="多项式时间的验证-Verification"><a href="#多项式时间的验证-Verification" class="headerlink" title="多项式时间的验证 Verification"></a>多项式时间的验证 Verification</h1><p>一份<strong>验证算法（verifier）</strong> 是一个两个变量的算法 A，一个输入为串 $x$，另一个是叫<strong>证书（certificate）</strong>的二进制串 $y$。如果存在一个证书 $y$ 使得 $A(x, y) = 1$，则称 $A$ <strong>验证（verify）</strong>了输入 $x$。</p>
-<p>一个由算法 A 验证的语言是 <script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \exists y \in \{0,1\}^{\star} , A(x, y) = 1\}</script>。</p>
-<p>复杂类 NP 定义：一个语言 $L$ 属于 NP 当且仅当存在一个两输入多项式时间算法 $A$ 和常数 $c$，使得</p>
-<p><script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \text{存在一个证书 }y, |y| = O(|x|^c), A(x,y) = 1 \}</script>。</p>
-<p><em>当证书是超多项式的时候，验算证书的代价不再是保证为多项式了。</em></p>
-<p>P问题是可以在多项式时间内被判定的问题。</p>
-<p>NP问题是所有可以在多项式时间内被验证的问题。</p>
-<p>co-NP是所有它的补是NP问题的问题。</p>
-<p><strong>大多数人相信 $P \neq NP$。</strong></p>
-<hr>
-<h1 id="NP完全性与可规约性"><a href="#NP完全性与可规约性" class="headerlink" title="NP完全性与可规约性"></a>NP完全性与可规约性</h1><p>引入NPC：只要有一个NPC可以多项式求解，那么所有的NP问题都可多项式求解。</p>
-<h2 id="可规约性-Reducibility"><a href="#可规约性-Reducibility" class="headerlink" title="可规约性 Reducibility"></a>可规约性 Reducibility</h2><ul>
-<li>如果存在一个多项式时间可计算函数 $f : \{0, 1\}^{\star} \to \{0, 1\}^{\star}$，满足 $\forall x \in \{0 , 1\}^{\star}, x \in L_1 \leftrightarrow f(x) \in L_2$，则称语言 $L_1$ 可以在多项式时间内规约到语言 $L_2$，记作 $L_1 \leq_p L_2$。<ul>
-<li>$f$ 叫规约函数</li>
-<li>算 $f$ 的算法叫规约算法</li>
-</ul>
-</li>
-</ul>
-<p><strong>引理 34.3 </strong> 如果 $L_1, L_2 \subseteq \{0 ,1\}^{\star}$ 是满足 $L_1 \leq_p L_2$ 的语言，则 $L_2 \in P \Rightarrow L_1 \in P$。</p>
-<p><em>隐藏着：L1的复杂度不会“f多项式以上”超过L2的复杂度。</em></p>
-<p><em>更深层次的隐藏着：如果L1很难，L2不能很简单：最多相差多项式因子。</em></p>
-<p><em>揭示了认知一个问题的难度的方法学：如果一个老问题能够归约到待认知的新问题，这个新问题的难度最多简单到多项式因子</em></p>
-<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>语言 $L$ 是 NP完全的，如果：</p>
-<ol>
-<li>$L \in NP$</li>
-<li>$\forall L’ \in NP, L’ \leq_p L$</li>
-</ol>
-<ul>
-<li>如果 $L$ 只满足性质2，但不一定满足性质1，叫 <strong>NP难（NP-hard）</strong>的。</li>
-</ul>
-<p><strong>定理 34.4 </strong> 如果任何 NP完全问题是多项式时间可解的，则 $P = NP$。等价的，如果存在某一个NP问题不是多项式可解的，则所有NP完全问题都不是多项式时间可解的。</p>
-<p><strong>定理 34.7 </strong> 电路可满足性问题是NP完全的。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/06/06/heuristics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -546,6 +418,95 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/18/approximation-algorithm/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/05/10/np-completeness/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hui hui">
+      <meta itemprop="description" content="Be happy forever!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Songtianhui's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/10/np-completeness/" class="post-title-link" itemprop="url">问题求解笔记-NP完全性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-05-10 20:21:03" itemprop="dateCreated datePublished" datetime="2021-05-10T20:21:03+08:00">2021-05-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 21:37:15" itemprop="dateModified" datetime="2021-06-17T21:37:15+08:00">2021-06-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/problem-solving/" itemprop="url" rel="index"><span itemprop="name">problem-solving</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li><p>P类问题就是在多项式时间内可以被解决的（solvable）问题。</p>
+</li>
+<li><p>NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。</p>
+<ul>
+<li>verifiable：给定问题解的<strong>证书（certificate）</strong>，然后我们可以在多项式时间验证这个 certificate 是对的。</li>
+</ul>
+</li>
+<li><p>如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。</p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/10/np-completeness/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
