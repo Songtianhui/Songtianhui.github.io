@@ -407,7 +407,7 @@ $$P(M) = M^{e} \text{  mod } n</script><p>解密 $C \in \mathbb{Z}_n$：</p>
 <script type="math/tex; mode=display">S(C) = C^d \text{  mod } n</script><p>（可证 $M^{ed} \equiv M \quad (\text{mod } n )$）</p>
 ]]></content>
       <categories>
-        <category>problem-soling</category>
+        <category>problem-solving</category>
       </categories>
   </entry>
   <entry>
