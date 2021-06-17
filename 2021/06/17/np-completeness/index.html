@@ -22,19 +22,21 @@
     var CONFIG = {"hostname":"songtianhui.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="检错和纠错码最大似然编码（maximum-likelihood decoding​）所有的纠错建立在这个基础上，按最大概率出错位纠错。 二进制对称信道（binary symmetric channel）">
+  <meta name="description" content="概述 P类问题就是在多项式时间内可以被解决的（solvable）问题。 NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。 verifiable：给定问题解的证书（certificate），然后我们可以在多项式时间验证这个 certificate 是对的。   如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。  规约 Reduction有一个判定问题 A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="问题求解笔记-代数编码">
-<meta property="og:url" content="https://songtianhui.github.io/2021/04/25/codeing/index.html">
+<meta property="og:title" content="问题求解笔记-NP完全性">
+<meta property="og:url" content="https://songtianhui.github.io/2021/06/17/np-completeness/index.html">
 <meta property="og:site_name" content="Songtianhui&#39;s Blog">
-<meta property="og:description" content="检错和纠错码最大似然编码（maximum-likelihood decoding​）所有的纠错建立在这个基础上，按最大概率出错位纠错。 二进制对称信道（binary symmetric channel）">
+<meta property="og:description" content="概述 P类问题就是在多项式时间内可以被解决的（solvable）问题。 NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。 verifiable：给定问题解的证书（certificate），然后我们可以在多项式时间验证这个 certificate 是对的。   如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。  规约 Reduction有一个判定问题 A">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-25T15:10:21.000Z">
-<meta property="article:modified_time" content="2021-06-17T06:31:47.096Z">
+<meta property="og:image" content="https://songtianhui.github.io/2021/06/17/np-completeness/Screenshot%20from%202021-06-17%2020-36-37.png">
+<meta property="article:published_time" content="2021-06-17T12:21:03.000Z">
+<meta property="article:modified_time" content="2021-06-17T13:35:31.639Z">
 <meta property="article:author" content="Hui hui">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://songtianhui.github.io/2021/06/17/np-completeness/Screenshot%20from%202021-06-17%2020-36-37.png">
 
-<link rel="canonical" href="https://songtianhui.github.io/2021/04/25/codeing/">
+<link rel="canonical" href="https://songtianhui.github.io/2021/06/17/np-completeness/">
 
 
 <script id="page-configurations">
@@ -47,7 +49,7 @@
   };
 </script>
 
-  <title>问题求解笔记-代数编码 | Songtianhui's Blog</title>
+  <title>问题求解笔记-NP完全性 | Songtianhui's Blog</title>
   
 
 
@@ -192,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/04/25/codeing/">
+    <link itemprop="mainEntityOfPage" href="https://songtianhui.github.io/2021/06/17/np-completeness/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          问题求解笔记-代数编码
+          问题求解笔记-NP完全性
         </h1>
 
         <div class="post-meta">
@@ -214,16 +216,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-04-25 23:10:21" itemprop="dateCreated datePublished" datetime="2021-04-25T23:10:21+08:00">2021-04-25</time>
+              <time title="Created: 2021-06-17 20:21:03 / Modified: 21:35:31" itemprop="dateCreated datePublished" datetime="2021-06-17T20:21:03+08:00">2021-06-17</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-17 14:31:47" itemprop="dateModified" datetime="2021-06-17T14:31:47+08:00">2021-06-17</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -245,68 +241,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="检错和纠错码"><a href="#检错和纠错码" class="headerlink" title="检错和纠错码"></a>检错和纠错码</h1><h2 id="最大似然编码（maximum-likelihood-decoding​）"><a href="#最大似然编码（maximum-likelihood-decoding​）" class="headerlink" title="最大似然编码（maximum-likelihood decoding​）"></a>最大似然编码（maximum-likelihood decoding​）</h2><p>所有的纠错建立在这个基础上，按最大概率出错位纠错。</p>
-<p><strong>二进制对称信道</strong>（binary symmetric channel）</p>
-<a id="more"></a>
-<h2 id="分块码-（Block-Codes​）"><a href="#分块码-（Block-Codes​）" class="headerlink" title="分块码 （Block Codes​）"></a>分块码 （Block Codes​）</h2><p>($n,m$)-<strong>分块码</strong>：被编码的信息可以被分成多块 $m$ 位二进制数，每块会被编码成 $n$ 位二进制数。</p>
-<ul>
-<li>编码函数$E:\mathbb{Z}_2^m \rightarrow \mathbb{Z}_2^n$</li>
-<li><p>解码函数 $D: \mathbb{Z}_2^n \rightarrow \mathbb{Z}_2^m$</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>P类问题就是在多项式时间内可以被解决的（solvable）问题。</li>
+<li>NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。<ul>
+<li>verifiable：给定问题解的<strong>证书（certificate）</strong>，然后我们可以在多项式时间验证这个 certificate 是对的。</li>
+</ul>
 </li>
-<li><p>编码字(codeword)：$E$ 的像中的一个元素</p>
+<li>如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。</li>
+</ul>
+<h2 id="规约-Reduction"><a href="#规约-Reduction" class="headerlink" title="规约 Reduction"></a>规约 Reduction</h2><p>有一个判定问题 A，一个判定问题 B，我们知道 $B$ 可以在多项式时间下解决，一个多项式时间规约算法（reduction algorithm）是将 A 的输入实例 $\alpha$ 转化成 B 的输入实例 $\beta$ 的过程，且：</p>
+<ul>
+<li>转换操作需要多项式时间。</li>
+<li>两个实例的解是相同的。</li>
+</ul>
+<p><img data-src="Screenshot from 2021-06-17 20-36-37.png" alt></p>
+<p><em>reduce方法的更深用意在于证明某个问题有多难。</em></p>
+<p>证明B有多难：假设A不是P问题，B不可能是P问题；反证法：如果B是P问题，那么A是P问题</p>
+<hr>
+<h1 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h1><p><strong>引理 34.1 </strong> 设 $Q$ 是定义在一个实例集 $I$ 上的抽象判定问题，$e_1$ 和 $e_2$ 是 $I$ 上多项式相关的编码，则 $e_1(Q) \in P \Leftrightarrow e_2(Q) \in P$。 </p>
+<p><em>今后不再讨论代价极高的编码，统一以二进制编码为基准。理论上，问题的难度是固有的。但是算法的复杂度，有时候却依赖于问题的编码。</em></p>
+<h2 id="接受-判定"><a href="#接受-判定" class="headerlink" title="接受/判定"></a>接受/判定</h2><ul>
+<li>对任意输入 $x$，算法输出 $A(x) = 1$，就叫算法 $A$ <strong>接受（accept）</strong>$x \in \{0,1\}^{\star}$。被算法 $A$ 接受的语言就是集合 $L = \{x\in \{0,1\}^{\star} : A(x) = 1\}$。</li>
+<li>对任意的输入 $x$，算法输出 $A(x) = 0$，就叫算法 $A$ <strong>拒绝（reject）</strong>$x \in \{0, 1\}^{\star}$。</li>
+<li>算法 $A$ <strong>判定（decide）</strong>一个语言 $L$ 指对任意输入 $x$，在 $L$ 中的接受，不在 $L$ 中的拒绝。</li>
+<li>区别在于 $A$ 接受 $L$ 只能确保在 $L$ 中的 $x$ 接受，不在 $L$ 中的也有可能接受，或没有结果（不终止）。</li>
+</ul>
+<p>复杂类 $P$ 的定义：</p>
+<script type="math/tex; mode=display">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间判定 }L\}</script><p><strong>定理 34.2 </strong> <script type="math/tex">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间接受 }L\}</script></p>
+<p><em>这个定理说明接受一个语言的多项式算法，一定可以被改造成判定一个语言的多项式算法。</em></p>
+<p>（A 最多 $cn^k$ 步接受输入，构造 A’ 跑 $cn^k$ 步，接受返回 1，否则返回 0，判定了 $L$。）</p>
+<h1 id="多项式时间的验证-Verification"><a href="#多项式时间的验证-Verification" class="headerlink" title="多项式时间的验证 Verification"></a>多项式时间的验证 Verification</h1><p>一份<strong>验证算法（verifier）</strong> 是一个两个变量的算法 A，一个输入为串 $x$，另一个是叫<strong>证书（certificate）</strong>的二进制串 $y$。如果存在一个证书 $y$ 使得 $A(x, y) = 1$，则称 $A$ <strong>验证（verify）</strong>了输入 $x$。</p>
+<p>一个由算法 A 验证的语言是 <script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \exists y \in \{0,1\}^{\star} , A(x, y) = 1\}</script>。</p>
+<p>复杂类 NP 定义：一个语言 $L$ 属于 NP 当且仅当存在一个两输入多项式时间算法 $A$ 和常数 $c$，使得</p>
+<p><script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \text{存在一个证书 }y, |y| = O(|x|^c), A(x,y) = 1 \}</script>。</p>
+<p><em>当证书是超多项式的时候，验算证书的代价不再是保证为多项式了。</em></p>
+<p>P问题是可以在多项式时间内被判定的问题。</p>
+<p>NP问题是所有可以在多项式时间内被验证的问题。</p>
+<p>co-NP是所有它的补是NP问题的问题。</p>
+<p><strong>大多数人相信 $P \neq NP$。</strong></p>
+<hr>
+<h1 id="NP完全性与可规约性"><a href="#NP完全性与可规约性" class="headerlink" title="NP完全性与可规约性"></a>NP完全性与可规约性</h1><p>引入NPC：只要有一个NPC可以多项式求解，那么所有的NP问题都可多项式求解。</p>
+<h2 id="可规约性-Reducibility"><a href="#可规约性-Reducibility" class="headerlink" title="可规约性 Reducibility"></a>可规约性 Reducibility</h2><ul>
+<li>如果存在一个多项式时间可计算函数 $f : \{0, 1\}^{\star} \to \{0, 1\}^{\star}$，满足 $\forall x \in \{0 , 1\}^{\star}, x \in L_1 \leftrightarrow f(x) \in L_2$，则称语言 $L_1$ 可以在多项式时间内规约到语言 $L_2$，记作 $L_1 \leq_p L_2$。<ul>
+<li>$f$ 叫规约函数</li>
+<li>算 $f$ 的算法叫规约算法</li>
+</ul>
 </li>
 </ul>
-<p><strong>汉明距离</strong>（Hamming distance）：$d(x,y)$，$x$ 和 $y$ 不相同的位数。</p>
-<p><strong>最小距离</strong>：$d_{min}$，所有不同有效编码字 $x,y$ 的距离最小的。</p>
-<p><strong>权重</strong>：$w(x)$，$x$ 中 $1$ 的位数。</p>
-<p>一些性质：</p>
+<p><strong>引理 34.3 </strong> 如果 $L_1, L_2 \subseteq \{0 ,1\}^{\star}$ 是满足 $L_1 \leq_p L_2$ 的语言，则 $L_2 \in P \Rightarrow L_1 \in P$。</p>
+<p><em>隐藏着：L1的复杂度不会“f多项式以上”超过L2的复杂度。</em></p>
+<p><em>更深层次的隐藏着：如果L1很难，L2不能很简单：最多相差多项式因子。</em></p>
+<p><em>揭示了认知一个问题的难度的方法学：如果一个老问题能够归约到待认知的新问题，这个新问题的难度最多简单到多项式因子</em></p>
+<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>语言 $L$ 是 NP完全的，如果：</p>
+<ol>
+<li>$L \in NP$</li>
+<li>$\forall L’ \in NP, L’ \leq_p L$</li>
+</ol>
 <ul>
-<li>$w(x) = d(x, 0)$</li>
-<li>$d(x,y) \geq 0$</li>
-<li>$d(x, y ) = 0 \Leftrightarrow x = y$</li>
-<li>$d(x, y) = d(y,x)$</li>
-<li>$d(x,y) \leq d(x,z) + d(z,y)$</li>
+<li>如果 $L$ 只满足性质2，但不一定满足性质1，叫 <strong>NP难（NP-hard）</strong>的。</li>
 </ul>
-<p><strong>定理 8.13.</strong> $C$ 是 $d_{min} = 2n+1$ 的编码，则 $C$ 可以纠 $n$ 位错，可以检测 $2n$ 位错。</p>
-<p><em>所以码字空间分布越均匀，最小码字距离越大，查纠错能力越强。</em></p>
-<hr>
-<h1 id="线性码（Linear-Codes）"><a href="#线性码（Linear-Codes）" class="headerlink" title="线性码（Linear Codes）"></a>线性码（Linear Codes）</h1><p><strong>群码</strong>（group code）：$\mathbb{Z}_2^n$ 的子群的编码。</p>
-<p><strong>引理 8.17.</strong> $x,y$ 为 $n$ 位码字，则 $w(x  +y) = d(x,y)$。</p>
-<p><strong>定理 8.18.</strong> 群码 $C$ 的 $d_{min}$ 是所有非零码字的最小的权重。</p>
-<p><em>码字的运算，还是码字，群封闭性。</em></p>
-<h2 id="线性码"><a href="#线性码" class="headerlink" title="线性码"></a>线性码</h2><p><strong>内积</strong>：</p>
-<p> $\begin{aligned} \textbf{x}\cdot \textbf{y}  &amp;= \textbf{x}^t \textbf{y} \\ &amp;= \begin{pmatrix} x_1 &amp; x_2 &amp;\cdots &amp;x_n \end{pmatrix} \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n  \end{pmatrix} \\ &amp;= x_1y_1 + x_2y_2 + \cdots + x_ny_n \end{aligned}$</p>
-<p>记 $\mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 为所有 $m$ 行 $n$ 列且元素属于 $\mathbb{Z}_2$ 的矩阵的集合。</p>
-<p>$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$  的<strong>空域</strong>（null space我自己瞎起的名字）：$\{\textbf{x} \in \mathbb{Z}_2^n : H \textbf{x} = 0 \}$；记为 Null$(H)$。</p>
-<p><strong>定理 8.21.</strong> $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 一定是群码。</p>
-<p><strong>线性码</strong>：通过某个 $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 的 $null ~space$ 生成的编码。</p>
-<p><em>对于 $n$ 为编码，我们需要找到一个好的矩阵 $H$，使得我们的编码空间（$H$ 的 null space）的 $d_{min}$ 尽可能大。</em></p>
-<hr>
-<h1 id="奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）"><a href="#奇偶校验和生成矩阵（Parity-Check-and-Generator-Matrices）" class="headerlink" title="奇偶校验和生成矩阵（Parity-Check and Generator Matrices）"></a>奇偶校验和生成矩阵（Parity-Check and Generator Matrices）</h1><p><strong>规范奇偶校验矩阵</strong>（canonical parity-check matrix）：$H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 且 $n &gt; m$，且最后 $m$ 列形成的 $m \times m$ 子矩阵是单位阵 $I_m$，即 $H = \left( A | I_m \right)$。</p>
-<p>每个规范奇偶校验阵 $H$ 都有一个 $n \times (n - m)$ 阶标准<strong>生成阵</strong>（standard generator matrix）: $G = \left( \dfrac{I_{n-m}}{A} \right)$。</p>
-<p><strong>定理 8.25.</strong> $H$ 是一个规范奇偶校验阵，则 Null$(H)$ 包含了满足 前 $n-m$ 位随便取，但后 $m$ 位由 $H\textbf{x} = \textbf{0}$ 决定的 所有向量 $\textbf{x} \in \mathbb{Z}_2^n$。后 $m$ 位每个作为某个前 $n-m$ 位的偶校验位。所以，$H$ 可以给出一个 $(n, n-m)$ -分块码。</p>
-<ul>
-<li>前 $n-m$ 位叫<strong>信息位</strong>（information bit），后 $m$ 位叫校验位</li>
-</ul>
-<p><strong>定理 8.26.</strong>  $G$ 是一个 $n \times k$ 阶标准生成阵，则 $C = \{ \textbf{y} : G\textbf{x} = \textbf{y}, x \in \mathbb{Z}_2^n \}$ 是一个 $(n,k)$-分块码。</p>
-<p><strong>引理 8.27.</strong> $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，则 $HG = 0$。</p>
-<p><strong>定理8.28.</strong>  $H = (A | I_m)$ 是一个 $m \times n$ 规范奇偶校验阵, $G = \left( \dfrac{I_{n - m}}{A} \right)$ 是对应的 $n \times (n - m)$ 阶标准生成阵，$C$ 是由 $G$ 生成的编码。则 $\textbf{y} \in C \Leftrightarrow H\textbf{y} = 0$，也就是说，$C$ 是有规范奇偶校验矩阵的线性码。</p>
-<p><em>偶校验矩阵的来处：在H的右侧 $m \star m$设置单位矩阵，就是要用相应位对A中相应行上的非0位进行偶校验.。</em></p>
-<p><em>生成矩阵的来处：当给定任意的A，可以使用相应的偶校验矩阵来通过解线性方程的方式得到群码，但是不如构造G矩阵，对待传输数据直接进行计算得到相应的群码和编码对应。效率更高。</em></p>
-<p><em>可证码字能够覆盖所有待编码位串。后m位可以完成对待编码位串中非0位的偶校验！</em></p>
-<p><em>如何完成偶校验，取决于A矩阵和待编码信息。</em></p>
-<p><strong>定理 8.31.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单检错码 当且仅当 $H$ 没有列是全零。（$e_i$ 不在空域中，$d_{min} &gt; 1$）</p>
-<p><strong>定理 8.34.</strong> $H$ 为一个 $m \times n$ 矩阵，$H$ 的空域是一个单纠错码 当且仅当 $H$ 没有列是全零并且没有两列是相同的。（$e_i + e_j$ 不在空域中，$d_{min} \geq 3$）</p>
-<p>所以一个 $m \times n$ 的规范奇偶校验阵，要检一位错、纠一位错，除了 $\textbf{0}, \textbf{e_i}$，剩余 $2^m - (1 + m)$ 个为信息列。</p>
-<hr>
-<h1 id="高效解码"><a href="#高效解码" class="headerlink" title="高效解码"></a>高效解码</h1><p><strong>x</strong>的<strong>像</strong>（syndrome）：$H\textbf{x}$</p>
-<p><strong>命题 8.36.</strong> 矩阵 $H$ 决定了一套线性码，$\textbf{x} = \textbf{c} + \textbf{e} $ 为接收到的$n$-位串，$\textbf{c}$ 为正确码字，$\textbf{e}$ 为错误，则 $H\textbf{x} = H\textbf{e}$。</p>
-<ul>
-<li>这个命题说明接受到的信息由错误决定而不是由正确码字决定。</li>
-</ul>
-<p><strong>定理 8.37.</strong> $H \in \mathbb{M}_{m\times n}(\mathbb{Z}_2)$ 并且假设 $H$ 的编码是一个单检错码，$\textbf{r}$ 是接收到的 $n$-位码，如果 $H\textbf{r} = \textbf{0}$，则没有错；否则，如果 $H\textbf{r} $ 等于 $H$ 的第 $i$ 列，则第 $i$ 位出错。</p>
-<h2 id="陪集解码（Coset-Decoding）"><a href="#陪集解码（Coset-Decoding）" class="headerlink" title="陪集解码（Coset Decoding）"></a>陪集解码（Coset Decoding）</h2><p>把所有陪集表示（$\textbf{e} +     C$）列表列出来，查表解码纠错。</p>
-<p>按最大似然，总是取权最小的出错 $\textbf{e}$ ，叫做 <strong>coset leader</strong>。</p>
+<p><strong>定理 34.4 </strong> 如果任何 NP完全问题是多项式时间可解的，则 $P = NP$。等价的，如果存在某一个NP问题不是多项式可解的，则所有NP完全问题都不是多项式时间可解的。</p>
+<p><strong>定理 34.7 </strong> 电路可满足性问题是NP完全的。</p>
 
     </div>
 
@@ -322,13 +317,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/18/cryptography/" rel="prev" title="问题求解笔记-密码算法">
-      <i class="fa fa-chevron-left"></i> 问题求解笔记-密码算法
+    <a href="/2021/06/06/heuristics/" rel="prev" title="问题求解笔记-启发式算法">
+      <i class="fa fa-chevron-left"></i> 问题求解笔记-启发式算法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/28/formalization/" rel="next" title="问题求解笔记-问题的形式化描述">
-      问题求解笔记-问题的形式化描述 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -387,7 +379,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A3%80%E9%94%99%E5%92%8C%E7%BA%A0%E9%94%99%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">检错和纠错码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E7%BC%96%E7%A0%81%EF%BC%88maximum-likelihood-decoding%E2%80%8B%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">最大似然编码（maximum-likelihood decoding​）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%9D%97%E7%A0%81-%EF%BC%88Block-Codes%E2%80%8B%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">分块码 （Block Codes​）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A0%81%EF%BC%88Linear-Codes%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">线性码（Linear Codes）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">线性码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E5%92%8C%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5%EF%BC%88Parity-Check-and-Generator-Matrices%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">奇偶校验和生成矩阵（Parity-Check and Generator Matrices）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E8%A7%A3%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">高效解码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%AA%E9%9B%86%E8%A7%A3%E7%A0%81%EF%BC%88Coset-Decoding%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">陪集解码（Coset Decoding）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E7%BA%A6-Reduction"><span class="nav-number">1.1.</span> <span class="nav-text">规约 Reduction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%97%B6%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text">多项式时间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%97-%E5%88%A4%E5%AE%9A"><span class="nav-number">2.1.</span> <span class="nav-text">接受&#x2F;判定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%97%B6%E9%97%B4%E7%9A%84%E9%AA%8C%E8%AF%81-Verification"><span class="nav-number">3.</span> <span class="nav-text">多项式时间的验证 Verification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NP%E5%AE%8C%E5%85%A8%E6%80%A7%E4%B8%8E%E5%8F%AF%E8%A7%84%E7%BA%A6%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">NP完全性与可规约性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E8%A7%84%E7%BA%A6%E6%80%A7-Reducibility"><span class="nav-number">4.1.</span> <span class="nav-text">可规约性 Reducibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP%E5%AE%8C%E5%85%A8%E6%80%A7"><span class="nav-number">4.2.</span> <span class="nav-text">NP完全性</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

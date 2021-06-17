@@ -357,7 +357,7 @@
       </categories>
   </entry>
   <entry>
-    <title>cryptography</title>
+    <title>问题求解笔记-密码算法</title>
     <url>/2021/04/18/cryptography/</url>
     <content><![CDATA[<h1 id="公钥加密系统"><a href="#公钥加密系统" class="headerlink" title="公钥加密系统"></a>公钥加密系统</h1><p>一个公钥加密系统中，每个参与者都拥有一把<strong>公钥</strong>$P$和<strong>私钥</strong>$S$，密钥需要保密，公钥可以公之于众。</p>
 <p>$\mathcal{D}$表示允许信息的集合，要求公钥与密钥指定一种从$\mathcal{D}$到自身的一一对应的函数。<br>公钥函数$P()$和密钥函数$S()$都是$\mathcal{D}$的排列，互为反函数，即对任意的 $M \in \mathcal{D}$，有</p>
@@ -444,15 +444,25 @@ $$P(M) = M^{e} \text{  mod } n</script><p>解密 $C \in \mathbb{Z}_n$：</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="素性检测（primality-testing）"><a href="#素性检测（primality-testing）" class="headerlink" title="素性检测（primality testing）"></a>素性检测（primality testing）</h3><script type="math/tex; mode=display">(Prim, \Sigma_{bool}), Prim = \{ w\in \{0, 1\} ^{star} | Number(w) \text{ is a prime}\}.</script><h3 id="多项式相等问题（EQ-POL）"><a href="#多项式相等问题（EQ-POL）" class="headerlink" title="多项式相等问题（EQ-POL）"></a>多项式相等问题（EQ-POL）</h3><h3 id="一次分支相等问题-EQ-1BP"><a href="#一次分支相等问题-EQ-1BP" class="headerlink" title="一次分支相等问题 (EQ-1BP)"></a>一次分支相等问题 (EQ-1BP)</h3><h3 id="满足性问题-（SAT）"><a href="#满足性问题-（SAT）" class="headerlink" title="满足性问题 （SAT）"></a>满足性问题 （SAT）</h3><script type="math/tex; mode=display">\text{SAT} = \{ w \in \Sigma^{\star}_{logic} | w \text{ is a code of a satisfable formula in CNF}\}.</script><h3 id="分团问题（CLIQUE）"><a href="#分团问题（CLIQUE）" class="headerlink" title="分团问题（CLIQUE）"></a>分团问题（CLIQUE）</h3><p>图中是否有大小为 $k$ 的团（clique）。</p>
 <script type="math/tex; mode=display">CLIQUE = \{ x \# w \in \{ 0, 1, \#\}^{\star} | x\in \{0,1\}^{\star}, w \text{是一个有大小为 } Number(x) \text{ 的团的图}\}.</script><h3 id="覆盖问题（VCP）"><a href="#覆盖问题（VCP）" class="headerlink" title="覆盖问题（VCP）"></a>覆盖问题（VCP）</h3><p>图中是否有大小为 $k$ 的点覆盖。</p>
 <h3 id="哈密顿回路问题（HC）"><a href="#哈密顿回路问题（HC）" class="headerlink" title="哈密顿回路问题（HC）"></a>哈密顿回路问题（HC）</h3><p>图中是否有哈密顿回路。</p>
-<h2 id="优化问题（optimization-problem）"><a href="#优化问题（optimization-problem）" class="headerlink" title="优化问题（optimization problem）"></a>优化问题（optimization problem）</h2><h1 id="复杂度理论"><a href="#复杂度理论" class="headerlink" title="复杂度理论"></a>复杂度理论</h1><p>两个复杂度衡量：<strong>均匀消耗（uniform cost）</strong>，<strong>对数消耗（logarithmic cost）</strong></p>
+<h2 id="优化问题（optimization-problem）"><a href="#优化问题（optimization-problem）" class="headerlink" title="优化问题（optimization problem）"></a>优化问题（optimization problem）</h2><p>一个优化问题是一个七元组 $U = (\Sigma_I, \Sigma_O, L, L_I, \mathcal{M}, cost, goal)$，其中：</p>
+<ol>
+<li>$\Sigma_I$ 是一个字母表，叫 $U$ 的输入字母表。</li>
+<li>$\Sigma_O$ 是一个字母表，叫 $U$ 的输出字母表。</li>
+<li>$L \subseteq \Sigma_{I}^{\star}$ 是可满足的问题实例的语言。</li>
+<li>$L_I \subseteq L$ 是 $U$ 中的问题实例的语言。</li>
+<li>$\mathcal{M} $ 是一个 $L \to Pot(\Sigma_{O}^{\star})$ 的函数，对任意的 $x \in L, \mathcal{M}(x)$ 是 $x$ 的可行解的集合。</li>
+<li>$cost$ 是代价函数，对任意的数对 $(u,x), u \in \mathcal{M}(x), x \in L$，赋实数值 $cost(u,v)$。</li>
+<li>$goal \in \{maximum, minimum\}$。</li>
+</ol>
+<h1 id="复杂度理论"><a href="#复杂度理论" class="headerlink" title="复杂度理论"></a>复杂度理论</h1><p>两个复杂度衡量：<strong>均匀消耗（uniform cost）</strong>，<strong>对数消耗（logarithmic cost）</strong></p>
 <p>$Time_A(x), Space_A(x)$：算法 $A$ 对输入的 $x$ 的计算时间空间复杂度。</p>
 <p><strong>定理 2.3.3.3.</strong> 对于一个判定问题 $(L , \Sigma_{bool})$，每个算法 $A$ 都存在另一个算法 $B$ 使得 $Time_B(n) = \log_2{(Time_A(n))}$</p>
-<p><em>这个定理告诉我们对于 $L$ 不存在最优的算法，对 $L$ 的复杂度的定义也是没有意义的。所以人们通常不定义算法问题的复杂度儿研究问题复杂度的上下界（符号标记同TC）。</em></p>
+<p><em>这个定理告诉我们对于 $L$ 不存在最优的算法，对 $L$ 的复杂度的定义也是没有意义的。所以人们通常不定义算法问题的复杂度而研究问题复杂度的上下界（符号标记同TC）。</em></p>
 <p><strong>图灵机</strong>是算法的直观概念的形式化，这意味着问题 $U$ 可以被算法解决当且仅当存在一个图灵机可以解决它。</p>
 <p>对于每个递增函数 $f : \mathbb{N} \to \mathbb{R}^+$：</p>
 <p>（1）存在一个判定问题，每个图灵机可以在 $\Omega(f(n))$ 的复杂度内解决它。</p>
 <p>（2）也存在一个图灵机可以在 $O(f(n)\cdot \log{(f(n))})$  的复杂度内解决它。</p>
-<p>这意味着判定问题有无穷级的难度。复杂度理论的主要内容就是<em>寻找一类可实际解决的问题的形式化说明</em> 和 <em>开发能够根据它们在这类问题中的关系进行分裂的方法</em>。</p>
+<p>这意味着判定问题有无穷级的难度。复杂度理论的主要内容就是<em>寻找一类可实际解决的问题的形式化说明</em> 和 <em>开发能够根据它们在这类问题中的关系进行分类的方法</em>。</p>
 <h2 id="形式化描述"><a href="#形式化描述" class="headerlink" title="形式化描述"></a>形式化描述</h2><p>对于一个图灵机（算法）$M$，$L(M)$ 是 $M$ 决定（decide）的语言。</p>
 <p>能够在多项式时间内完成的复杂度问题类： </p>
 <script type="math/tex; mode=display">P = \{L = L(M) |\exists c \in \mathbb{Z} , Time_M(n) \in O(n^c) \}</script><p>一个语言（判定问题）是<strong>可处理的（tractable）</strong> 当 $L \in P$，否则不可处理（intractable）。</p>
@@ -1897,5 +1907,74 @@ Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p
       <tags>
         <tag>language</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>问题求解笔记-NP完全性</title>
+    <url>/2021/06/17/np-completeness/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li>P类问题就是在多项式时间内可以被解决的（solvable）问题。</li>
+<li>NP类问题就是可以在多项式时间内可以被证明的（verifiable）问题。<ul>
+<li>verifiable：给定问题解的<strong>证书（certificate）</strong>，然后我们可以在多项式时间验证这个 certificate 是对的。</li>
+</ul>
+</li>
+<li>如果一个NP问题和其他任何NP问题一样“不易解决”，则是NPC问题。</li>
+</ul>
+<h2 id="规约-Reduction"><a href="#规约-Reduction" class="headerlink" title="规约 Reduction"></a>规约 Reduction</h2><p>有一个判定问题 A，一个判定问题 B，我们知道 $B$ 可以在多项式时间下解决，一个多项式时间规约算法（reduction algorithm）是将 A 的输入实例 $\alpha$ 转化成 B 的输入实例 $\beta$ 的过程，且：</p>
+<ul>
+<li>转换操作需要多项式时间。</li>
+<li>两个实例的解是相同的。</li>
+</ul>
+<p><img data-src="Screenshot from 2021-06-17 20-36-37.png" alt></p>
+<p><em>reduce方法的更深用意在于证明某个问题有多难。</em></p>
+<p>证明B有多难：假设A不是P问题，B不可能是P问题；反证法：如果B是P问题，那么A是P问题</p>
+<hr>
+<h1 id="多项式时间"><a href="#多项式时间" class="headerlink" title="多项式时间"></a>多项式时间</h1><p><strong>引理 34.1 </strong> 设 $Q$ 是定义在一个实例集 $I$ 上的抽象判定问题，$e_1$ 和 $e_2$ 是 $I$ 上多项式相关的编码，则 $e_1(Q) \in P \Leftrightarrow e_2(Q) \in P$。 </p>
+<p><em>今后不再讨论代价极高的编码，统一以二进制编码为基准。理论上，问题的难度是固有的。但是算法的复杂度，有时候却依赖于问题的编码。</em></p>
+<h2 id="接受-判定"><a href="#接受-判定" class="headerlink" title="接受/判定"></a>接受/判定</h2><ul>
+<li>对任意输入 $x$，算法输出 $A(x) = 1$，就叫算法 $A$ <strong>接受（accept）</strong>$x \in \{0,1\}^{\star}$。被算法 $A$ 接受的语言就是集合 $L = \{x\in \{0,1\}^{\star} : A(x) = 1\}$。</li>
+<li>对任意的输入 $x$，算法输出 $A(x) = 0$，就叫算法 $A$ <strong>拒绝（reject）</strong>$x \in \{0, 1\}^{\star}$。</li>
+<li>算法 $A$ <strong>判定（decide）</strong>一个语言 $L$ 指对任意输入 $x$，在 $L$ 中的接受，不在 $L$ 中的拒绝。</li>
+<li>区别在于 $A$ 接受 $L$ 只能确保在 $L$ 中的 $x$ 接受，不在 $L$ 中的也有可能接受，或没有结果（不终止）。</li>
+</ul>
+<p>复杂类 $P$ 的定义：</p>
+<script type="math/tex; mode=display">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间判定 }L\}</script><p><strong>定理 34.2 </strong> <script type="math/tex">P = \{L \subseteq \{0,1\}^{\star} : \text{存在一个算法 A，可以在多项式时间接受 }L\}</script></p>
+<p><em>这个定理说明接受一个语言的多项式算法，一定可以被改造成判定一个语言的多项式算法。</em></p>
+<p>（A 最多 $cn^k$ 步接受输入，构造 A’ 跑 $cn^k$ 步，接受返回 1，否则返回 0，判定了 $L$。）</p>
+<h1 id="多项式时间的验证-Verification"><a href="#多项式时间的验证-Verification" class="headerlink" title="多项式时间的验证 Verification"></a>多项式时间的验证 Verification</h1><p>一份<strong>验证算法（verifier）</strong> 是一个两个变量的算法 A，一个输入为串 $x$，另一个是叫<strong>证书（certificate）</strong>的二进制串 $y$。如果存在一个证书 $y$ 使得 $A(x, y) = 1$，则称 $A$ <strong>验证（verify）</strong>了输入 $x$。</p>
+<p>一个由算法 A 验证的语言是 <script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \exists y \in \{0,1\}^{\star} , A(x, y) = 1\}</script>。</p>
+<p>复杂类 NP 定义：一个语言 $L$ 属于 NP 当且仅当存在一个两输入多项式时间算法 $A$ 和常数 $c$，使得</p>
+<p><script type="math/tex">L = \{x \in \{0, 1\}^{\star} : \text{存在一个证书 }y, |y| = O(|x|^c), A(x,y) = 1 \}</script>。</p>
+<p><em>当证书是超多项式的时候，验算证书的代价不再是保证为多项式了。</em></p>
+<p>P问题是可以在多项式时间内被判定的问题。</p>
+<p>NP问题是所有可以在多项式时间内被验证的问题。</p>
+<p>co-NP是所有它的补是NP问题的问题。</p>
+<p><strong>大多数人相信 $P \neq NP$。</strong></p>
+<hr>
+<h1 id="NP完全性与可规约性"><a href="#NP完全性与可规约性" class="headerlink" title="NP完全性与可规约性"></a>NP完全性与可规约性</h1><p>引入NPC：只要有一个NPC可以多项式求解，那么所有的NP问题都可多项式求解。</p>
+<h2 id="可规约性-Reducibility"><a href="#可规约性-Reducibility" class="headerlink" title="可规约性 Reducibility"></a>可规约性 Reducibility</h2><ul>
+<li>如果存在一个多项式时间可计算函数 $f : \{0, 1\}^{\star} \to \{0, 1\}^{\star}$，满足 $\forall x \in \{0 , 1\}^{\star}, x \in L_1 \leftrightarrow f(x) \in L_2$，则称语言 $L_1$ 可以在多项式时间内规约到语言 $L_2$，记作 $L_1 \leq_p L_2$。<ul>
+<li>$f$ 叫规约函数</li>
+<li>算 $f$ 的算法叫规约算法</li>
+</ul>
+</li>
+</ul>
+<p><strong>引理 34.3 </strong> 如果 $L_1, L_2 \subseteq \{0 ,1\}^{\star}$ 是满足 $L_1 \leq_p L_2$ 的语言，则 $L_2 \in P \Rightarrow L_1 \in P$。</p>
+<p><em>隐藏着：L1的复杂度不会“f多项式以上”超过L2的复杂度。</em></p>
+<p><em>更深层次的隐藏着：如果L1很难，L2不能很简单：最多相差多项式因子。</em></p>
+<p><em>揭示了认知一个问题的难度的方法学：如果一个老问题能够归约到待认知的新问题，这个新问题的难度最多简单到多项式因子</em></p>
+<h2 id="NP完全性"><a href="#NP完全性" class="headerlink" title="NP完全性"></a>NP完全性</h2><p>语言 $L$ 是 NP完全的，如果：</p>
+<ol>
+<li>$L \in NP$</li>
+<li>$\forall L’ \in NP, L’ \leq_p L$</li>
+</ol>
+<ul>
+<li>如果 $L$ 只满足性质2，但不一定满足性质1，叫 <strong>NP难（NP-hard）</strong>的。</li>
+</ul>
+<p><strong>定理 34.4 </strong> 如果任何 NP完全问题是多项式时间可解的，则 $P = NP$。等价的，如果存在某一个NP问题不是多项式可解的，则所有NP完全问题都不是多项式时间可解的。</p>
+<p><strong>定理 34.7 </strong> 电路可满足性问题是NP完全的。</p>
+]]></content>
+      <categories>
+        <category>problem-solving</category>
+      </categories>
   </entry>
 </search>
