@@ -1,7 +1,7 @@
 ---
 title: cryptography
 date: 2021-04-18 22:14:53
-categories: problem-soling
+categories: problem-solving
 mathjax: true
 tags:
 ---
