@@ -537,7 +537,7 @@ lazyload: true
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
-pangu: true
+pangu: false
 
 # Quicklink Support
 # Do not enable both `pjax` and `quicklink`.

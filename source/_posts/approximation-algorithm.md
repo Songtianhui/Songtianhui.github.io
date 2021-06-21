@@ -85,7 +85,7 @@ $Time_A(x, \varepsilon^{-1})$*中的-1次幂，是一种观察上的变化，当
 
 - $A = \{ A_\varepsilon\}_{\varepsilon > 0}$是 $U$的一个 PTAS，如果对任意的 $r > 0$，任意 $\varepsilon > 0$，$A_\varepsilon $是 $U_r$的一个 $\delta_{r, \varepsilon}$-近似算法，则称PTAS $A$关于 $h$是**稳定的**。
 - PTAS $A$是**超稳定（superstable）**的，如果 $\delta_{r, \varepsilon} \leq f(\varepsilon) \cdot g(r)$，其中
-  - $f,g$ 的定义域分别是 $\mathbb{R^{\geq 0}}$和 $\mathbb{R}^{+}$，
+  - $f,g$的定义域分别是 $\mathbb{R^{\geq 0}}$和 $\mathbb{R}^{+}$，
   - $\lim\limits_{\varepsilon \to 0}f(\varepsilon) = 0$。
 - *观察到，若 $A$是优化问题 $U$的超稳定PTSA，则它也是任意 $U_r$的PTSA。*
 
