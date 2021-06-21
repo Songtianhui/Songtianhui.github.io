@@ -217,7 +217,7 @@
 <ul>
 <li>$A = \{ A_\varepsilon\}_{\varepsilon &gt; 0}$是 $U$的一个 PTAS，如果对任意的 $r &gt; 0$，任意 $\varepsilon &gt; 0$，$A_\varepsilon $是 $U_r$的一个 $\delta_{r, \varepsilon}$-近似算法，则称PTAS $A$关于 $h$是<strong>稳定的</strong>。</li>
 <li>PTAS $A$是<strong>超稳定（superstable）</strong>的，如果 $\delta_{r, \varepsilon} \leq f(\varepsilon) \cdot g(r)$，其中<ul>
-<li>$f,g$ 的定义域分别是 $\mathbb{R^{\geq 0}}$和 $\mathbb{R}^{+}$，</li>
+<li>$f,g$的定义域分别是 $\mathbb{R^{\geq 0}}$和 $\mathbb{R}^{+}$，</li>
 <li>$\lim\limits_{\varepsilon \to 0}f(\varepsilon) = 0$。</li>
 </ul>
 </li>
