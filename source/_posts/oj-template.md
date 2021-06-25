@@ -7,6 +7,8 @@ categories: problem-solving
 
 快期末oj了，也是最后一学期的oj，整理一下常用的算法模板，既是复习（考试偷看），也是保留一份以后时常用得上的自己习惯的板子。
 
+<!--more -->
+
 
 
 # 并查集
@@ -83,7 +85,7 @@ for (int i = 1; i <= m; ++i) {
 ## 单源最短路
 
 ``` c++ dijkstra
-edges<pair<int, int>>
+vector<pair<int, int>> edges;
 bool vis[MAXN] = {};
 int cost[MAXN] = {};
 
@@ -248,7 +250,7 @@ int hungarian() {
 
 # 网络流
 
-网络流Dinic我其实也没搞懂qvp，照搬oiwiki了:relaxed:。
+网络流Dinic我其实也没搞懂qvp，照搬oiwiki了:cry:。
 
 ``` c++ Dinic
 struct Edge {
@@ -324,6 +326,200 @@ struct Dinic {
     return flow;
   }
 };
+```
+
+
+
+# 数论
+
+``` c++ gcd
+ll exgcd(ll a, ll b, ll &x, ll &y) {
+  if (b == 0) {
+    x = 1LL, y = 0LL;
+    return a;
+  }
+  ll r = exgcd(b, a % b, y, x);
+  y -= (a / b) * x;
+  return r;
+}
+```
+
+
+
+``` c++ 快速幂
+ll qmul(ll a, ll b, ll p) {
+  ll ret = 0;
+  while (b) {
+    if (b & 1) {
+      ret = (ret + a) % p;
+    }
+    a = (a + a) % p;
+    b >>= 1;
+  }
+  return ret;
+}
+
+ll qpow(ll x, ll n, ll p) {
+  ll ret = 1;
+  while (n) {
+    if (n & 1) {
+      ret = ret * x % p;
+    }
+    x = x * x % p;
+    n >>= 1;
+  }
+  return ret;
+}
+```
+
+
+
+``` c++ 乘法逆元
+ll inverse(ll x, ll p) {	// p为质数
+  return qpow(x, p - 2, p);
+}
+
+ll inverse(ll a, ll b) {	// b不为质数
+    ll x, y;
+    exgcd(a, b, x, y);
+    return x;
+}
+```
+
+
+
+``` c++ 组合数
+ll choose(ll n, ll m, ll p) {
+  if (m == 0 || m == n) {
+    return 1;
+  }
+  ll x = 1, y = 1;
+  for (ll i = n; i > n - m; --i) {
+    x = x * i % p;
+  }
+  for (ll i = 1; i <= m; ++i) {
+    y = y * i % p;
+  }
+  return x * inverse(y, p) % p;
+}
+// 也可以递推动态规划
+```
+
+
+
+``` c++ 卢卡斯定理
+ll lucas(ll n, ll m, ll p) {
+  if (m == 0) {
+    return 1;
+  } else {
+    return choose(n % p, m % p, p) * lucas(n / p, m / p, p) % p;
+  }
+}
+```
+
+
+
+``` c++ 中国剩余定理
+ll crt(const vector<ll> &a, const vector<ll> &m, ll p) {
+  ll ret = 0;
+  for (int i = 0, n = a.size(); i < n; ++i) {
+    ll w = p / m[i], x, y;
+    exgcd(w, m[i], x, y);
+    x = (x % m[i] + m[i]) % m[i];
+    ret = (ret + qmul(qmul(a[i], w, p), x, p)) % p;
+  }
+  return (ret + p) % p;
+}
+```
+
+
+
+# 字符串匹配
+
+``` c++ kmp
+char s1[]; int len1;	// 主串
+char s2[]; int len2;	// 模式串
+int nxt[] = {};
+
+void build_nxt() {
+    int i = 1, now = 0;
+    while (i < len2) {
+        if (s2[i] == s2[now]) {
+            now++;
+            nxt[i] = now;
+            i++;
+        } else if (now != 0) {
+            now = nxt[now - 1];
+        } else {
+            i++;
+            nxt[i] = now;
+        }
+    }
+}
+
+void kmp() {
+    int tar = 0, pos = 0;
+    while (tar < len1) {
+        if (s1[tar] == s2[pos]) {
+            tar++;
+            pos++;
+        } else if (pos != 0) {
+            pos = nxt[pos - 1];
+        } else {
+            tar++;
+        }
+        if (pos == len2) {
+            // find an answer = tar - pos + 1
+            pos = nxt[pos - 1];
+        }
+    }
+}
+```
+
+
+
+# 模拟退火
+
+考试整不出来只能玄学调参了:joy:。。。
+
+``` c++ simulateAnneal
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+double Rand() { return (double)rand() / RAND_MAX; }
+
+double dis, ansx;
+double cal(double x) {
+    double res = 0;
+    ...
+    if (res < dis) dis = res, ansx = x;
+    return res;
+}
+
+void simulateAnneal() {
+    double T = T_init;
+    double cur_x = ansx;
+    while (T > T_min) {
+        double new_x = get_next_state(cur_x, t);
+        double delta = cal(new_x) - cal(cur_x);
+        if (exp(-delta / T) > Rand()) cur_x = new_x;	// 具体看求min还是max
+        //max: if (delta > 0 || exp(delta / T) > Rand())
+        T *= rate;
+    }
+    for (int i = 0; i < 10000; ++i) {	// 小温度跑一跑找到局部最优
+        double new_x = get_next_state(cur_x, T);
+        cal(new_x);
+    }
+}
+
+/*
+int main() {
+    srand(time(0));
+    init(ansx); dis = cal(ansx);
+    simulateAnneal();
+}
+*/
 ```
 
 
