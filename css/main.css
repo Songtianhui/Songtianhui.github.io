@@ -416,7 +416,7 @@ pre {
 }
 pre,
 code {
-  font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
+  font-family: Cascadia Code PL, consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
 }
 code {
   background: #eee;
@@ -489,7 +489,7 @@ pre {
 pre code {
   background: none;
   color: #4d4d4c;
-  font-size: 0.875em;
+  font-size: 1em;
   padding: 0;
   text-shadow: none;
 }
@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #de1ac8;
+  background: #ff87b9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
