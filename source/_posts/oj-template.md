@@ -11,6 +11,42 @@ categories: problem-solving
 
 
 
+# 二分查找
+
+``` c++
+int ans = 0, l, r;
+    // some input ...
+    while (l <= r) {
+        int m = (l + r) / 2;
+        if (check(m)) {
+            ans = m;
+            l = m + 1;
+        } else {
+            r = m - 1;
+        }
+    }
+```
+
+
+
+# 数位dp
+
+``` c++
+ll solve(int pos, bool flag, .../*cur_state*/) {	// flag 标识会不会超过最大数
+    if (cond) return ;
+    if (flag == false && dp[pos][...] != -1) return dp[pos][...];
+    ll bound = (flag == true ? (ll)(s[pos - 1] - '0') : (ll)9);
+    for (int digit = 0; digit <= bound; ++i) {
+        // calculate new state
+        bool new_flag = false;
+        if (flag == 1 && digit == bound) new_flag = true;
+        solve(pos - 1, new_flag, .../*new_state*/);
+    }
+}
+```
+
+
+
 # 并查集
 
 ``` c++
@@ -431,6 +467,56 @@ ll crt(const vector<ll> &a, const vector<ll> &m, ll p) {
   return (ret + p) % p;
 }
 ```
+
+
+
+``` c++ 欧拉函数打表
+int ans[MAXN] = {1};
+bool fact[MAXN] = {};
+
+for(int i = 1; i < MAXN; ++i)
+	ans[i]=i;
+for(int i = 2; i < MAXN; ++i) {
+    if(fact[i]) continue;
+    for(int j = i; j < MAXN; j += i){
+        fact[j] = 1;
+        ans[j] /= i;
+        ans[j] *= i-1;
+    }
+}
+```
+
+
+
+``` c++ 素数判定
+bool check(ll a,ll n,ll x,ll t){   //以a为基，n-1=x*2^t，检验n是不是合数
+    ll ret=pow_mod(a,x,n),last=ret;
+    for (int i=1;i<=t;i++){
+        ret=muti_mod(ret,ret,n);
+        if (ret==1 && last!=1 && last!=n-1) return 1;
+        last=ret;
+    }
+    if (ret!=1) return 1;
+    return 0;
+}
+
+bool Miller_Rabin(ll n) {
+    ll x=n-1,t=0;
+    while ((x&1)==0) x>>=1,t++;
+    bool flag=1;
+    if (t>=1 && (x&1)==1){
+        for (int k=0;k<S;k++){
+            ll a=rand()%(n-1)+1;
+            if (check(a,n,x,t)) {flag=1;break;}
+            flag=0;
+        }
+    }
+    if (!flag || n==2) return 0;
+    return 1;
+}
+```
+
+
 
 
 
