@@ -271,7 +271,7 @@ kbd {
   border: 1px solid #ccc;
   border-radius: 0.2em;
   box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.1);
-  color: #555;
+  color: #a37;
   font-family: inherit;
   padding: 0.1em 0.3em;
   white-space: nowrap;
@@ -421,7 +421,7 @@ code {
 code {
   background: #eee;
   border-radius: 3px;
-  color: #555;
+  color: #a37;
   padding: 2px 4px;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -489,7 +489,7 @@ pre {
 pre code {
   background: none;
   color: #4d4d4c;
-  font-size: 1em;
+  font-size: 0.875em;
   padding: 0;
   text-shadow: none;
 }
@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #3d91ff;
+  background: #ffcdff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
