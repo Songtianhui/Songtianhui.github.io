@@ -594,7 +594,7 @@ void simulateAnneal() {
         T *= rate;
     }
     for (int i = 0; i < 10000; ++i) {	// 小温度跑一跑找到局部最优
-        double new_x = get_next_state(cur_x, T);
+        double new_x = get_next_state(ans_x, T);
         cal(new_x);
     }
 }
