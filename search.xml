@@ -1633,6 +1633,38 @@ Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p
 <li>通常选择较大的神经网络并采用正则化处理会比采用较小的神经网络效果要好。</li>
 </ul>
 <p>对于神经网络中的隐藏层的层数的选择，通常从一层开始逐渐增加层数，为了更好地作选择，可以把数据分为训练集、交叉验证集和测试集，针对不同隐藏层层数的神经网络训练神经网络，<br>然后选择交叉验证集代价最小的神经网络。</p>
+<hr>
+<h1 id="Lecture-11"><a href="#Lecture-11" class="headerlink" title="Lecture 11"></a>Lecture 11</h1><p>本章主要是讲述机器学习系统的设计技巧，对于误差的分析。</p>
+<h2 id="误差分析-Error-Analysis"><a href="#误差分析-Error-Analysis" class="headerlink" title="误差分析 Error Analysis"></a>误差分析 Error Analysis</h2><blockquote>
+<p>构造机器学习应用程序，最好的实践方法不是建立一个非常复杂的系统，拥有多么复杂的变量；而是构建一个简单的算法，这样你可以很快地实现它。</p>
+</blockquote>
+<p>构建一个学习算法的推荐方法为：</p>
+<ol>
+<li>从一个简单的能快速实现的算法开始，实现该算法并用交叉验证集数据测试这个算法。</li>
+<li>绘制学习曲线，决定是增加更多数据，或者添加更多特征，还是其他选择。（参考 Lecture 10）</li>
+<li>进行误差分析：人工检查交叉验证集中我们算法中产生预测误差的样本，看看这些样本是否有某种系统化的趋势。</li>
+</ol>
+<p>误差分析并不总能帮助我们判断应该采取怎样的行动。有时我们需要尝试不同的模型，然后进行比较，在模型比较时，用数值来判断哪一个模型更好更有效，通常我们是看交叉验证集的误差。</p>
+<h2 id="类偏斜的误差度量-Error-Metrics-for-Skewed-Classes"><a href="#类偏斜的误差度量-Error-Metrics-for-Skewed-Classes" class="headerlink" title="类偏斜的误差度量 Error Metrics for Skewed Classes"></a>类偏斜的误差度量 Error Metrics for Skewed Classes</h2><p>误差分析就是用某个实数来评估你的学习算法，所以我们要选择合适的误差度量值，关注类偏斜（Skewed Classes）的问题。</p>
+<p>类偏斜情况表现为我们的训练集中有非常多的同一种类的样本，只有很少或没有其他类的样本。</p>
+<p>通过<strong>查准率</strong>（<strong>Precision</strong>）和<strong>查全率</strong>（<strong>Recall</strong>） 我们将算法预测的结果分成四种情况：</p>
+<ol>
+<li><p><strong>正确肯定</strong>（<strong>True Positive,TP</strong>）：预测为真，实际为真</p>
+</li>
+<li><p><strong>正确否定</strong>（<strong>True Negative,TN</strong>）：预测为假，实际为假</p>
+</li>
+<li><p><strong>错误肯定</strong>（<strong>False Positive,FP</strong>）：预测为真，实际为假</p>
+</li>
+<li><p><strong>错误否定</strong>（<strong>False Negative,FN</strong>）：预测为假，实际为真</p>
+</li>
+</ol>
+<p>查准率 $P = \dfrac{TP}{TP + FP}$，就是所有预测为真的中预测对了的。</p>
+<p>查全率 $R = \dfrac{TP}{TP + FN}$，就是所有真的是真的中猜对了多少。</p>
+<h2 id="查准率和查全率之间的权衡-Trading-Off-Precision-and-Recall"><a href="#查准率和查全率之间的权衡-Trading-Off-Precision-and-Recall" class="headerlink" title="查准率和查全率之间的权衡 Trading Off Precision and Recall"></a>查准率和查全率之间的权衡 Trading Off Precision and Recall</h2><p>我们一般采用<strong>F1值</strong> $F_1 = 2\dfrac{PR}{P + R}$</p>
+<h2 id="机器学习的数据-Data-For-Machine-Learning"><a href="#机器学习的数据-Data-For-Machine-Learning" class="headerlink" title="机器学习的数据 Data For Machine Learning"></a>机器学习的数据 Data For Machine Learning</h2><blockquote>
+<p>特征值有足够的信息量，且我们有一类很好的函数，这是为什么能保证低误差的关键所在。它有大量的训练数据集，这能保证得到更多的方差值，因此这给我们提出了一些可能的条件，如果你有大量的数据，而且你训练了一种带有很多参数的学习算法，那么这将会是一个很好的方式，来提供一个高性能的学习算法。</p>
+</blockquote>
+<p><em>按我的理解就是，我们有一个参数很多的模型、一个非常好的学习算法，使得这个模型可以拟合得非常好（低偏差）。然后我们有一个很大很大的数据集，这使得模型不太可能过拟合（高方差），所以测试集误差和训练集误差会差不多，就会很小。</em></p>
 ]]></content>
       <categories>
         <category>ML</category>

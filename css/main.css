@@ -271,7 +271,7 @@ kbd {
   border: 1px solid #ccc;
   border-radius: 0.2em;
   box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.1);
-  color: #a37;
+  color: #fc3395;
   font-family: inherit;
   padding: 0.1em 0.3em;
   white-space: nowrap;
@@ -414,14 +414,17 @@ pre {
   line-height: 1.6;
   margin: 0 auto 20px;
 }
-pre,
 code {
-  font-family: Cascadia Code PL, consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
+  font-size: 0.875em;
+  font-family: consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
+}
+pre {
+  font-family: "Cascadia Code PL", consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
 }
 code {
   background: #eee;
   border-radius: 3px;
-  color: #a37;
+  color: #fc3395;
   padding: 2px 4px;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1200,7 +1203,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffcdff;
+  background: #ff5dff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
