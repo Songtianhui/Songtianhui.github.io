@@ -883,6 +883,20 @@ E[Z_{t+1}] \geq Fit\text{-}ratio(s, P_t) \cdot \dfrac{n-  length(s)}{n} \cdot (1
       </categories>
   </entry>
   <entry>
+    <title>leetcode 刷题笔记</title>
+    <url>/2021/07/05/leetcode/</url>
+    <content><![CDATA[<p>问求上完了，依然不能放松对数据结构和算法的训练，要坚持不懈的刷题。着重对一些经典题型和方法进行总结。</p>
+<a id="more"></a>
+<h1 id="剑指offer系列"><a href="#剑指offer系列" class="headerlink" title="剑指offer系列"></a>剑指offer系列</h1><h2 id="04-二维数组中查找"><a href="#04-二维数组中查找" class="headerlink" title="04. 二维数组中查找"></a>04. 二维数组中查找</h2><blockquote>
+<p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+</blockquote>
+<p>原来是想的二分查找但是思路很明显是错的。只要从一个角落开始，每个元素比较，如果不一样就超朝另外两个方向移动。</p>
+<p>其实也是一个压缩解空间的思想，比如我从右上角开始，当前元素比target大，说明在该元素下面所有的元素都不符合，只能向左移动一位。</p>
+<p>注意边界条件<code>matrix = []</code>。复杂度 $O(m + n)$。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = matrix.size();</span><br><span class="line">        <span class="keyword">if</span> (len1 == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> len2 = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">0</span>, v = len2 - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (h &lt; len1 &amp;&amp; v &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = matrix[h][v];</span><br><span class="line">            <span class="keyword">if</span> (p == target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (p &gt; target) &#123;</span><br><span class="line">                v--;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (p &lt; target) &#123;</span><br><span class="line">                h++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>问题求解笔记-NP完全性</title>
     <url>/2021/05/10/np-completeness/</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
@@ -1426,6 +1440,7 @@ Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将$h_{\theta}(x) = \dfrac{1}{1 + e^{-\theta^{T}X}}$带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（<strong>non-convexfunction</strong>）。<br>这意味着我们的代价函数有许多<strong>局部最小值</strong>，这将影响梯度下降算法寻找全局最小值。<br>我们重新定义逻辑回归的代价函数为: $J(\theta) = \dfrac{1}{m}\sum\limits_{i=1}^{n} Cost(h_{\theta}(x^{(i)}), y^{(i)})$, 其中</p>
 <script type="math/tex; mode=display">Cost(h_{\theta}(x^{(i)}), y^{(i)})=\left\{
 \begin{aligned}
+
 - \log{(h_{\theta}(x))}, &y = 1\\
 - \log{(1- h_{\theta}(x))}, &y = 0
 \end{aligned}
@@ -1665,6 +1680,50 @@ Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p
 <p>特征值有足够的信息量，且我们有一类很好的函数，这是为什么能保证低误差的关键所在。它有大量的训练数据集，这能保证得到更多的方差值，因此这给我们提出了一些可能的条件，如果你有大量的数据，而且你训练了一种带有很多参数的学习算法，那么这将会是一个很好的方式，来提供一个高性能的学习算法。</p>
 </blockquote>
 <p><em>按我的理解就是，我们有一个参数很多的模型、一个非常好的学习算法，使得这个模型可以拟合得非常好（低偏差）。然后我们有一个很大很大的数据集，这使得模型不太可能过拟合（高方差），所以测试集误差和训练集误差会差不多，就会很小。</em></p>
+<hr>
+<h1 id="Lecture-12"><a href="#Lecture-12" class="headerlink" title="Lecture 12"></a>Lecture 12</h1><p>本章主要讲述支持向量机（Support Vector Machines），它在学习复杂的非线性方程时提供了一种更为清晰，更加强大的方式。</p>
+<h2 id="优化目标-Optimization-Objective"><a href="#优化目标-Optimization-Objective" class="headerlink" title="优化目标 Optimization Objective"></a>优化目标 Optimization Objective</h2><p>这章将逻辑回归的公式变了一下，一个是将 $\log$ 表示的代价函数换成两个线性的，一个是将正则化 $\lambda$ 参数移到了前面 $C$。</p>
+<script type="math/tex; mode=display">
+\min_{\theta} C\sum\limits_{i = 1}^{m} \left[y^{(i)}cost_{1}(\theta^T x^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tx^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n}\theta^2 \right]</script><p>他说这个就叫支持向量机（？？）</p>
+<h2 id="大边界-Large-Margin"><a href="#大边界-Large-Margin" class="headerlink" title="大边界 Large Margin"></a>大边界 Large Margin</h2><p>支持向量机是个大间距分类器，这就是它具有鲁棒性的原因。总之SVM努力将正样本和负样本用最大的间距分开。</p>
+<ul>
+<li><p>$C$ 较大时，相当于 $\lambda$ 较小，可能会导致过拟合，高方差，容易受异常点影响。（其实只有在 $C$ 大的时候会导致大间距）</p>
+</li>
+<li><p>$C$ 较小时，相当于$\lambda$较大，可能会导致低拟合，高偏差。</p>
+</li>
+</ul>
+<h2 id="背后的数学-Mathematics-Behind"><a href="#背后的数学-Mathematics-Behind" class="headerlink" title="背后的数学 Mathematics Behind"></a>背后的数学 Mathematics Behind</h2><p>从数学解释了为什么SVM会产生大边界分类。</p>
+<h2 id="核函数-Kernels"><a href="#核函数-Kernels" class="headerlink" title="核函数 Kernels"></a>核函数 Kernels</h2><p>我们的模型 $h_\theta(x) = \theta_0 + \theta_1 f_1 + \theta_2 f_2…$，我们可以考虑用更好的方法来构造特征 $f_1, f_2, f_3…$，而不仅仅是用 $x_1, x_2, x_3,…$ 的组合。</p>
+<p>给定一个训练样本$x$，我们利用$x$的各个特征与我们预先选定的<strong>地标</strong>(<strong>landmarks</strong>)$l^{(1)},l^{(2)},l^{(3)}$的近似程度来选取新的特征$f_1,f_2,f_3$。</p>
+<p>例如：$f_1 = similarity(x, l^{(1)}) = exp(\dfrac{| x - l^{(1)}|^2}{2\sigma^2})$。</p>
+<p>这个例子的函数是一个<strong>高斯核函数</strong>，很常用，度量样本 $x$ 和地标 $l$ 的近似度。</p>
+<p>关于如何选择地标。</p>
+<p>我们通常是根据训练集的数量选择地标的数量，即如果训练集中有$m$个样本，则我们选取$m$个地标，并且令:$l^{(1)}=x^{(1)},l^{(2)}=x^{(2)},…..,l^{(m)}=x^{(m)}$。这样做的好处在于：现在我们得到的新特征是建立在原有特征与训练集中所有其他特征之间距离的基础之上的。</p>
+<p>修改模型为：</p>
+<script type="math/tex; mode=display">
+\min_{\theta} C \left[\sum\limits_{i = 1}^{m} y^{(i)}cost_{1}(\theta^T f^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tf^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n=m}\theta^2 \right]</script><p>正则化项 $\sum \theta^2 = \theta^T \theta$ 调整为 $\theta^T M \theta$，其中 $M$ 是根据核函数选择的矩阵。</p>
+<p><em>理论上讲，我们也可以在逻辑回归中使用核函数，但是上面使用 $M$来简化计算的方法不适用与逻辑回归，因此计算将非常耗费时间。</em></p>
+<p>另外，支持向量机也可以不使用核函数，不使用核函数又称为<strong>线性核函数</strong>(<strong>linear kernel</strong>)，当我们不采用非常复杂的函数，或者我们的训练集特征非常多而样本非常少的时候，可以采用这种不带核函数的支持向量机。</p>
+<p>关于 $ \sigma$:</p>
+<ul>
+<li><p>$\sigma$ 较大时，可能会导致低方差，高偏差；</p>
+</li>
+<li><p>$\sigma$ 较小时，可能会导致低偏差，高方差。</p>
+</li>
+</ul>
+<h2 id="使用支持向量机-Using-An-SVM"><a href="#使用支持向量机-Using-An-SVM" class="headerlink" title="使用支持向量机 Using An SVM"></a>使用支持向量机 Using An SVM</h2><p>在高斯核函数之外我们还有其他一些选择，如多项式核函数（<strong>Polynomial Kerne</strong>l），字符串核函数（<strong>String kernel</strong>），卡方核函数（ <strong>chi-square kernel</strong>），直方图交集核函数（<strong>histogram intersection kernel</strong>）等。</p>
+<p>这些核函数的目标也都是根据训练集和地标之间的距离来构建新特征，这些核函数需要满足Mercer’s定理，才能被支持向量机的优化软件正确处理。</p>
+<p>对于多分类问题，大多数支持向量机软件包都有内置的多类分类功能，我们只要直接使用即可。</p>
+<p>我们要做的就是调参<span class="github-emoji" alias="joy" style fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">&#x1f602;</span>，对于 $C$ 和核函数的内参数。</p>
+<p>从逻辑回归模型，我们得到了支持向量机模型，在两者之间，我们应该如何选择呢？</p>
+<p><strong>下面是一些普遍使用的准则：</strong></p>
+<p>$n$为特征数，$m$为训练样本数。</p>
+<ol>
+<li>如果相较于$m$而言，$n$要大许多，即训练集数据量不够支持我们训练一个复杂的非线性模型，我们选用逻辑回归模型或者不带核函数的支持向量机。</li>
+<li>如果$n$较小，而且$m$大小中等，例如$n$在 1-1000 之间，而$m$在10-10000之间，使用高斯核函数的支持向量机。</li>
+<li>如果$n$较小，而$m$较大，例如$n$在1-1000之间，而$m$大于50000，则使用支持向量机会非常慢，解决方案是创造、增加更多的特征，然后使用逻辑回归或不带核函数的支持向量机。</li>
+</ol>
+<p>值得一提的是，神经网络在以上三种情况下都可能会有较好的表现，但是训练神经网络可能非常慢，选择支持向量机的原因主要在于它的代价函数是凸函数，不存在局部最小值。</p>
 ]]></content>
       <categories>
         <category>ML</category>
