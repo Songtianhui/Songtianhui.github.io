@@ -10,7 +10,9 @@ I am an undergraduate student of [KUANG YAMING HONORS SCHOOL](https://dii.nju.ed
 
 - GPA: 4.47/5.00 (ranking top 40% in college, top 25% in cs direction)
 - CET 4: 537; CET 6: ?; TOFEL: ?
+- Here is my [CV](/home/sth/workspace/blog/songtianhui.github.io/source/about/Songtianhui_CV.pdf)
 
 # Skills
 - Programming: C/C++, python
 - Production Tools: Git, $\LaTeX$
+
