@@ -109,6 +109,7 @@ $$\theta_{j}:=\theta_{j}-\alpha \dfrac{1}{m} \sum_{i=1}^{m}((h_{\theta}(x^{(i)})
 
 **}**
 我们开始随机选择一系列的参数值，计算所有的预测结果后，再给所有的参数一个新的值，如此循环直到收敛。
+
 ``` python
 def computeCost(X, y, theta):
     inner = np.power(((X * theta.T) - y), 2)
@@ -181,14 +182,13 @@ $h_{\theta}( x )$的作用是，对于给定的输入变量，根据选择的参
 对于线性回归模型，我们定义的代价函数是所有模型误差的平方和。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将$h_{\theta}(x) = \dfrac{1}{1 + e^{-\theta^{T}X}}$带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（**non-convexfunction**）。
 这意味着我们的代价函数有许多**局部最小值**，这将影响梯度下降算法寻找全局最小值。
 我们重新定义逻辑回归的代价函数为: $J(\theta) = \dfrac{1}{m}\sum\limits_{i=1}^{n} Cost(h_{\theta}(x^{(i)}), y^{(i)})$, 其中
-$$ Cost(h_{\theta}(x^{(i)}), y^{(i)})=\left\{
+$$cost(h_{\theta}(x^{(i)}), y^{(i)})=\left\{
 \begin{aligned}
-
-- \log{(h_{\theta}(x))}, &y = 1\\
-- \log{(1- h_{\theta}(x))}, &y = 0
+ \log{(h_{\theta}(x))}, &y = 1\\
+ \log{(1- h_{\theta}(x))}, &y = 0
 \end{aligned}
-\right.
-$$
+\right.$$
+
 再简化得:
 $$Cost(h_{\theta}(x^{(i)}), y^{(i)}) = -y \times \log{(h_{\theta}(x))} - (1 - y) \times \log{(1- h_{\theta}(x))}$$
 带入代价函数得:
@@ -642,7 +642,7 @@ $D_{ij}^{(l)} :=\dfrac{1}{m}\Delta_{ij}^{(l)}$                             ${if}
 
 这章将逻辑回归的公式变了一下，一个是将 $\log$ 表示的代价函数换成两个线性的，一个是将正则化 $\lambda$ 参数移到了前面 $C$。
 $$
-\min_{\theta} C\sum\limits_{i = 1}^{m} \left[y^{(i)}cost_{1}(\theta^T x^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tx^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n}\theta^2 \right]
+\min_{\theta} \sum\limits_{i = 1}^{m} \left[C y^{(i)}cost_{1}(\theta^T x^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tx^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n}\theta^2 \right]
 $$
 他说这个就叫支持向量机（？？）
 
@@ -676,7 +676,7 @@ $$
 
 修改模型为：
 $$
-\min_{\theta} C \left[\sum\limits_{i = 1}^{m} y^{(i)}cost_{1}(\theta^T f^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tf^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n=m}\theta^2 \right]
+\min_{\theta} \left[ C \sum\limits_{i = 1}^{m} y^{(i)}cost_{1}(\theta^T f^{(i)}) + (1 - y^{(i)})cost_{0}(\theta^Tf^{(i)}) + \dfrac{1}{2}\sum\limits_{i=1}^{n=m}\theta^2 \right]
 $$
 正则化项 $\sum \theta^2 = \theta^T \theta$ 调整为 $\theta^T M \theta$，其中 $M$ 是根据核函数选择的矩阵。
 
