@@ -794,3 +794,59 @@ $\qquad \qquad \mu_k := $ average (mean) of points assigned to cluster $k$;
     - $s(i) = \dfrac{b(i)-a(i)}{max\{a(i),b(i)\}}$
   - **ARI**
 
+
+
+---
+
+# Lecture 14
+
+本章主要介绍的数据降维，把多个特征值压缩到更少的数量表示。
+
+## 主成分分析问题 Principal Component Analysis Problem Formulation
+
+主成分分析(**PCA**)是最常见的降维算法。
+
+在**PCA**中，我们要做的是找到一个方向向量（**Vector direction**），当我们把所有的数据都投射到该向量上时，我们希望投射平均均方误差能尽可能地小。方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向向量作垂线的长度。
+
+问题是要将$n$维数据降至$k$维，目标是找到向量$u^{(1)}$,$u^{(2)}$,...,$u^{(k)}$使得总的投射误差最小。（其实就是找到线性无关的 $k$ 个向量，张成的线性子空间，然后要其他所有的向量在子空间投影最小。）
+
+**PCA**技术的一个很大的优点是，它是完全无参数限制的。在**PCA**的计算过程中完全不需要人为的设定参数或是根据任何经验模型对计算进行干预，最后的结果只与数据相关，与用户是独立的。
+
+
+
+## 主成分分析算法 Principal Component Analysis Algorithm
+
+1. 均值归一化。我们需要计算出所有特征的均值，然后令 $x_j= x_j-μ_j$。如果特征是在不同的数量级上，我们还需要将其除以标准差 $\sigma$。
+2. 计算**协方差矩阵**（**covariance matrix**）$Σ$：$\Sigma = \dfrac{1}{m} \sum\limits_{i = 1}^{m}(x^{(i)})(x^{(i)})^T$。
+3. 计算协方差矩阵$\Sigma$的**特征向量**（**eigenvectors**）。
+   - 在 **Octave** 里我们可以利用**奇异值分解**（**singular value decomposition**）来求解，`[U, S, V]= svd(sigma)`。
+
+$U$是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至$k$维，我们只需要从$U$中选取前$k$个向量，获得一个$n×k$维度的矩阵，我们用$U_{reduce}$表示，然后通过如下计算获得要求的新特征向量$z^{(i)}$: $z^{(i)}=U^{T}_{reduce}*x^{(i)}$。
+
+
+
+## 选择主成分的数量 Choosing The Number Of Principal Components
+
+主要成分分析是减少投射的平均均方误差：
+
+训练集的方差为：$\dfrac{1}{m}\sum^{m}_{i=1}\left\| x^{\left( i\right) }\right\|^{2}$
+
+我们希望在平均均方误差与训练集方差的比例尽可能小的情况下选择尽可能小的$k$值。
+
+当我们在**Octave**中调用“**svd**”函数的时候，我们获得三个参数：`[U, S, V] = svd(sigma)`。其中 $S$ 是一个对角阵，我们可以使用这个矩阵来计算平均均方误差与训练集方差的比例：
+$$
+\dfrac {\dfrac {1}{m}\sum\limits^{m}_{i=1}\left\| x^{\left( i\right) }-x^{\left( i\right) }_{approx}\right\| ^{2}}{\dfrac{1}{m}\sum\limits^{m}_{i=1}\left\| x^{(i)}\right\| ^{2}}=1-\dfrac {\sum\limits^{k}_{i=1}S_{ii}}{\sum\limits^{m}_{i=1}S_{ii}}\leq 1\%
+$$
+
+
+也就是 $\dfrac{\sum\limits^{k}_{i=1}S_{ii}}{\sum\limits^{n}_{i=1}s_{ii}}\geq 0.99$
+
+在压缩过数据后，我们可以采用如下方法来近似地获得原有的特征：$$x^{\left( i\right) }_{approx}=U_{reduce}z^{(i)}$$
+
+
+
+## 主成分分析法的应用建议 Advice for Applying PCA
+
+- PCA不应该用来减少过拟合。
+- PCA不是必要的，建议先从原始特征开始训练。
+
