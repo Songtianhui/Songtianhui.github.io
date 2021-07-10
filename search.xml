@@ -1845,6 +1845,32 @@ Prob(A_k(x) \in Output_U(x)) = 1 - [Prob(A(x) \notin Output_U(x))]^k,</script><p
 </ul>
 </li>
 </ul>
+<hr>
+<h1 id="Lecture-14"><a href="#Lecture-14" class="headerlink" title="Lecture 14"></a>Lecture 14</h1><p>本章主要介绍的数据降维，把多个特征值压缩到更少的数量表示。</p>
+<h2 id="主成分分析问题-Principal-Component-Analysis-Problem-Formulation"><a href="#主成分分析问题-Principal-Component-Analysis-Problem-Formulation" class="headerlink" title="主成分分析问题 Principal Component Analysis Problem Formulation"></a>主成分分析问题 Principal Component Analysis Problem Formulation</h2><p>主成分分析(<strong>PCA</strong>)是最常见的降维算法。</p>
+<p>在<strong>PCA</strong>中，我们要做的是找到一个方向向量（<strong>Vector direction</strong>），当我们把所有的数据都投射到该向量上时，我们希望投射平均均方误差能尽可能地小。方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向向量作垂线的长度。</p>
+<p>问题是要将$n$维数据降至$k$维，目标是找到向量$u^{(1)}$,$u^{(2)}$,…,$u^{(k)}$使得总的投射误差最小。（其实就是找到线性无关的 $k$ 个向量，张成的线性子空间，然后要其他所有的向量在子空间投影最小。）</p>
+<p><strong>PCA</strong>技术的一个很大的优点是，它是完全无参数限制的。在<strong>PCA</strong>的计算过程中完全不需要人为的设定参数或是根据任何经验模型对计算进行干预，最后的结果只与数据相关，与用户是独立的。</p>
+<h2 id="主成分分析算法-Principal-Component-Analysis-Algorithm"><a href="#主成分分析算法-Principal-Component-Analysis-Algorithm" class="headerlink" title="主成分分析算法 Principal Component Analysis Algorithm"></a>主成分分析算法 Principal Component Analysis Algorithm</h2><ol>
+<li>均值归一化。我们需要计算出所有特征的均值，然后令 $x_j= x_j-μ_j$。如果特征是在不同的数量级上，我们还需要将其除以标准差 $\sigma$。</li>
+<li>计算<strong>协方差矩阵</strong>（<strong>covariance matrix</strong>）$Σ$：$\Sigma = \dfrac{1}{m} \sum\limits_{i = 1}^{m}(x^{(i)})(x^{(i)})^T$。</li>
+<li>计算协方差矩阵$\Sigma$的<strong>特征向量</strong>（<strong>eigenvectors</strong>）。<ul>
+<li>在 <strong>Octave</strong> 里我们可以利用<strong>奇异值分解</strong>（<strong>singular value decomposition</strong>）来求解，<code>[U, S, V]= svd(sigma)</code>。</li>
+</ul>
+</li>
+</ol>
+<p>$U$是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至$k$维，我们只需要从$U$中选取前$k$个向量，获得一个$n×k$维度的矩阵，我们用$U_{reduce}$表示，然后通过如下计算获得要求的新特征向量$z^{(i)}$: $z^{(i)}=U^{T}_{reduce}*x^{(i)}$。</p>
+<h2 id="选择主成分的数量-Choosing-The-Number-Of-Principal-Components"><a href="#选择主成分的数量-Choosing-The-Number-Of-Principal-Components" class="headerlink" title="选择主成分的数量 Choosing The Number Of Principal Components"></a>选择主成分的数量 Choosing The Number Of Principal Components</h2><p>主要成分分析是减少投射的平均均方误差：</p>
+<p>训练集的方差为：$\dfrac{1}{m}\sum^{m}_{i=1}\left| x^{\left( i\right) }\right|^{2}$</p>
+<p>我们希望在平均均方误差与训练集方差的比例尽可能小的情况下选择尽可能小的$k$值。</p>
+<p>当我们在<strong>Octave</strong>中调用“<strong>svd</strong>”函数的时候，我们获得三个参数：<code>[U, S, V] = svd(sigma)</code>。其中 $S$ 是一个对角阵，我们可以使用这个矩阵来计算平均均方误差与训练集方差的比例：</p>
+<script type="math/tex; mode=display">
+\dfrac {\dfrac {1}{m}\sum\limits^{m}_{i=1}\left\| x^{\left( i\right) }-x^{\left( i\right) }_{approx}\right\| ^{2}}{\dfrac{1}{m}\sum\limits^{m}_{i=1}\left\| x^{(i)}\right\| ^{2}}=1-\dfrac {\sum\limits^{k}_{i=1}S_{ii}}{\sum\limits^{m}_{i=1}S_{ii}}\leq 1\%</script><p>也就是 $\dfrac{\sum\limits^{k}_{i=1}S_{ii}}{\sum\limits^{n}_{i=1}s_{ii}}\geq 0.99$</p>
+<p>在压缩过数据后，我们可以采用如下方法来近似地获得原有的特征：<script type="math/tex">x^{\left( i\right) }_{approx}=U_{reduce}z^{(i)}</script></p>
+<h2 id="主成分分析法的应用建议-Advice-for-Applying-PCA"><a href="#主成分分析法的应用建议-Advice-for-Applying-PCA" class="headerlink" title="主成分分析法的应用建议 Advice for Applying PCA"></a>主成分分析法的应用建议 Advice for Applying PCA</h2><ul>
+<li>PCA不应该用来减少过拟合。</li>
+<li>PCA不是必要的，建议先从原始特征开始训练。</li>
+</ul>
 ]]></content>
       <categories>
         <category>ML</category>
