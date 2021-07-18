@@ -852,6 +852,8 @@ $$
 
 
 
+---
+
 # Lecture 15
 
 本章主要介绍**异常检测（Anomaly Detection）**，通过概率分布 $p(x)$ 判断一组数据的可能性，检测异常。
@@ -945,4 +947,119 @@ $$
 原高斯分布模型被广泛使用着，如果特征之间在某种程度上存在相互关联的情况，我们可以通过构造新新特征的方法来捕捉这些相关性。
 
 如果训练集不是太大，并且没有太多的特征，我们可以使用多元高斯分布模型。
+
+
+
+---
+
+# Lecture 16
+
+本章主要介绍**推荐系统（Recommender System）**。
+
+## 问题形式化 Problem Formulation
+
+主要通过一个电影的例子，定义推荐系统的问题。
+
+引入一些标记：
+
+- $n_u$：用户数量。
+- $n_m$：电影数量。
+- $r(i,j)$：如果用户 $j$ 给电影 $i$ 打过分则 $r(i,j) = 1$。
+- $y^{(i,j)}$：用户 $j$ 给 $i$ 打的分。
+- $m_j$：用户 $j$ 评过分的电影数。
+
+## 基于内容的推荐系统 Content Based Recommendations
+
+在一个基于内容的推荐系统算法中，我们假设对于我们希望推荐的东西有一些数据，这些数据是有关这些东西的特征。
+
+每部电影就都有一个特征向量，给予这些特征来构建推荐系统算法。
+
+采用线性回归模型，针对每一个用户训练一个线性回归模型。
+
+于是我们有：
+
+- $\theta^{(j)}$：用户 $j$ 的模型参数向量。
+- $x^{(i)}$：电影 $i$ 的特征向量。
+
+第 $j$ 个用户对第 $i$ 个电影的评分就预测为 $(\theta^{(j)})^T x^{(i)}$。
+
+针对用户 $j$ 的代价函数就是：
+$$
+\min\limits_{\theta^{(j)}} \dfrac{1}{2}\sum\limits_{i:r(i,j)=1}\left((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\right)^2+\dfrac{\lambda}{2}\left(\theta_{k}^{(j)}\right)^2
+$$
+在一般的线性回归模型中，误差项和正则项应该都是乘以$1/2m$，在这里我们将$m$去掉。并且我们不对方差项$\theta_0$进行正则化处理。
+
+上面的代价函数只是针对一个用户的，为了学习所有用户，我们将所有用户的代价函数求和：
+$$
+\min\limits_{\theta^{(1)},...,\theta^{(n_u)}} \dfrac{1}{2}\sum\limits_{j=1}^{n_u}\sum\limits_{i:r(i,j)=1}\left((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\right)^2+\dfrac{\lambda}{2}\sum\limits_{j=1}^{n_u}\sum\limits_{k=1}^{n}(\theta_k^{(j)})^2
+$$
+如果我们要用梯度下降法来求解最优解，我们计算代价函数的偏导数后得到梯度下降的更新公式为：
+
+$$
+\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\sum\limits_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_{k}^{(i)} \quad (\text{for} \, k = 0)
+$$
+
+$$
+\theta_k^{(j)}:=\theta_k^{(j)}-\alpha\left(\sum\limits_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_{k}^{(i)}+\lambda\theta_k^{(j)}\right) \quad (\text{for} \, k\neq 0)
+$$
+
+
+
+## 协同过滤 Collaborative Filtering
+
+在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。
+
+
+
+$$
+\min\limits_{x^{(1)},...,x^{(n_m)}}\dfrac{1}{2}\sum\limits_{i=1}^{n_m}\sum\limits_{j:r(i,j)=1}\left((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\right)^2+\dfrac{\lambda}{2}\sum\limits_{i=1}^{n_m}\sum\limits_{k=1}^{n}\left(x_k^{(i)}\right)^2
+$$
+但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。协同过滤算法可以同时学习这两者。
+
+我们的优化目标便改为同时针对$x$和$\theta$进行。
+$$
+J(x^{(1)},...x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})=\dfrac{1}{2}\sum\limits_{(i:j):r(i,j)=1}\left((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\right)^2+\dfrac{\lambda}{2}\sum\limits_{i=1}^{n_m}\sum\limits_{k=1}^{n}\left(x_k^{(j)}\right)^2+\dfrac{\lambda}{2}\sum\limits_{j=1}^{n_u}\sum\limits_{k=1}^{n}\left(\theta_k^{(j)}\right)^2
+$$
+
+对代价函数求偏导数的结果如下：
+
+$$
+x_k^{(i)}:=x_k^{(i)}-\alpha\left(\sum\limits_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{(j)}+\lambda x_k^{(i)}\right)
+$$
+
+$$
+\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum\limits_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)}\right)
+$$
+
+在协同过滤从算法中，我们通常不使用截距项，如果需要的话，算法会自动学得。
+
+协同过滤算法使用步骤如下：
+
+1. 初始 $x^{(1)},x^{(1)},...x^{(n_m)},\ \theta^{(1)},\theta^{(2)},...,\theta^{(n_u)}$为一些随机小值。
+
+2. 使用梯度下降算法最小化代价函数。
+
+3. 在训练完算法后，我们预测 $(\theta^{(j)})^T x^{(i)}$ 为用户 $j$ 给电影 $i$ 的评分。
+
+
+
+## 向量化：低秩矩阵分解 Vectorization_Low Rank Matrix Factorization
+
+矩阵 $Y$ 保存所有用户和电影的评分数据。
+
+其实我们在协同过滤中做的事叫低秩矩阵分解（当然不懂也没关系）。
+
+推荐：如果一位用户正在观看电影 $x^{(i)}$，我们可以寻找另一部电影$x^{(j)}$，依据两部电影的特征向量之间的距离$\left\|x^{(i)}-x^{(j)} \right\|$的大小。
+
+
+
+## 均值归一化 Mean Normalization
+
+这主要是处理对于新用户的处理。
+
+我们首先需要对结果 $Y $矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值。
+
+然后我们利用这个新的 $Y$ 矩阵来训练算法。
+
+如果我们要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测$(\theta^{(j)})^T x^{(i)}+\mu_i$。
 
