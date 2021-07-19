@@ -434,7 +434,7 @@ $$P(M) = M^{e} \text{  mod } n</script><p>解密 $C \in \mathbb{Z}_n$：</p>
   <entry>
     <title>cuda 安装教程</title>
     <url>/2021/07/19/cuda/</url>
-    <content><![CDATA[<p>一直是个电脑配置盲，显卡啥的都不太懂，<del>大概学了个假cs</del>。正在学习ML，DL，要用到pytorch, tenserflo啥的，需要用到 Nvidia cuda，正好安装一下，也捋一捋配置。</p>
+    <content><![CDATA[<p>一直是个电脑配置盲，显卡啥的都不太懂，<del>大概学了个假cs</del>。正在学习ML，DL，要用到pytorch, tenserflow啥的，需要用到 Nvidia cuda，正好安装一下，也捋一捋配置。</p>
 <hr>
 <h1 id="我的电脑配置"><a href="#我的电脑配置" class="headerlink" title="我的电脑配置"></a>我的电脑配置</h1><ul>
 <li>电脑型号：HUAWEI xpro</li>
@@ -522,6 +522,9 @@ $$P(M) = M^{e} \text{  mod } n</script><p>解密 $C \in \mathbb{Z}_n$：</p>
 <p><img data-src="nvcc.png" alt="nvcc"></p>
 <p>然后在 <code>/usr/local/cuda-11.4/samples</code> 中有一些测试用例，可以自己玩一玩。</p>
 ]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
   </entry>
   <entry>
     <title>问题求解笔记-问题的形式化描述</title>
