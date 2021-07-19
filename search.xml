@@ -432,6 +432,98 @@ $$P(M) = M^{e} \text{  mod } n</script><p>解密 $C \in \mathbb{Z}_n$：</p>
       </categories>
   </entry>
   <entry>
+    <title>cuda 安装教程</title>
+    <url>/2021/07/19/cuda/</url>
+    <content><![CDATA[<p>一直是个电脑配置盲，显卡啥的都不太懂，<del>大概学了个假cs</del>。正在学习ML，DL，要用到pytorch, tenserflo啥的，需要用到 Nvidia cuda，正好安装一下，也捋一捋配置。</p>
+<hr>
+<h1 id="我的电脑配置"><a href="#我的电脑配置" class="headerlink" title="我的电脑配置"></a>我的电脑配置</h1><ul>
+<li>电脑型号：HUAWEI xpro</li>
+<li>系统：Ubuntu 20.04.2 LTS <ul>
+<li>主要工作系统是 Linux，所以本篇基本是 Ubuntu 上的 Cuda 安装教程。</li>
+</ul>
+</li>
+<li>处理器：Intel® Core™ i5-8265U CPU @ 1.60GHz × 8 </li>
+</ul>
+<a id="more"></a>
+<h2 id="显卡"><a href="#显卡" class="headerlink" title="显卡"></a>显卡</h2><p>最主要就是看我们的显卡了，首先扫扫盲看看显卡是个什么东西。</p>
+<p>参考<a href="https://www.zhihu.com/question/28422454">一篇知乎回答</a>。</p>
+<ul>
+<li><strong>显卡（Vedio Card , Graphics Card）</strong>，也叫显示适配器，主机里的数据要显示在屏幕上就需要显卡。因此，显卡是电脑进行数模信号转换的设备，承担输出显示图形的任务。具体来说，<strong>显卡接在电脑主板上，它将电脑的数字信号转换成模拟信号让显示器显示出来</strong>。<ul>
+<li>集成显卡，是指显卡集成在主板上，不能随意更换。而独立显卡是作为一个独立的器件插在主板的AGP接口上的，可以随时更换升级。集成显卡使用物理内存，而独立显卡有自己的显存。</li>
+</ul>
+</li>
+<li><p><strong>VGA(Video Graphics Array)</strong>，是视频图形阵列，就是显示输出接口，能够输出一个分辨率下的色彩rgb数据。</p>
+</li>
+<li><p><strong>GPU(Graphics Processing Unit)</strong>，这个就是显卡上的一块芯片，就像 CPU 是主板上的一块芯片。关于GPU的作用。。。这个其实ics和os里都讲过(，指路<a href="http://jyywiki.cn/OS/2021/slides/13.slides#/4">jyy的slides</a>。就是一个用于画图的硬件，进行大量的显存操作的像素计算（矩阵运算），能够加速图形渲染显示。当人们发现它的强大算力之后就有了。。。</p>
+</li>
+<li><strong>CUDA(Compute Unified Device Architecture)</strong>，通用并行计算架构，是一种运算平台。它包含CUDA指令集架构以及GPU内部的并行计算引擎。你只要使用一种类似于C语言的<strong>CUDA C语言</strong>，就可以开发CUDA程序，从而可以更加方便的利用GPU强大的计算能力，而不是像以前那样先将计算任务包装成图形渲染任务，再交由GPU处理。（炼丹）</li>
+</ul>
+<p>大概就这些了，理清楚显卡是干啥的，看一下我的显卡。</p>
+<p><code>$ neofetch</code> 一下：</p>
+<p><img data-src="fetch.png" alt="neofetch"></p>
+<p>看到了两个 GPU:</p>
+<ul>
+<li>NVIDIA GeForce MX250</li>
+<li>Intel UHD Graphics 620</li>
+<li>等等为什么有两个？！<span class="github-emoji" alias="no_mouth" style fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f636.png?v8">&#x1f636;</span></li>
+</ul>
+<p>上网搜了一下，是可以有双显卡的，一个集显一个独显。不做调整的话默认开机使用用的是核显，使用到一定量，会自动切换到独立显卡。不过也有些因为驱动问题，导致一直默认核显。（啊我好像没装驱动！<span class="github-emoji" alias="joy" style fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">&#x1f602;</span>）</p>
+<h3 id="Intel-UHD-Graphics-620"><a href="#Intel-UHD-Graphics-620" class="headerlink" title="Intel UHD Graphics 620"></a>Intel UHD Graphics 620</h3><p><code>$ lspci | grep -i UHD</code> 看一下：</p>
+<p><img data-src="UHD.png" alt="Intel 显卡"></p>
+<p>这就是那个集成显卡，是集成在 i5 的那个 CPU 里的。UHD不适用于硬核游戏。相反，它提供了用于管理笔记本电脑的屏幕和一些轻便游戏的基本性能。</p>
+<p>它是 VGA compatible controller。</p>
+<h3 id="NVIDIA-GeForce-MX250"><a href="#NVIDIA-GeForce-MX250" class="headerlink" title="NVIDIA GeForce MX250"></a>NVIDIA GeForce MX250</h3><p>这就是那个独立显卡，经典 Nvidia 的，<code>$ lspci | grep -i Nvidia</code> 看一下：</p>
+<p><img data-src="Nvidia.png" alt="Nvidia 显卡"></p>
+<p>查了一下这个显卡也不咋地，只能说比集显好一点。功耗低性能差，游戏绘图设计就别考虑了。<strong>彳亍</strong>。</p>
+<p>然后我意外地发现这个 Nvidia 的好像在这没装驱动，也就是说一直没用上。。。</p>
+<h1 id="装驱动"><a href="#装驱动" class="headerlink" title="装驱动"></a>装驱动</h1><p>发现连显卡驱动都没有赶紧装一下<span class="github-emoji" alias="disappointed_relieved" style fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f625.png?v8">&#x1f625;</span></p>
+<p><a href="https://phoenixnap.com/kb/install-nvidia-drivers-ubuntu">找了一篇教程</a></p>
+<p><a href="https://www.cyberciti.biz/faq/ubuntu-linux-install-nvidia-driver-latest-proprietary-driver/#verification">另一篇教程</a></p>
+<p>直接GUI图形化安装吧。</p>
+<ol>
+<li>直接在软件搜索里搜 <code>driver</code> ，点那个绿的就跳出来了。</li>
+</ol>
+<p><img data-src="find_friver.png" alt="找driver"></p>
+<ol>
+<li>这里有好多种驱动，选一种安装。</li>
+</ol>
+<p><img data-src="install_driver.png" alt="安装驱动"></p>
+<p>还好问了一下IT侠这几个的区别，前几个是nv做的闭源驱动，最后一个是开源的，建议上网搜一下看自己的卡用哪个驱动好。</p>
+<p>这上面显示460是recommended，那就用它了。</p>
+<p><img data-src="drivers.png" alt="选这个"></p>
+<p>安装成功之后，重启。</p>
+<p><code>$ nvidia-setting</code> 检查一下，出现这个界面就成功了。</p>
+<p><img data-src="driver_succ.png" alt="驱动安装成功"></p>
+<p><code>$ nvidia-setting</code> 打开驱动设置。</p>
+<p><code>$ sudo prime-select nvidia/intel</code> 可以切换显卡。</p>
+<h1 id="装-Cuda"><a href="#装-Cuda" class="headerlink" title="装 Cuda"></a>装 Cuda</h1><p>终于一切准别就绪，开始安装cuda。</p>
+<p><a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/">官方文档</a></p>
+<ul>
+<li>GPU 一定要是支持 cuda 的。</li>
+<li>还需要 <code>gcc</code>，应该都有吧。</li>
+<li>可选安装一个 GDS。（我也不知道这是啥）</li>
+<li><p>首先还要下一个 <strong>CUDA Toolkit</strong>，在<a href="https://developer.nvidia.com/cuda-downloads">这</a>下，进去选择自己的设备型号按指示就可以了。</p>
+<ul>
+<li>遇到一个问题就是我们已经安装了 Nvidia Driver，所以在后面 sh xxx.run 时有一个安装 driver 的选项就不要选了，否则会失败。</li>
+<li>这也说明在 Cuda Toolkit 中会自带一个驱动从而不一定要先装显卡驱动？</li>
+<li>出现这个就是成功辣！<img data-src="toolkit_succ.png" alt="安装成功！"></li>
+</ul>
+</li>
+<li><p>最后设置一下环境变量，<code>$ sudo vim ~/.zshrc</code> 中添加：</p>
+<ul>
+<li><p><code>export PATH=/usr/local/cuda-11.4/bin:/usr/local/cuda-10.1/NsightCompute-2019.1$&#123;PATH:+:$&#123;PATH&#125;&#125;</code> （注意这里的cuda-xx.x文件夹要看下载的是什么版本）</p>
+</li>
+<li><p><code>export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>到这里其实就差不多完成了，运行一下 <code>$ nvcc -V</code> 如下显示就可以了。</p>
+<p><img data-src="nvcc.png" alt="nvcc"></p>
+<p>然后在 <code>/usr/local/cuda-11.4/samples</code> 中有一些测试用例，可以自己玩一玩。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>问题求解笔记-问题的形式化描述</title>
     <url>/2021/04/28/formalization/</url>
     <content><![CDATA[<p>庆祝终于脱离了常规算法的学习，进入了NP问题的坑。（</p>
